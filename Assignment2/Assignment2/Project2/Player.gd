@@ -9,6 +9,20 @@ var fall_velocity : float
 var isJumping : bool = false
 var isFlying : bool = false
 
+#get the camera
+onready var cam = get_node("Camera")
+#sensitivity variable that controls rotation in line 19
+var sens = 0.2
+
+func _input(event):
+	if event is InputEventMouseMotion:
+		#relative is the vector of how much mouse has moved
+		var movement = event.relative
+		cam.rotation.x += -deg2rad(movement.y * sens)
+		#make sure the camera rotats upward and downward within 90%
+		cam.rotation.x = clamp(cam.rotation.x, deg2rad(-90), deg2rad(90))
+		rotation.y += -deg2rad(movement.x * sens)
+
 func _physics_process(delta):
 	move_player(delta)
 
@@ -16,16 +30,16 @@ func move_player(delta):
 	var direction = Vector3(0,0,0)
 	
 	if Input.is_action_pressed("move_right"):
-		direction = Vector3(1, 0, 0)
+		direction += transform.basis.x
 	
 	if Input.is_action_pressed("move_left"):
-		direction = Vector3(direction.x - 1, 0, 0)
+		direction -= transform.basis.x
 	
 	if Input.is_action_pressed("move_backward"):
-		direction = Vector3(direction.x, 0, 1)
+		direction += transform.basis.y
 	
 	if Input.is_action_pressed("move_forward"):
-		direction = Vector3(direction.x, 0, direction.z - 1)
+		direction -= transform.basis.y
 	
 	direction = direction.normalized()
 	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
