@@ -9,6 +9,9 @@ var fall_velocity : float
 var isJumping : bool = false
 var isFlying : bool = false
 
+var spawnPoint = Vector3(-80.077, 6.14, -22.868) #coordinates of initial spawn point
+var coins = 0
+
 #get the camera
 onready var cam = get_node("Camera")
 #sensitivity variable that controls rotation in line 19
@@ -25,6 +28,9 @@ func _input(event):
 
 func _physics_process(delta):
 	move_player(delta)
+	
+	
+
 
 func move_player(delta):
 	var direction = Vector3(0,0,0)
@@ -62,3 +68,13 @@ func move_player(delta):
 	
 	velocity.y = fall_velocity
 	velocity = move_and_slide(velocity, Vector3.UP)
+
+
+func _on_Coin_body_entered(_body):
+	coins += 1
+	print(coins)
+
+
+
+func _on_Lava_body_entered(_body):
+	self.set_translation(spawnPoint)
