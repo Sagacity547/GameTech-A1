@@ -2,10 +2,10 @@
 
 [ext_resource path="res://Textures/lava.tres" type="Material" id=1]
 [ext_resource path="res://Textures/grass.tres" type="Material" id=2]
-[ext_resource path="res://Player.gd" type="Script" id=3]
-[ext_resource path="res://Start Check.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Start Check.gd" type="Script" id=4]
 [ext_resource path="res://Textures/Coin.tres" type="Material" id=5]
-[ext_resource path="res://Collect.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Collect.gd" type="Script" id=6]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -16,13 +16,13 @@ extents = Vector3( 0.221771, 0.219238, 0.219993 )
 
 [sub_resource type="CubeMesh" id=4]
 
-[sub_resource type="CapsuleShape" id=7]
+[sub_resource type="CapsuleShape" id=5]
 
-[sub_resource type="CapsuleMesh" id=8]
+[sub_resource type="CapsuleMesh" id=6]
 
-[sub_resource type="SphereShape" id=9]
+[sub_resource type="SphereShape" id=7]
 
-[sub_resource type="SphereMesh" id=10]
+[sub_resource type="SphereMesh" id=8]
 
 [node name="Main" type="Spatial"]
 transform = Transform( 0.999974, 0.00100224, 0.00716465, -0.00103201, 0.999991, 0.00415113, -0.00716042, -0.00415841, 0.999966, 0, 0, 0 )
@@ -251,10 +251,10 @@ transform = Transform( 1, -4.65661e-09, 6.00267e-10, 2.03727e-10, 0.00333344, -0
 script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Player"]
-shape = SubResource( 7 )
+shape = SubResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Player"]
-mesh = SubResource( 8 )
+mesh = SubResource( 6 )
 material/0 = null
 
 [node name="Camera" type="Camera" parent="Player"]
@@ -274,11 +274,11 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
-shape = SubResource( 9 )
+shape = SubResource( 7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
-mesh = SubResource( 10 )
+mesh = SubResource( 8 )
 material/0 = ExtResource( 5 )
 [connection signal="body_entered" from="Lava/Lava" to="Player" method="_on_Lava_body_entered"]
 [connection signal="body_entered" from="Checkpoints/Start Check" to="Checkpoints/Start Check" method="_on_Start_Check_body_entered"]
