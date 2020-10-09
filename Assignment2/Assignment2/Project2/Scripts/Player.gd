@@ -7,11 +7,12 @@ export var gravity : float = 0.98
 
 #variables for player custom movement and jumping
 var velocity : Vector3
+var walkableAngle: float = .30
 var fall_velocity : float
 var isJumping : bool = false
 var isFlying : bool = false
 var isOnEdge: bool = false
-
+var canWalk: bool = true
 #variable for player's current spawn position upon death
 var spawnPoint = Vector3(-80.077, 6.14, -22.868) #coordinates of initial spawn point
 
@@ -48,53 +49,79 @@ func _physics_process(delta):
 	
 #Player movement code
 func move_player(delta):
+	set_can_walk()
 	var direction = Vector3(0,0,0)
-	
 	if !isOnEdge or isJumping:
-		if Input.is_action_pressed("move_right"):
-			direction += transform.basis.x
+		if canWalk : 
+			if Input.is_action_pressed("move_right"):
+				direction += transform.basis.x
 	
-		if Input.is_action_pressed("move_left"):
-			direction -= transform.basis.x
+			if Input.is_action_pressed("move_left"):
+				direction -= transform.basis.x
 	
-		if Input.is_action_pressed("move_backward"):
-			direction += transform.basis.y
+			if Input.is_action_pressed("move_backward"):
+				direction += transform.basis.y
 	
-		if Input.is_action_pressed("move_forward"):
-			direction -= transform.basis.y
+			if Input.is_action_pressed("move_forward"):
+				direction -= transform.basis.y
 	
 		direction = direction.normalized()
 		velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
 		
-		if is_on_floor():
-			fall_velocity = -0.01
-		else:
-			fall_velocity = fall_velocity - gravity
-		
-		if Input.is_action_pressed("jump") &&  !isJumping && !Input.is_action_pressed("Fly"):
-			fall_velocity = 15
-			isJumping = true
-	
-		if Input.is_action_pressed("Fly") && Input.is_action_pressed("jump"):
-			fall_velocity = 15
-			isFlying = true
-	
-		if Input.is_action_just_released("Fly"):
-			isFlying = false;
-	
-		if is_on_floor() && isJumping:
-			isJumping = false
+		handle_gravity()
 	
 		velocity.y = fall_velocity
 		velocity = move_and_slide(velocity, Vector3.UP)
-	else : 
+	else : # ledge hang edge case, freeze the player on the edge until the pop off with E
 		if !isJumping:
 			if Input.is_action_pressed("ledge_hang"):
 				isOnEdge = false
 			velocity = Vector3(0,0,0)
+			
+
+#applies gravity to player and handles flying and jumping
+func handle_gravity():
+	# Gravity
+	if is_on_floor():
+		fall_velocity = -0.01 # prevents 
+	else:
+		fall_velocity = fall_velocity - gravity
 	
+	# Standard Jump
+	if Input.is_action_pressed("jump") &&  !isJumping && !Input.is_action_pressed("Fly"):
+		fall_velocity = 15
+		isJumping = true
+	# Flying
+	if Input.is_action_pressed("Fly") && Input.is_action_pressed("jump"):
+		fall_velocity = 15
+		isFlying = true
 	
+	#Stopped Flying
+	if Input.is_action_just_released("Fly"):
+		isFlying = false;
 	
+	#Stopped Jumping
+	if is_on_floor() && isJumping:
+		isJumping = false
+
+
+#Handles checking the walkable angle 
+func set_can_walk():
+	if Input.is_action_pressed("walkable_angle_up") && walkableAngle < .9:
+		walkableAngle = walkableAngle + .1
+	if Input.is_action_pressed("walkable_angle_down") && walkableAngle > .1:
+		walkableAngle = walkableAngle - .1
+	
+	if get_slide_count() > 0:
+		var collider = get_slide_collision(0)
+		var norm = Vector3(collider.normal)
+		# we need to check the x to get the angle 
+		# cannot walk down too steep of an angle?? 
+		if abs(norm.x) > walkableAngle:
+			canWalk = false
+		else: 
+			canWalk = true
+
 
 #code for when player interacts with a coin object
 func _on_Coin_body_entered(_body):
