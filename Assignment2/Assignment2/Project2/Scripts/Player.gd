@@ -10,6 +10,7 @@ var velocity : Vector3
 var fall_velocity : float
 var isJumping : bool = false
 var isFlying : bool = false
+var isOnEdge: bool = false
 
 #variable for player's current spawn position upon death
 var spawnPoint = Vector3(-80.077, 6.14, -22.868) #coordinates of initial spawn point
@@ -49,42 +50,51 @@ func _physics_process(delta):
 func move_player(delta):
 	var direction = Vector3(0,0,0)
 	
-	if Input.is_action_pressed("move_right"):
-		direction += transform.basis.x
+	if !isOnEdge or isJumping:
+		if Input.is_action_pressed("move_right"):
+			direction += transform.basis.x
 	
-	if Input.is_action_pressed("move_left"):
-		direction -= transform.basis.x
+		if Input.is_action_pressed("move_left"):
+			direction -= transform.basis.x
 	
-	if Input.is_action_pressed("move_backward"):
-		direction += transform.basis.y
+		if Input.is_action_pressed("move_backward"):
+			direction += transform.basis.y
 	
-	if Input.is_action_pressed("move_forward"):
-		direction -= transform.basis.y
+		if Input.is_action_pressed("move_forward"):
+			direction -= transform.basis.y
 	
-	direction = direction.normalized()
-	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
+		direction = direction.normalized()
+		velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
 		
-	if is_on_floor():
-		fall_velocity = -0.01
-	else:
-		fall_velocity = fall_velocity - gravity
+		if is_on_floor():
+			fall_velocity = -0.01
+		else:
+			fall_velocity = fall_velocity - gravity
 		
-	if Input.is_action_pressed("jump") &&  !isJumping && !Input.is_action_pressed("Fly"):
-		fall_velocity = 15
-		isJumping = true
+		if Input.is_action_pressed("jump") &&  !isJumping && !Input.is_action_pressed("Fly"):
+			fall_velocity = 15
+			isJumping = true
 	
-	if Input.is_action_pressed("Fly") && Input.is_action_pressed("jump"):
-		fall_velocity = 15
-		isFlying = true
+		if Input.is_action_pressed("Fly") && Input.is_action_pressed("jump"):
+			fall_velocity = 15
+			isFlying = true
 	
-	if Input.is_action_just_released("Fly"):
-		isFlying = false;
+		if Input.is_action_just_released("Fly"):
+			isFlying = false;
 	
-	if is_on_floor() && isJumping:
-		isJumping = false
+		if is_on_floor() && isJumping:
+			isJumping = false
 	
-	velocity.y = fall_velocity
-	velocity = move_and_slide(velocity, Vector3.UP)
+		velocity.y = fall_velocity
+		velocity = move_and_slide(velocity, Vector3.UP)
+	else : 
+		if !isJumping:
+			if Input.is_action_pressed("ledge_hang"):
+				isOnEdge = false
+			velocity = Vector3(0,0,0)
+	
+	
+	
 
 #code for when player interacts with a coin object
 func _on_Coin_body_entered(_body):
@@ -98,7 +108,19 @@ func _on_Lava_body_entered(_body):
 	var musicNode = $"Lava"
 	musicNode.play()
 	self.set_translation(spawnPoint)
+	
+func handle_ledge_hang():
+	pass
 
 #test code for Player when entering a ledge
+# When a player enters the collison shape we set isOnEdge to true 
 func _on_Starting_Ledge_body_entered(body):
-	pass # Replace with function body.
+	if body.get_name() == "Player":
+		isOnEdge = true
+
+#test code for Player when entering a ledge
+#When a player enters the collison shape we set isOnEdge to true
+func _on_Starting_ledge_exited(body):
+	if body.get_name() == "Player":
+		isOnEdge = false
+

@@ -12,7 +12,7 @@
 [ext_resource path="res://Audio/Lava.wav" type="AudioStream" id=10]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 0.848266, 1, 0.948165 )
+extents = Vector3( 0.87268, 1, 0.948165 )
 
 [sub_resource type="BoxShape" id=2]
 
@@ -40,7 +40,7 @@ transform = Transform( 0.999974, 0.00100224, 0.00716465, -0.00103201, 0.999991, 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -76.962, 2.78173, -10.3446 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_0"]
-transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.52258, -1.08373, -0.689608 )
+transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
 shape = SubResource( 1 )
 
 [node name="Short Platforms" type="Node" parent="."]
@@ -69,10 +69,11 @@ material/0 = ExtResource( 2 )
 transform = Transform( 13.3094, 0, 0, 0, 1.04466, 0, 0, 0, 21.5742, -75.2225, 2.30234, -11.1446 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Short Platforms/Starting Platform"]
+transform = Transform( 1.04325, 0, 0, 0, 1, 0, 0, 0, 1, -1.43051e-06, 0, 0 )
 shape = SubResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Short Platforms/Starting Platform"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
+transform = Transform( 1.04325, 0, 0, 0, 1, 0, 0, 0, 1, -5.53131e-05, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
 
@@ -258,7 +259,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.557364, 0 )
 shape = SubResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Lava/Lava"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0382489, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0382907, -0.00393629, 6.8903e-05 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 1 )
 
@@ -270,6 +271,7 @@ script = ExtResource( 3 )
 shape = SubResource( 6 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Player"]
+transform = Transform( 1, 0, -3.63798e-11, -4.65661e-10, 1, 0, -6.18456e-11, 0, 1, 0, 0, 0 )
 mesh = SubResource( 7 )
 material/0 = null
 
@@ -316,7 +318,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
 mesh = SubResource( 9 )
 material/0 = ExtResource( 5 )
 [connection signal="body_entered" from="Ledge Areas/Ledge_0" to="Player" method="_on_Starting_Ledge_body_entered"]
+[connection signal="body_exited" from="Ledge Areas/Ledge_0" to="Player" method="_on_Starting_ledge_exited"]
 [connection signal="body_entered" from="Lava/Lava" to="Player" method="_on_Lava_body_entered"]
 [connection signal="body_entered" from="Checkpoints/Start Check" to="Checkpoints/Start Check" method="_on_Start_Check_body_entered"]
-[connection signal="body_entered" from="Collectables/Coin" to="Player" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin" to="Collectables/Coin" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin" to="Player" method="_on_Coin_body_entered"]
