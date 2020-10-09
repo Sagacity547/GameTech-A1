@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Textures/lava.tres" type="Material" id=1]
 [ext_resource path="res://Textures/grass.tres" type="Material" id=2]
@@ -6,6 +6,10 @@
 [ext_resource path="res://Scripts/Start Check.gd" type="Script" id=4]
 [ext_resource path="res://Textures/Coin.tres" type="Material" id=5]
 [ext_resource path="res://Scripts/Collect.gd" type="Script" id=6]
+[ext_resource path="res://Audio/Cinematic-electronic-track.wav" type="AudioStream" id=7]
+[ext_resource path="res://Audio/Jomp.wav" type="AudioStream" id=8]
+[ext_resource path="res://Audio/coin.wav" type="AudioStream" id=9]
+[ext_resource path="res://Audio/Lava.wav" type="AudioStream" id=10]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -259,6 +263,25 @@ material/0 = null
 
 [node name="Camera" type="Camera" parent="Player"]
 transform = Transform( 1, 0, 0, 0, -0.258819, 0.965926, 0, -0.965926, -0.258819, 0, 6.5, -3.5 )
+
+[node name="Background Music" type="AudioStreamPlayer3D" parent="Player"]
+transform = Transform( 0.999974, -0.001032, -0.00716041, 0.00716795, 0.0074845, 0.999947, -0.000978362, -0.999972, 0.00749173, -0.152634, 0.119289, -0.312123 )
+stream = ExtResource( 7 )
+unit_db = -12.427
+autoplay = true
+
+[node name="Jump" type="AudioStreamPlayer3D" parent="Player"]
+transform = Transform( 0.999974, -0.001032, -0.00716042, 0.00716795, 0.0074845, 0.999947, -0.000978362, -0.999972, 0.00749172, -0.244476, -0.0134144, 0.721514 )
+stream = ExtResource( 8 )
+unit_db = -12.428
+
+[node name="Coin" type="AudioStreamPlayer3D" parent="Player"]
+stream = ExtResource( 9 )
+unit_db = 40.301
+
+[node name="Lava" type="AudioStreamPlayer3D" parent="Player"]
+stream = ExtResource( 10 )
+unit_db = 24.854
 
 [node name="Checkpoints" type="Node" parent="."]
 

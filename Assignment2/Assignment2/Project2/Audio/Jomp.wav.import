@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Jomp.wav-446c2d88afe1ec6d7e546b0fdb1c9bd0.sample"
+
+[deps]
+
+source_file="res://Audio/Jomp.wav"
+dest_files=[ "res://.import/Jomp.wav-446c2d88afe1ec6d7e546b0fdb1c9bd0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

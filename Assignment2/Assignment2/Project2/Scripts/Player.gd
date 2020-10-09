@@ -26,11 +26,18 @@ func _input(event):
 		cam.rotation.x = clamp(cam.rotation.x, deg2rad(-90), deg2rad(90))
 		rotation.y += -deg2rad(movement.x * sens)
 
+func _process(delta):
+	if Input.is_action_just_pressed("jump") and !isFlying:
+		var musicNode = $"Jump"
+		musicNode.play()
+		
+		
+		
+
 func _physics_process(delta):
 	move_player(delta)
 	
 	
-
 
 func move_player(delta):
 	var direction = Vector3(0,0,0)
@@ -63,6 +70,9 @@ func move_player(delta):
 		fall_velocity = 15
 		isFlying = true
 	
+	if Input.is_action_just_released("Fly"):
+		isFlying = false;
+	
 	if is_on_floor() && isJumping:
 		isJumping = false
 	
@@ -71,10 +81,14 @@ func move_player(delta):
 
 
 func _on_Coin_body_entered(_body):
+	var musicNode = $"Coin"
+	musicNode.play()
 	coins += 1
 	print(coins)
 
 
 
 func _on_Lava_body_entered(_body):
+	var musicNode = $"Lava"
+	musicNode.play()
 	self.set_translation(spawnPoint)
