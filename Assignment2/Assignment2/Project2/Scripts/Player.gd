@@ -18,6 +18,7 @@ var spawnPoint = Vector3(-80.077, 6.14, -22.868) #coordinates of initial spawn p
 
 #variables for Player GUI
 var coins = 0
+var gas = 500
 
 #get the camera
 onready var cam = get_node("Camera")
@@ -92,8 +93,10 @@ func handle_gravity():
 		fall_velocity = 15
 		isJumping = true
 	# Flying
-	if Input.is_action_pressed("Fly") && Input.is_action_pressed("jump"):
+	if Input.is_action_pressed("Fly") && Input.is_action_pressed("jump") && gas > 0:
 		fall_velocity = 15
+		gas -= 5
+		print (gas)
 		isFlying = true
 	
 	#Stopped Flying
@@ -134,6 +137,8 @@ func _on_Coin_body_entered(_body):
 func _on_Lava_body_entered(_body):
 	var musicNode = $"Lava"
 	musicNode.play()
+	gas = 500
+	coins -= 1
 	self.set_translation(spawnPoint)
 	
 func handle_ledge_hang():
@@ -151,3 +156,10 @@ func _on_Starting_ledge_exited(body):
 	if body.get_name() == "Player":
 		isOnEdge = false
 
+
+
+func _on_Gas_body_entered(_body):
+	var musicNode = $"Gas"
+	musicNode.play()
+	gas = 500
+	pass # Replace with function body.

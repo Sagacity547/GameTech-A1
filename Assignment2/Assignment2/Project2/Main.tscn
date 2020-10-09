@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Textures/lava.tres" type="Material" id=1]
 [ext_resource path="res://Textures/grass.tres" type="Material" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://Audio/Jomp.wav" type="AudioStream" id=8]
 [ext_resource path="res://Audio/coin.wav" type="AudioStream" id=9]
 [ext_resource path="res://Audio/Lava.wav" type="AudioStream" id=10]
+[ext_resource path="res://Gas.tres" type="Material" id=11]
+[ext_resource path="res://Gas.gd" type="Script" id=12]
+[ext_resource path="res://Audio/liquid.wav" type="AudioStream" id=13]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.87268, 1, 0.948165 )
@@ -30,6 +33,10 @@ extents = Vector3( 0.221771, 0.219238, 0.219993 )
 [sub_resource type="SphereShape" id=8]
 
 [sub_resource type="SphereMesh" id=9]
+
+[sub_resource type="BoxShape" id=10]
+
+[sub_resource type="CubeMesh" id=11]
 
 [node name="Main" type="Spatial"]
 transform = Transform( 0.999974, 0.00100224, 0.00716465, -0.00103201, 0.999991, 0.00415113, -0.00716042, -0.00415841, 0.999966, 0, 0, 0 )
@@ -259,7 +266,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.557364, 0 )
 shape = SubResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Lava/Lava"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0382907, -0.00393629, 6.8903e-05 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0385714, -0.00393629, -0.000303224 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 1 )
 
@@ -281,7 +288,7 @@ transform = Transform( 1, 0, 0, 0, -0.258819, 0.965926, 0, -0.965926, -0.258819,
 [node name="Background Music" type="AudioStreamPlayer3D" parent="Player"]
 transform = Transform( 0.999974, -0.001032, -0.00716041, 0.00716795, 0.0074845, 0.999947, -0.000978362, -0.999972, 0.00749173, -0.152634, 0.119289, -0.312123 )
 stream = ExtResource( 7 )
-unit_db = -12.427
+unit_db = -4.66
 autoplay = true
 
 [node name="Jump" type="AudioStreamPlayer3D" parent="Player"]
@@ -291,11 +298,15 @@ unit_db = -12.428
 
 [node name="Coin" type="AudioStreamPlayer3D" parent="Player"]
 stream = ExtResource( 9 )
-unit_db = 40.301
+unit_db = 13.893
 
 [node name="Lava" type="AudioStreamPlayer3D" parent="Player"]
 stream = ExtResource( 10 )
-unit_db = 24.854
+unit_db = 12.427
+
+[node name="Gas" type="AudioStreamPlayer3D" parent="Player"]
+stream = ExtResource( 13 )
+unit_db = 10.874
 
 [node name="Checkpoints" type="Node" parent="."]
 
@@ -317,9 +328,24 @@ shape = SubResource( 8 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
 mesh = SubResource( 9 )
 material/0 = ExtResource( 5 )
+
+[node name="Gas" type="Area" parent="Collectables"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39997, 0, 0 )
+script = ExtResource( 12 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -75.1786, 10.7784, -4.22731 )
+shape = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -75.1307, 10.7707, -4.26877 )
+mesh = SubResource( 11 )
+material/0 = ExtResource( 11 )
 [connection signal="body_entered" from="Ledge Areas/Ledge_0" to="Player" method="_on_Starting_Ledge_body_entered"]
 [connection signal="body_exited" from="Ledge Areas/Ledge_0" to="Player" method="_on_Starting_ledge_exited"]
 [connection signal="body_entered" from="Lava/Lava" to="Player" method="_on_Lava_body_entered"]
 [connection signal="body_entered" from="Checkpoints/Start Check" to="Checkpoints/Start Check" method="_on_Start_Check_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin" to="Collectables/Coin" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Gas" to="Collectables/Gas" method="_on_Gas_body_entered"]
+[connection signal="body_entered" from="Collectables/Gas" to="Player" method="_on_Gas_body_entered"]
