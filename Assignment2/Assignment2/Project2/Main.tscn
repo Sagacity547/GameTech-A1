@@ -53,10 +53,108 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -76.962, 2.78173, -10.3446 )
 transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
 shape = SubResource( 1 )
 
+[node name="Ledge_1" type="Area" parent="Ledge Areas"]
+transform = Transform( 0.444257, 0, 0, 0, 1, 0, 0, 0, 0.74047, -55.3157, -1.07322, 1.94057 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_1"]
+transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
+shape = SubResource( 1 )
+
+[node name="Ledge_2" type="Area" parent="Ledge Areas"]
+transform = Transform( 0.363233, 0, 0, 0, 1, 0, 0, 0, 0.74047, -45.971, -4.86852, 30.6222 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_2"]
+transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
+shape = SubResource( 1 )
+
+[node name="Ledge_3" type="Area" parent="Ledge Areas"]
+transform = Transform( 0.326489, 0, 0, 0, 1, 0, 0, 0, 0.690089, -54.7044, -11.9632, 59.4926 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_3"]
+transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
+shape = SubResource( 1 )
+
+[node name="Ledge_4" type="Area" parent="Ledge Areas"]
+transform = Transform( 0.768987, 0, 0, 0, 1, 0, 0, 0, 0.542502, -36.1258, -22.6804, 82.4375 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_4"]
+transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
+shape = SubResource( 1 )
+
+[node name="Ledge_5" type="Area" parent="Ledge Areas"]
+transform = Transform( 0.768987, 0, 0, 0, 1, 0, 0, 0, 0.542502, -6.07849, -38.1471, 90.7085 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_5"]
+transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
+shape = SubResource( 1 )
+
+[node name="Ledge_6" type="Area" parent="Ledge Areas"]
+transform = Transform( 0.768987, 0, 0, 0, 1, 0, 0, 0, 0.542502, 25.5335, -47.6025, 78.7943 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_6"]
+transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
+shape = SubResource( 1 )
+
+[node name="Ledge_9" type="Area" parent="Ledge Areas"]
+transform = Transform( 0.768987, 0, 0, 0, 1, 0, 0, 0, 0.769097, 96.1742, -54.1776, 40.2364 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_9"]
+transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
+shape = SubResource( 1 )
+
+[node name="Ledge_10" type="Area" parent="Ledge Areas"]
+transform = Transform( 0.768987, 0, 0, 0, 1, 0, 0, 0, 0.769097, 162.676, -56.3005, 40.0205 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_10"]
+transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
+shape = SubResource( 1 )
+
+[node name="Ledge_11" type="Area" parent="Ledge Areas"]
+transform = Transform( 0.768987, 0, 0, 0, 1, 0, 0, 0, 0.769097, 193.701, -70.5428, 3.62367 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_11"]
+transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
+shape = SubResource( 1 )
+
+[node name="Ledge_12" type="Area" parent="Ledge Areas"]
+transform = Transform( 0.768987, 0, 0, 0, 1, 0, 0, 0, 0.769097, 234.948, -96.3426, -5.69609 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_12"]
+transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
+shape = SubResource( 1 )
+
+[node name="Ledge_13" type="Area" parent="Ledge Areas"]
+transform = Transform( 0.768987, 0, 0, 0, 1, 0, 0, 0, 0.704384, 275.64, -124.596, 44.6582 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_13"]
+transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
+shape = SubResource( 1 )
+
+[node name="Ledge_14" type="Area" parent="Ledge Areas"]
+transform = Transform( 0.768987, 0, 0, 0, 1, 0, 0, 0, 0.793453, 271.327, -142.505, 105.03 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_14"]
+transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
+shape = SubResource( 1 )
+
+[node name="Ledge_7" type="Area" parent="Ledge Areas"]
+transform = Transform( 0.830514, 0, 0, 0, 1, 0, 0, 0, 0.678903, 35.1239, -35.0761, -12.3607 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_7"]
+transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
+shape = SubResource( 1 )
+
+[node name="Ledge_8" type="Area" parent="Ledge Areas"]
+transform = Transform( 0.38875, 0, 0, 0, 1, 0, 0, 0, 0.195342, -9.38465, -17.341, -9.81353 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_8"]
+transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
+shape = SubResource( 1 )
+
 [node name="Short Platforms" type="Node" parent="."]
 
 [node name="Challenge Platform" type="KinematicBody" parent="Short Platforms"]
-transform = Transform( 4.89802, 0, 0, 0, 0.90726, 0, 0, 0, 3.74674, 5.70288, -17.9618, -9.4487 )
+transform = Transform( 4.89802, 0, 0, 0, 0.90726, 0, 0, 0, 3.74674, -8.74276, -17.9618, -9.4487 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Short Platforms/Challenge Platform"]
 shape = SubResource( 2 )
@@ -65,8 +163,11 @@ shape = SubResource( 2 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
 
+[node name="Spatial" parent="Short Platforms/Challenge Platform" instance=ExtResource( 15 )]
+transform = Transform( 0.81089, 0, 0, 0, 0.81089, 0, 0, 0, 0.81089, 0, 0, 0 )
+
 [node name="Challenge Platform2" type="KinematicBody" parent="Short Platforms"]
-transform = Transform( 9.93815, 0, 0, 0, 0.90726, 0, 0, 0, 14.9264, 60.6176, -35.6984, -12.5486 )
+transform = Transform( 9.93815, 0, 0, 0, 0.90726, 0, 0, 0, 14.9264, 36.8707, -35.2359, -12.5546 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Short Platforms/Challenge Platform2"]
 shape = SubResource( 2 )
@@ -74,6 +175,8 @@ shape = SubResource( 2 )
 [node name="MeshInstance" type="MeshInstance" parent="Short Platforms/Challenge Platform2"]
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
+
+[node name="Spatial" parent="Short Platforms/Challenge Platform2" instance=ExtResource( 15 )]
 
 [node name="Starting Platform" type="KinematicBody" parent="Short Platforms"]
 transform = Transform( 13.3094, 0, 0, 0, 1.04466, 0, 0, 0, 21.5742, -75.2225, 2.30234, -11.1446 )
@@ -100,8 +203,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
 
+[node name="Spatial" parent="Short Platforms/Normal Platform" instance=ExtResource( 15 )]
+
 [node name="Normal Platform2" type="KinematicBody" parent="Short Platforms"]
-transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -10.4613, 5.97166, -32.4844, 117.189 )
+transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -10.4613, -4.61409, -38.6326, 90.8728 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Short Platforms/Normal Platform2"]
 shape = SubResource( 2 )
@@ -111,8 +216,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
 
+[node name="Spatial" parent="Short Platforms/Normal Platform2" instance=ExtResource( 15 )]
+
 [node name="Normal Platform3" type="KinematicBody" parent="Short Platforms"]
-transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -10.4613, 50.13, -48.0209, 78.7366 )
+transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -10.4613, 26.9649, -48.0209, 78.7366 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Short Platforms/Normal Platform3"]
 shape = SubResource( 2 )
@@ -122,8 +229,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
 
+[node name="Spatial" parent="Short Platforms/Normal Platform3" instance=ExtResource( 15 )]
+
 [node name="Normal2 Platform" type="KinematicBody" parent="Short Platforms"]
-transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -15.7103, 120.146, -55.0906, 39.0599 )
+transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -15.7103, 97.4325, -55.0906, 39.0599 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Short Platforms/Normal2 Platform"]
 shape = SubResource( 2 )
@@ -133,8 +242,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
 
+[node name="Spatial" parent="Short Platforms/Normal2 Platform" instance=ExtResource( 15 )]
+
 [node name="Normal2 Platform2" type="KinematicBody" parent="Short Platforms"]
-transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -15.7103, 223.634, -57.3745, 39.0599 )
+transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -15.7103, 163.723, -57.3745, 39.0599 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Short Platforms/Normal2 Platform2"]
 shape = SubResource( 2 )
@@ -144,8 +255,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
 
+[node name="Spatial" parent="Short Platforms/Normal2 Platform2" instance=ExtResource( 15 )]
+
 [node name="Normal2 Platform3" type="KinematicBody" parent="Short Platforms"]
-transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -15.7103, 274.755, -71.7723, -20.7502 )
+transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -15.7103, 194.804, -71.3735, 3.44301 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Short Platforms/Normal2 Platform3"]
 shape = SubResource( 2 )
@@ -155,8 +268,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
 
+[node name="Spatial" parent="Short Platforms/Normal2 Platform3" instance=ExtResource( 15 )]
+
 [node name="Normal2 Platform4" type="KinematicBody" parent="Short Platforms"]
-transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -15.7103, 360.862, -96.9843, -5.99475 )
+transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -15.7103, 236.673, -96.9843, -5.99475 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Short Platforms/Normal2 Platform4"]
 shape = SubResource( 2 )
@@ -166,8 +281,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
 
+[node name="Spatial" parent="Short Platforms/Normal2 Platform4" instance=ExtResource( 15 )]
+
+[node name="Spatial" parent="Short Platforms/Normal2 Platform4/Spatial" instance=ExtResource( 15 )]
+
 [node name="Normal2 Platform5" type="KinematicBody" parent="Short Platforms"]
-transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -15.7103, 405.209, -125.303, 69.2803 )
+transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -15.7103, 275.447, -125.303, 44.0669 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Short Platforms/Normal2 Platform5"]
 shape = SubResource( 2 )
@@ -177,8 +296,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
 
+[node name="Spatial" parent="Short Platforms/Normal2 Platform5" instance=ExtResource( 15 )]
+
 [node name="Normal2 Platform6" type="KinematicBody" parent="Short Platforms"]
-transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -15.7103, 373.76, -160.615, 150.928 )
+transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -15.7103, 272.486, -143.506, 104.255 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Short Platforms/Normal2 Platform6"]
 shape = SubResource( 2 )
@@ -188,16 +309,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
 
-[node name="Normal2 Platform7" type="KinematicBody" parent="Short Platforms"]
-transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -15.7103, 295.923, -188.237, 235.521 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Short Platforms/Normal2 Platform7"]
-shape = SubResource( 2 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Short Platforms/Normal2 Platform7"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
-mesh = SubResource( 3 )
-material/0 = ExtResource( 2 )
+[node name="Spatial" parent="Short Platforms/Normal2 Platform6" instance=ExtResource( 15 )]
 
 [node name="Long Platforms" type="Node" parent="."]
 
@@ -213,6 +325,8 @@ transform = Transform( 0.229484, 0, 0, 0, 0.219957, 0, 0, 0, 0.219982, 0, 0, 0 )
 mesh = SubResource( 5 )
 material/0 = ExtResource( 2 )
 
+[node name="Spatial" parent="Long Platforms/Long Starter1/MeshInstance" instance=ExtResource( 15 )]
+
 [node name="Long Starter2" type="KinematicBody" parent="Long Platforms"]
 transform = Transform( 18.8641, 0, 0, 0, 2.4344, 0, 0, 0, 66.9689, -45.536, -5.41009, 31.6898 )
 
@@ -224,6 +338,8 @@ shape = SubResource( 4 )
 transform = Transform( 0.229484, 0, 0, 0, 0.219957, 0, 0, 0, 0.219982, 0, 0, 0 )
 mesh = SubResource( 5 )
 material/0 = ExtResource( 2 )
+
+[node name="Spatial" parent="Long Platforms/Long Starter2/MeshInstance" instance=ExtResource( 15 )]
 
 [node name="Long Starter3" type="KinematicBody" parent="Long Platforms"]
 transform = Transform( 17.6314, 0, 0, 0, 3.12083, 0, 0, 0, 66.9689, -54.2938, -12.5101, 59.2568 )
@@ -237,8 +353,10 @@ transform = Transform( 0.229484, 0, 0, 0, 0.219957, 0, 0, 0, 0.219982, 0, 0, 0 )
 mesh = SubResource( 5 )
 material/0 = ExtResource( 2 )
 
+[node name="Spatial" parent="Long Platforms/Long Starter3/MeshInstance" instance=ExtResource( 15 )]
+
 [node name="Middle Angled" type="KinematicBody" parent="Long Platforms"]
-transform = Transform( -0.189018, -0.550871, -81.6144, -0.0557308, 1.59286, -24.0636, 40.2953, 0, -1.34636, 91.9941, -59.6517, 38.4448 )
+transform = Transform( -0.189018, -0.550871, -81.6144, -0.0557308, 1.59286, -24.0636, 40.2953, 0, -1.34636, 68.792, -59.6517, 38.4448 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Long Platforms/Middle Angled"]
 transform = Transform( 1.03553, 0, 0, 0, 1.0087, 0, 0, 0, 1, 0, 0, 0 )
@@ -249,17 +367,21 @@ transform = Transform( 0.229484, 0, 0, 0, 0.219957, 0, 0, 0, 0.219982, 0, 0, 0 )
 mesh = SubResource( 5 )
 material/0 = ExtResource( 2 )
 
+[node name="Spatial" parent="Long Platforms/Middle Angled/MeshInstance" instance=ExtResource( 15 )]
+
 [node name="Middle Angled2" type="KinematicBody" parent="Long Platforms"]
-transform = Transform( 37.9081, -0.199642, 25.6612, 0.34348, 1.59232, 31.5605, -13.6605, -0.515095, 74.7477, 250.239, -113.358, 122.083 )
+transform = Transform( 17.588, -0.502645, 70.5723, 0.34348, 1.59232, 31.5605, -36.2532, -0.22919, 35.5705, 205.055, -75.1379, 83.969 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Long Platforms/Middle Angled2"]
 transform = Transform( 1.03553, 0, 0, 0, 1.0087, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Long Platforms/Middle Angled2"]
-transform = Transform( 0.229484, 0, 0, 0, 0.219957, 0, 0, 0, 0.219982, 0, 0, 0 )
+transform = Transform( 0.229484, -1.74623e-10, 1.49012e-08, 0, 0.219957, 4.76837e-07, -3.72529e-09, -1.16415e-10, 0.219982, 0, 0, 0 )
 mesh = SubResource( 5 )
 material/0 = ExtResource( 2 )
+
+[node name="Spatial" parent="Long Platforms/Middle Angled2/MeshInstance" instance=ExtResource( 15 )]
 
 [node name="Lava" type="Node" parent="."]
 
@@ -364,8 +486,164 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
 mesh = SubResource( 9 )
 material/0 = ExtResource( 5 )
 
+[node name="Coin2" type="Area" parent="Collectables"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0309, -22.6764, -9.03597 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
+shape = SubResource( 8 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
+mesh = SubResource( 9 )
+material/0 = ExtResource( 5 )
+
+[node name="Coin3" type="Area" parent="Collectables"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -54.2371, -16.7963, 58.5926 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
+shape = SubResource( 8 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
+mesh = SubResource( 9 )
+material/0 = ExtResource( 5 )
+
+[node name="Coin4" type="Area" parent="Collectables"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.21903, -41.8167, 94.0958 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
+shape = SubResource( 8 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
+mesh = SubResource( 9 )
+material/0 = ExtResource( 5 )
+
+[node name="Coin5" type="Area" parent="Collectables"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 94.2974, -59.4703, 50.9429 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
+shape = SubResource( 8 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
+mesh = SubResource( 9 )
+material/0 = ExtResource( 5 )
+
+[node name="Coin6" type="Area" parent="Collectables"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 94.2974, -59.4703, 28.9281 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
+shape = SubResource( 8 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
+mesh = SubResource( 9 )
+material/0 = ExtResource( 5 )
+
+[node name="Coin7" type="Area" parent="Collectables"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 105.889, -59.4703, 28.9281 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
+shape = SubResource( 8 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
+mesh = SubResource( 9 )
+material/0 = ExtResource( 5 )
+
+[node name="Coin8" type="Area" parent="Collectables"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 105.889, -59.4703, 50.7707 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
+shape = SubResource( 8 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
+mesh = SubResource( 9 )
+material/0 = ExtResource( 5 )
+
+[node name="Coin9" type="Area" parent="Collectables"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 198.268, -73.8598, 4.14978 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
+shape = SubResource( 8 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
+mesh = SubResource( 9 )
+material/0 = ExtResource( 5 )
+
+[node name="Coin10" type="Area" parent="Collectables"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 267.727, -147.46, 115.321 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
+shape = SubResource( 8 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
+mesh = SubResource( 9 )
+material/0 = ExtResource( 5 )
+
+[node name="Coin11" type="Area" parent="Collectables"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 277.88, -147.46, 115.321 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin11"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
+shape = SubResource( 8 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin11"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
+mesh = SubResource( 9 )
+material/0 = ExtResource( 5 )
+
+[node name="Coin12" type="Area" parent="Collectables"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 277.88, -147.46, 94.6846 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin12"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
+shape = SubResource( 8 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin12"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
+mesh = SubResource( 9 )
+material/0 = ExtResource( 5 )
+
+[node name="Coin13" type="Area" parent="Collectables"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 266.88, -147.46, 94.6846 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin13"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
+shape = SubResource( 8 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin13"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
+mesh = SubResource( 9 )
+material/0 = ExtResource( 5 )
+
 [node name="Gas" type="Area" parent="Collectables"]
-transform = Transform( 0.170143, 0, 0, 0, 1, 0, 0, 0, 1, -59.6929, -1.76474, 0 )
+transform = Transform( 0.170143, 0, 0, 0, 1, 0, 0, 0, 1, -59.7622, -4.76122, 5.97384 )
 script = ExtResource( 12 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas"]
@@ -376,11 +654,138 @@ shape = SubResource( 10 )
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.5941, 10.7707, -4.26877 )
 mesh = SubResource( 11 )
 material/0 = ExtResource( 11 )
+
+[node name="Gas2" type="Area" parent="Collectables"]
+transform = Transform( 0.170143, 0, 0, 0, 1, 0, 0, 0, 1, 5.67209, -26.6547, -4.42667 )
+script = ExtResource( 12 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas2"]
+transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.8892, 10.7784, -4.22731 )
+shape = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas2"]
+transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.5941, 10.7707, -4.26877 )
+mesh = SubResource( 11 )
+material/0 = ExtResource( 11 )
+
+[node name="Gas3" type="Area" parent="Collectables"]
+transform = Transform( 0.170143, 0, 0, 0, 1, 0, 0, 0, 1, 12.6957, -46.2848, 94.6646 )
+script = ExtResource( 12 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas3"]
+transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.8892, 10.7784, -4.22731 )
+shape = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas3"]
+transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.5941, 10.7707, -4.26877 )
+mesh = SubResource( 11 )
+material/0 = ExtResource( 11 )
+
+[node name="Gas4" type="Area" parent="Collectables"]
+transform = Transform( 0.170143, 0, 0, 0, 1, 0, 0, 0, 1, 111.864, -62.407, 44.0364 )
+script = ExtResource( 12 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas4"]
+transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.8892, 10.7784, -4.22731 )
+shape = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas4"]
+transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.5941, 10.7707, -4.26877 )
+mesh = SubResource( 11 )
+material/0 = ExtResource( 11 )
+
+[node name="Gas5" type="Area" parent="Collectables"]
+transform = Transform( 0.170143, 0, 0, 0, 1, 0, 0, 0, 1, 176.5, -66.0155, 43.6653 )
+script = ExtResource( 12 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas5"]
+transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.8892, 10.7784, -4.22731 )
+shape = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas5"]
+transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.5941, 10.7707, -4.26877 )
+mesh = SubResource( 11 )
+material/0 = ExtResource( 11 )
+
+[node name="Gas6" type="Area" parent="Collectables"]
+transform = Transform( 0.170143, 0, 0, 0, 1, 0, 0, 0, 1, 241.076, -73.6662, 102.759 )
+script = ExtResource( 12 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas6"]
+transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.8892, 10.7784, -4.22731 )
+shape = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas6"]
+transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.5941, 10.7707, -4.26877 )
+mesh = SubResource( 11 )
+material/0 = ExtResource( 11 )
 [connection signal="body_entered" from="Ledge Areas/Ledge_0" to="Player" method="_on_Starting_Ledge_body_entered"]
 [connection signal="body_exited" from="Ledge Areas/Ledge_0" to="Player" method="_on_Starting_ledge_exited"]
+[connection signal="body_entered" from="Ledge Areas/Ledge_1" to="Player" method="_on_Starting_Ledge_body_entered"]
+[connection signal="body_exited" from="Ledge Areas/Ledge_1" to="Player" method="_on_Starting_ledge_exited"]
+[connection signal="body_entered" from="Ledge Areas/Ledge_2" to="Player" method="_on_Starting_Ledge_body_entered"]
+[connection signal="body_exited" from="Ledge Areas/Ledge_2" to="Player" method="_on_Starting_ledge_exited"]
+[connection signal="body_entered" from="Ledge Areas/Ledge_3" to="Player" method="_on_Starting_Ledge_body_entered"]
+[connection signal="body_exited" from="Ledge Areas/Ledge_3" to="Player" method="_on_Starting_ledge_exited"]
+[connection signal="body_entered" from="Ledge Areas/Ledge_4" to="Player" method="_on_Starting_Ledge_body_entered"]
+[connection signal="body_exited" from="Ledge Areas/Ledge_4" to="Player" method="_on_Starting_ledge_exited"]
+[connection signal="body_entered" from="Ledge Areas/Ledge_5" to="Player" method="_on_Starting_Ledge_body_entered"]
+[connection signal="body_exited" from="Ledge Areas/Ledge_5" to="Player" method="_on_Starting_ledge_exited"]
+[connection signal="body_entered" from="Ledge Areas/Ledge_6" to="Player" method="_on_Starting_Ledge_body_entered"]
+[connection signal="body_exited" from="Ledge Areas/Ledge_6" to="Player" method="_on_Starting_ledge_exited"]
+[connection signal="body_entered" from="Ledge Areas/Ledge_9" to="Player" method="_on_Starting_Ledge_body_entered"]
+[connection signal="body_exited" from="Ledge Areas/Ledge_9" to="Player" method="_on_Starting_ledge_exited"]
+[connection signal="body_entered" from="Ledge Areas/Ledge_10" to="Player" method="_on_Starting_Ledge_body_entered"]
+[connection signal="body_exited" from="Ledge Areas/Ledge_10" to="Player" method="_on_Starting_ledge_exited"]
+[connection signal="body_entered" from="Ledge Areas/Ledge_11" to="Player" method="_on_Starting_Ledge_body_entered"]
+[connection signal="body_exited" from="Ledge Areas/Ledge_11" to="Player" method="_on_Starting_ledge_exited"]
+[connection signal="body_entered" from="Ledge Areas/Ledge_12" to="Player" method="_on_Starting_Ledge_body_entered"]
+[connection signal="body_exited" from="Ledge Areas/Ledge_12" to="Player" method="_on_Starting_ledge_exited"]
+[connection signal="body_entered" from="Ledge Areas/Ledge_13" to="Player" method="_on_Starting_Ledge_body_entered"]
+[connection signal="body_exited" from="Ledge Areas/Ledge_13" to="Player" method="_on_Starting_ledge_exited"]
+[connection signal="body_entered" from="Ledge Areas/Ledge_14" to="Player" method="_on_Starting_Ledge_body_entered"]
+[connection signal="body_exited" from="Ledge Areas/Ledge_14" to="Player" method="_on_Starting_ledge_exited"]
+[connection signal="body_entered" from="Ledge Areas/Ledge_7" to="Player" method="_on_Starting_Ledge_body_entered"]
+[connection signal="body_exited" from="Ledge Areas/Ledge_7" to="Player" method="_on_Starting_ledge_exited"]
+[connection signal="body_entered" from="Ledge Areas/Ledge_8" to="Player" method="_on_Starting_Ledge_body_entered"]
+[connection signal="body_exited" from="Ledge Areas/Ledge_8" to="Player" method="_on_Starting_ledge_exited"]
 [connection signal="body_entered" from="Lava/Lava" to="Player" method="_on_Lava_body_entered"]
 [connection signal="body_entered" from="Checkpoints/Start Check" to="Checkpoints/Start Check" method="_on_Start_Check_body_entered"]
-[connection signal="body_entered" from="Collectables/Coin" to="Collectables/Coin" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin" to="Player" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Gas" to="Collectables/Gas" method="_on_Gas_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin" to="Collectables/Coin" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin2" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin2" to="Collectables/Coin2" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin3" to="Collectables/Coin3" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin3" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin4" to="Collectables/Coin4" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin4" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin5" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin5" to="Collectables/Coin5" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin6" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin6" to="Collectables/Coin6" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin7" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin7" to="Collectables/Coin7" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin8" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin8" to="Collectables/Coin8" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin9" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin9" to="Collectables/Coin9" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin10" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin10" to="Collectables/Coin10" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin11" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin11" to="Collectables/Coin11" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin12" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin12" to="Collectables/Coin12" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin13" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin13" to="Collectables/Coin13" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Collectables/Gas" to="Player" method="_on_Gas_body_entered"]
+[connection signal="body_entered" from="Collectables/Gas" to="Collectables/Gas" method="_on_Gas_body_entered"]
+[connection signal="body_entered" from="Collectables/Gas2" to="Player" method="_on_Gas_body_entered"]
+[connection signal="body_entered" from="Collectables/Gas2" to="Collectables/Gas2" method="_on_Gas_body_entered"]
+[connection signal="body_entered" from="Collectables/Gas3" to="Player" method="_on_Gas_body_entered"]
+[connection signal="body_entered" from="Collectables/Gas3" to="Collectables/Gas3" method="_on_Gas_body_entered"]
+[connection signal="body_entered" from="Collectables/Gas4" to="Player" method="_on_Gas_body_entered"]
+[connection signal="body_entered" from="Collectables/Gas4" to="Collectables/Gas4" method="_on_Gas_body_entered"]
+[connection signal="body_entered" from="Collectables/Gas5" to="Player" method="_on_Gas_body_entered"]
+[connection signal="body_entered" from="Collectables/Gas5" to="Collectables/Gas5" method="_on_Gas_body_entered"]
+[connection signal="body_entered" from="Collectables/Gas6" to="Player" method="_on_Gas_body_entered"]
+[connection signal="body_entered" from="Collectables/Gas6" to="Collectables/Gas6" method="_on_Gas_body_entered"]
