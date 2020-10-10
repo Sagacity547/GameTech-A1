@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Textures/lava.tres" type="Material" id=1]
 [ext_resource path="res://Textures/grass.tres" type="Material" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Audio/liquid.wav" type="AudioStream" id=13]
 [ext_resource path="res://embersParticle.tscn" type="PackedScene" id=14]
 [ext_resource path="res://smokeParticles.tscn" type="PackedScene" id=15]
+[ext_resource path="res://coin.png" type="Texture" id=16]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.87268, 1, 0.948165 )
@@ -314,6 +315,34 @@ unit_db = 10.874
 
 [node name="Spatial" parent="Player" instance=ExtResource( 14 )]
 
+[node name="GasLabel" type="Label" parent="Player"]
+margin_left = 24.9421
+margin_top = 121.435
+margin_right = 165.942
+margin_bottom = 171.435
+rect_scale = Vector2( 4.82353, 4.82353 )
+custom_colors/font_color = Color( 1, 0.921569, 0.266667, 1 )
+text = "Gas: 500"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CoinLabel" type="Label" parent="Player"]
+margin_left = 123.026
+margin_top = 47.0071
+margin_right = 211.026
+margin_bottom = 90.0071
+rect_scale = Vector2( 4.81701, 4.81701 )
+text = "Coins: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="coin" type="Sprite" parent="Player/CoinLabel"]
+position = Vector2( -11.0748, 5.09222 )
+scale = Vector2( 0.0863246, 0.0863246 )
+texture = ExtResource( 16 )
+
 [node name="Checkpoints" type="Node" parent="."]
 
 [node name="Start Check" type="Area" parent="Checkpoints"]
@@ -336,15 +365,15 @@ mesh = SubResource( 9 )
 material/0 = ExtResource( 5 )
 
 [node name="Gas" type="Area" parent="Collectables"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39997, 0, 0 )
+transform = Transform( 0.170143, 0, 0, 0, 1, 0, 0, 0, 1, -59.6929, -1.76474, 0 )
 script = ExtResource( 12 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -75.1786, 10.7784, -4.22731 )
+transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.8892, 10.7784, -4.22731 )
 shape = SubResource( 10 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -75.1307, 10.7707, -4.26877 )
+transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.5941, 10.7707, -4.26877 )
 mesh = SubResource( 11 )
 material/0 = ExtResource( 11 )
 [connection signal="body_entered" from="Ledge Areas/Ledge_0" to="Player" method="_on_Starting_Ledge_body_entered"]

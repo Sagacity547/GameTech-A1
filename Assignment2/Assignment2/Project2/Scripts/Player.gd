@@ -13,11 +13,12 @@ var isJumping : bool = false
 var isFlying : bool = false
 var isOnEdge: bool = false
 var canWalk: bool = true
+var jumpCount: int = 0
 #variable for player's current spawn position upon death
 var spawnPoint = Vector3(-80.077, 6.14, -22.868) #coordinates of initial spawn point
 
 #variables for Player GUI
-var coins = 0
+var coins = 2
 var gas = 500
 
 #get the camera
@@ -31,8 +32,6 @@ func _input(event):
 		#relative is the vector of how much mouse has moved
 		var movement = event.relative
 		cam.rotation.x += -deg2rad(movement.y * sens)
-		#make sure the camera rotats upward and downward within 90%
-		"""cam.rotation.x = clamp(cam.rotation.x, deg2rad(-90), deg2rad(90))"""
 		rotation.y += -deg2rad(movement.x * sens)
 
 #code to start non physics process for game
@@ -88,14 +87,16 @@ func handle_gravity():
 		fall_velocity = fall_velocity - gravity
 	
 	# Standard Jump
-	if Input.is_action_pressed("jump") &&  !isJumping && !Input.is_action_pressed("Fly"):
+	if Input.is_action_pressed("jump") &&  jumpCount < 2 && !Input.is_action_pressed("Fly"):
 		fall_velocity = 15
 		isOnEdge = false
 		isJumping = true
+		jumpCount += 1
 	# Flying
 	if Input.is_action_pressed("Fly") && Input.is_action_pressed("jump") && gas > 0:
 		fall_velocity = 15
 		gas -= 5
+		$GasLabel.text = "Gas: " + str(gas)
 		isOnEdge = false
 		isFlying = true
 	
@@ -105,6 +106,7 @@ func handle_gravity():
 	
 	#Stopped Jumping
 	if is_on_floor() && isJumping:
+		jumpCount = 0
 		isJumping = false
 
 
@@ -131,6 +133,7 @@ func _on_Coin_body_entered(_body):
 	var musicNode = $"Coin"
 	musicNode.play()
 	coins += 1
+	$CoinLabel.text = "Coins: " + str(coins)
 	print(coins)
 
 #code for when player enters Lava
@@ -138,7 +141,9 @@ func _on_Lava_body_entered(_body):
 	var musicNode = $"Lava"
 	musicNode.play()
 	gas = 500
+	$GasLabel.text = "Gas: " + str(gas)
 	coins -= 1
+	$CoinLabel.text = "Coins: " + str(coins)
 	self.set_translation(spawnPoint)
 	
 func handle_ledge_hang():
@@ -162,4 +167,5 @@ func _on_Gas_body_entered(_body):
 	var musicNode = $"Gas"
 	musicNode.play()
 	gas = 500
+	$GasLabel.text = "Gas: " + str(gas)
 	pass # Replace with function body.
