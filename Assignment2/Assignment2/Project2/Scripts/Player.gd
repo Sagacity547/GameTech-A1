@@ -13,13 +13,13 @@ var isJumping : bool = false
 var isFlying : bool = false
 var isOnEdge: bool = false
 var canWalk: bool = true
-var jumpCount: int = 0
+var hasDashed: bool = false
 #variable for player's current spawn position upon death
 var spawnPoint = Vector3(-80.077, 6.14, -22.868) #coordinates of initial spawn point
 
 #variables for Player GUI
 var coins = 2
-var gas = 500
+var gas = 1000
 
 #get the camera
 onready var cam = get_node("Camera")
@@ -87,11 +87,11 @@ func handle_gravity():
 		fall_velocity = fall_velocity - gravity
 	
 	# Standard Jump
-	if Input.is_action_pressed("jump") &&  jumpCount < 2 && !Input.is_action_pressed("Fly"):
+	if Input.is_action_pressed("jump") &&  !isJumping && !Input.is_action_pressed("Fly"):
 		fall_velocity = 15
 		isOnEdge = false
 		isJumping = true
-		jumpCount += 1
+		
 	# Flying
 	if Input.is_action_pressed("Fly") && Input.is_action_pressed("jump") && gas > 0:
 		fall_velocity = 15
@@ -100,13 +100,17 @@ func handle_gravity():
 		isOnEdge = false
 		isFlying = true
 	
+	# Saving Dash
+	if Input.is_action_pressed("saving_dash") && !hasDashed:
+		hasDashed = true
+		fall_velocity += 70
+	
 	#Stopped Flying
 	if Input.is_action_just_released("Fly"):
 		isFlying = false;
 	
 	#Stopped Jumping
 	if is_on_floor() && isJumping:
-		jumpCount = 0
 		isJumping = false
 
 
@@ -140,9 +144,11 @@ func _on_Coin_body_entered(_body):
 func _on_Lava_body_entered(_body):
 	var musicNode = $"Lava"
 	musicNode.play()
-	gas = 500
+	gas = 1000
+	hasDashed = false
+	isJumping = false
+	isFlying = false
 	$GasLabel.text = "Gas: " + str(gas)
-	coins -= 1
 	$CoinLabel.text = "Coins: " + str(coins)
 	self.set_translation(spawnPoint)
 	
@@ -160,8 +166,6 @@ func _on_Starting_Ledge_body_entered(body):
 func _on_Starting_ledge_exited(body):
 	if body.get_name() == "Player":
 		isOnEdge = false
-
-
 
 func _on_Gas_body_entered(_body):
 	var musicNode = $"Gas"
