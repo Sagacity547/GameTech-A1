@@ -1,0 +1,25 @@
+User Manual
+
+Overview: 
+Move the player (the capsule) towards the end of the map using WASD. You can jump to traverse from platform to platform. 
+If the gap is too wide, try out your jetpack! by holding Shift + Space, but be careful, run out of gas and you'll fall
+out of the sky!
+
+Details: 
+Objective: 
+	Get to the final platform without dying in the MOLTEN LAVA below. There are gold coins scattered around IF you're
+	brave enough to go after them. 
+	
+Collectibles:
+	Coins: get RICH! collect as many gold coins as you can before reaching the final platform 
+	Gas: If you don't want to plummet into the lava you'll need to pick up gas cannisters as you make your way across
+	the platforms.
+
+Movement:
+	WASD: allows the player to walk in two dimensions
+	Jump: tap space bar to jump
+	Flying: Make use of your jet pack by holding Space + Shift. Be careful not to run out of gas
+	Saving Dash: Ran out of gas...RIGHT infront of the next platform. No worries, hit Q to make a saving dash
+				 which will launch you into the sky, hopefully enough to give you a fighting chance
+	Ledge Hang: If your player slips of the edge of a platform he will grab on for dear life and not move a MUSCLE!
+				to let go, simply hit the E button
