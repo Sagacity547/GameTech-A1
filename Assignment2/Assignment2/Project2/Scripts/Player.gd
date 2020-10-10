@@ -23,7 +23,7 @@ var gas = 500
 #get the camera
 onready var cam = get_node("Camera")
 #sensitivity variable that controls rotation in line 19
-var sens = 0.2
+var sens = 0.7
 
 #update movement and camera position based on Mouse action
 func _input(event):
@@ -32,7 +32,7 @@ func _input(event):
 		var movement = event.relative
 		cam.rotation.x += -deg2rad(movement.y * sens)
 		#make sure the camera rotats upward and downward within 90%
-		cam.rotation.x = clamp(cam.rotation.x, deg2rad(-90), deg2rad(90))
+		"""cam.rotation.x = clamp(cam.rotation.x, deg2rad(-90), deg2rad(90))"""
 		rotation.y += -deg2rad(movement.x * sens)
 
 #code to start non physics process for game

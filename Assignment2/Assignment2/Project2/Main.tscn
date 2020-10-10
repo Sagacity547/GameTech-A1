@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Textures/lava.tres" type="Material" id=1]
 [ext_resource path="res://Textures/grass.tres" type="Material" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://Gas.tres" type="Material" id=11]
 [ext_resource path="res://Gas.gd" type="Script" id=12]
 [ext_resource path="res://Audio/liquid.wav" type="AudioStream" id=13]
+[ext_resource path="res://embersParticle.tscn" type="PackedScene" id=14]
+[ext_resource path="res://smokeParticles.tscn" type="PackedScene" id=15]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.87268, 1, 0.948165 )
@@ -83,6 +85,8 @@ shape = SubResource( 2 )
 transform = Transform( 1.04325, 0, 0, 0, 1, 0, 0, 0, 1, -5.53131e-05, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
+
+[node name="Spatial" parent="Short Platforms/Starting Platform" instance=ExtResource( 15 )]
 
 [node name="Normal Platform" type="KinematicBody" parent="Short Platforms"]
 transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -10.4613, -34.9749, -23.3472, 81.9637 )
@@ -307,6 +311,8 @@ unit_db = 12.427
 [node name="Gas" type="AudioStreamPlayer3D" parent="Player"]
 stream = ExtResource( 13 )
 unit_db = 10.874
+
+[node name="Spatial" parent="Player" instance=ExtResource( 14 )]
 
 [node name="Checkpoints" type="Node" parent="."]
 
