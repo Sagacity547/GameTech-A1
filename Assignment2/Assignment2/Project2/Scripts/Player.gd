@@ -52,7 +52,7 @@ func _physics_process(delta):
 func move_player(delta):
 	set_can_walk()
 	var direction = Vector3(0,0,0)
-	if !isOnEdge:
+	if !isOnEdge or isJumping:
 		if canWalk : 
 			if Input.is_action_pressed("move_right"):
 				direction += transform.basis.x
@@ -74,9 +74,10 @@ func move_player(delta):
 		velocity.y = fall_velocity
 		velocity = move_and_slide(velocity, Vector3.UP)
 	else : # ledge hang edge case, freeze the player on the edge until the pop off with E
-		if Input.is_action_pressed("ledge_hang"):
-			isOnEdge = false
-		velocity = Vector3(0,0,0)
+		if !isJumping:
+			if Input.is_action_pressed("ledge_hang"):
+				isOnEdge = false
+			velocity = Vector3(0,0,0)
 			
 
 #applies gravity to player and handles flying and jumping
@@ -90,27 +91,12 @@ func handle_gravity():
 	# Standard Jump
 	if Input.is_action_pressed("jump") &&  !isJumping && !Input.is_action_pressed("Fly"):
 		fall_velocity = 15
-		isOnEdge = false
 		isJumping = true
 	# Flying
 	if Input.is_action_pressed("Fly") && Input.is_action_pressed("jump") && gas > 0:
 		fall_velocity = 15
-<<<<<<< Updated upstream
 		gas -= 5
 		print (gas)
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-		isOnEdge = false
-=======
-		gas -= 5
-		print (gas)
->>>>>>> a0ee1bce29f28aa43a88f2a73a67690deae75e09
-=======
-		gas -= 5
-		print (gas)
->>>>>>> a0ee1bce29f28aa43a88f2a73a67690deae75e09
->>>>>>> Stashed changes
 		isFlying = true
 	
 	#Stopped Flying

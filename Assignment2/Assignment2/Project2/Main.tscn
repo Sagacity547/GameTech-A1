@@ -1,16 +1,4 @@
-<<<<<<< Updated upstream
 [gd_scene load_steps=25 format=2]
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-[gd_scene load_steps=22 format=2]
-=======
-[gd_scene load_steps=25 format=2]
->>>>>>> a0ee1bce29f28aa43a88f2a73a67690deae75e09
-=======
-[gd_scene load_steps=25 format=2]
->>>>>>> a0ee1bce29f28aa43a88f2a73a67690deae75e09
->>>>>>> Stashed changes
 
 [ext_resource path="res://Textures/lava.tres" type="Material" id=1]
 [ext_resource path="res://Textures/grass.tres" type="Material" id=2]
@@ -22,26 +10,9 @@
 [ext_resource path="res://Audio/Jomp.wav" type="AudioStream" id=8]
 [ext_resource path="res://Audio/coin.wav" type="AudioStream" id=9]
 [ext_resource path="res://Audio/Lava.wav" type="AudioStream" id=10]
-<<<<<<< Updated upstream
 [ext_resource path="res://Gas.tres" type="Material" id=11]
 [ext_resource path="res://Gas.gd" type="Script" id=12]
 [ext_resource path="res://Audio/liquid.wav" type="AudioStream" id=13]
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-[ext_resource path="res://smokeParticles.tscn" type="PackedScene" id=11]
-[ext_resource path="res://embersParticle.tscn" type="PackedScene" id=12]
-=======
-[ext_resource path="res://Gas.tres" type="Material" id=11]
-[ext_resource path="res://Gas.gd" type="Script" id=12]
-[ext_resource path="res://Audio/liquid.wav" type="AudioStream" id=13]
->>>>>>> a0ee1bce29f28aa43a88f2a73a67690deae75e09
-=======
-[ext_resource path="res://Gas.tres" type="Material" id=11]
-[ext_resource path="res://Gas.gd" type="Script" id=12]
-[ext_resource path="res://Audio/liquid.wav" type="AudioStream" id=13]
->>>>>>> a0ee1bce29f28aa43a88f2a73a67690deae75e09
->>>>>>> Stashed changes
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.87268, 1, 0.948165 )
@@ -91,8 +62,6 @@ shape = SubResource( 2 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
 
-[node name="Spatial" parent="Short Platforms/Challenge Platform" instance=ExtResource( 11 )]
-
 [node name="Challenge Platform2" type="KinematicBody" parent="Short Platforms"]
 transform = Transform( 9.93815, 0, 0, 0, 0.90726, 0, 0, 0, 14.9264, 60.6176, -35.6984, -12.5486 )
 
@@ -102,8 +71,6 @@ shape = SubResource( 2 )
 [node name="MeshInstance" type="MeshInstance" parent="Short Platforms/Challenge Platform2"]
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
-
-[node name="Spatial" parent="Short Platforms/Challenge Platform2" instance=ExtResource( 11 )]
 
 [node name="Starting Platform" type="KinematicBody" parent="Short Platforms"]
 transform = Transform( 13.3094, 0, 0, 0, 1.04466, 0, 0, 0, 21.5742, -75.2225, 2.30234, -11.1446 )
@@ -117,8 +84,6 @@ transform = Transform( 1.04325, 0, 0, 0, 1, 0, 0, 0, 1, -5.53131e-05, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
 
-[node name="FogParticles" parent="Short Platforms/Starting Platform" instance=ExtResource( 11 )]
-
 [node name="Normal Platform" type="KinematicBody" parent="Short Platforms"]
 transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -10.4613, -34.9749, -23.3472, 81.9637 )
 
@@ -129,8 +94,6 @@ shape = SubResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
-
-[node name="Spatial" parent="Short Platforms/Normal Platform" instance=ExtResource( 11 )]
 
 [node name="Normal Platform2" type="KinematicBody" parent="Short Platforms"]
 transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -10.4613, 5.97166, -32.4844, 117.189 )
@@ -143,8 +106,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
 
-[node name="Spatial" parent="Short Platforms/Normal Platform2" instance=ExtResource( 11 )]
-
 [node name="Normal Platform3" type="KinematicBody" parent="Short Platforms"]
 transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -10.4613, 50.13, -48.0209, 78.7366 )
 
@@ -155,8 +116,6 @@ shape = SubResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
-
-[node name="Spatial" parent="Short Platforms/Normal Platform3" instance=ExtResource( 11 )]
 
 [node name="Normal2 Platform" type="KinematicBody" parent="Short Platforms"]
 transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -15.7103, 120.146, -55.0906, 39.0599 )
@@ -169,8 +128,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
 
-[node name="Spatial" parent="Short Platforms/Normal2 Platform" instance=ExtResource( 11 )]
-
 [node name="Normal2 Platform2" type="KinematicBody" parent="Short Platforms"]
 transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -15.7103, 223.634, -57.3745, 39.0599 )
 
@@ -181,8 +138,6 @@ shape = SubResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
-
-[node name="Spatial" parent="Short Platforms/Normal2 Platform2" instance=ExtResource( 11 )]
 
 [node name="Normal2 Platform3" type="KinematicBody" parent="Short Platforms"]
 transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -15.7103, 274.755, -71.7723, -20.7502 )
@@ -195,8 +150,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
 
-[node name="Spatial" parent="Short Platforms/Normal2 Platform3" instance=ExtResource( 11 )]
-
 [node name="Normal2 Platform4" type="KinematicBody" parent="Short Platforms"]
 transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -15.7103, 360.862, -96.9843, -5.99475 )
 
@@ -207,8 +160,6 @@ shape = SubResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
-
-[node name="Spatial" parent="Short Platforms/Normal2 Platform4" instance=ExtResource( 11 )]
 
 [node name="Normal2 Platform5" type="KinematicBody" parent="Short Platforms"]
 transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -15.7103, 405.209, -125.303, 69.2803 )
@@ -221,8 +172,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
 
-[node name="Spatial" parent="Short Platforms/Normal2 Platform5" instance=ExtResource( 11 )]
-
 [node name="Normal2 Platform6" type="KinematicBody" parent="Short Platforms"]
 transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -15.7103, 373.76, -160.615, 150.928 )
 
@@ -234,8 +183,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
 
-[node name="Spatial" parent="Short Platforms/Normal2 Platform6" instance=ExtResource( 11 )]
-
 [node name="Normal2 Platform7" type="KinematicBody" parent="Short Platforms"]
 transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -15.7103, 295.923, -188.237, 235.521 )
 
@@ -246,8 +193,6 @@ shape = SubResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
-
-[node name="Spatial" parent="Short Platforms/Normal2 Platform7" instance=ExtResource( 11 )]
 
 [node name="Long Platforms" type="Node" parent="."]
 
@@ -263,8 +208,6 @@ transform = Transform( 0.229484, 0, 0, 0, 0.219957, 0, 0, 0, 0.219982, 0, 0, 0 )
 mesh = SubResource( 5 )
 material/0 = ExtResource( 2 )
 
-[node name="Spatial" parent="Long Platforms/Long Starter1/MeshInstance" instance=ExtResource( 11 )]
-
 [node name="Long Starter2" type="KinematicBody" parent="Long Platforms"]
 transform = Transform( 18.8641, 0, 0, 0, 2.4344, 0, 0, 0, 66.9689, -45.536, -5.41009, 31.6898 )
 
@@ -277,8 +220,6 @@ transform = Transform( 0.229484, 0, 0, 0, 0.219957, 0, 0, 0, 0.219982, 0, 0, 0 )
 mesh = SubResource( 5 )
 material/0 = ExtResource( 2 )
 
-[node name="Spatial" parent="Long Platforms/Long Starter2/MeshInstance" instance=ExtResource( 11 )]
-
 [node name="Long Starter3" type="KinematicBody" parent="Long Platforms"]
 transform = Transform( 17.6314, 0, 0, 0, 3.12083, 0, 0, 0, 66.9689, -54.2938, -12.5101, 59.2568 )
 
@@ -290,8 +231,6 @@ shape = SubResource( 4 )
 transform = Transform( 0.229484, 0, 0, 0, 0.219957, 0, 0, 0, 0.219982, 0, 0, 0 )
 mesh = SubResource( 5 )
 material/0 = ExtResource( 2 )
-
-[node name="Spatial" parent="Long Platforms/Long Starter3/MeshInstance" instance=ExtResource( 11 )]
 
 [node name="Middle Angled" type="KinematicBody" parent="Long Platforms"]
 transform = Transform( -0.189018, -0.550871, -81.6144, -0.0557308, 1.59286, -24.0636, 40.2953, 0, -1.34636, 91.9941, -59.6517, 38.4448 )
@@ -368,14 +307,6 @@ unit_db = 12.427
 [node name="Gas" type="AudioStreamPlayer3D" parent="Player"]
 stream = ExtResource( 13 )
 unit_db = 10.874
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-
-[node name="Spatial" parent="Player" instance=ExtResource( 12 )]
-=======
->>>>>>> a0ee1bce29f28aa43a88f2a73a67690deae75e09
->>>>>>> Stashed changes
 
 [node name="Checkpoints" type="Node" parent="."]
 
@@ -414,20 +345,7 @@ material/0 = ExtResource( 11 )
 [connection signal="body_exited" from="Ledge Areas/Ledge_0" to="Player" method="_on_Starting_ledge_exited"]
 [connection signal="body_entered" from="Lava/Lava" to="Player" method="_on_Lava_body_entered"]
 [connection signal="body_entered" from="Checkpoints/Start Check" to="Checkpoints/Start Check" method="_on_Start_Check_body_entered"]
-[connection signal="body_entered" from="Collectables/Coin" to="Player" method="_on_Coin_body_entered"]
-<<<<<<< Updated upstream
-[connection signal="body_entered" from="Collectables/Gas" to="Collectables/Gas" method="_on_Gas_body_entered"]
-[connection signal="body_entered" from="Collectables/Gas" to="Player" method="_on_Gas_body_entered"]
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
 [connection signal="body_entered" from="Collectables/Coin" to="Collectables/Coin" method="_on_Coin_body_entered"]
-=======
+[connection signal="body_entered" from="Collectables/Coin" to="Player" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Collectables/Gas" to="Collectables/Gas" method="_on_Gas_body_entered"]
 [connection signal="body_entered" from="Collectables/Gas" to="Player" method="_on_Gas_body_entered"]
->>>>>>> a0ee1bce29f28aa43a88f2a73a67690deae75e09
-=======
-[connection signal="body_entered" from="Collectables/Gas" to="Collectables/Gas" method="_on_Gas_body_entered"]
-[connection signal="body_entered" from="Collectables/Gas" to="Player" method="_on_Gas_body_entered"]
->>>>>>> a0ee1bce29f28aa43a88f2a73a67690deae75e09
->>>>>>> Stashed changes
