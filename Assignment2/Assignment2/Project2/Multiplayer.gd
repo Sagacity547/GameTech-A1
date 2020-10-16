@@ -8,7 +8,7 @@ var player = NetworkedMultiplayerENet.new()
 var player_info = {}
 var is_host = false
 var SERVER_PORT = 500
-var SERVER_IP = "127.0.0.1"
+var SERVER_IP = "192.168.0.34" #Gavin's IP as of 10/16/2020
 var MAX_PLAYERS = 4
 
 # Called when the node enters the scene tree for the first time.
