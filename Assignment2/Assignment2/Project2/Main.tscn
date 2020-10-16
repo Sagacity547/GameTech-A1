@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Textures/lava.tres" type="Material" id=1]
 [ext_resource path="res://Textures/grass.tres" type="Material" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://embersParticle.tscn" type="PackedScene" id=14]
 [ext_resource path="res://smokeParticles.tscn" type="PackedScene" id=15]
 [ext_resource path="res://coin.png" type="Texture" id=16]
+[ext_resource path="res://Multiplayer.gd" type="Script" id=17]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.87268, 1, 0.948165 )
@@ -43,6 +44,7 @@ extents = Vector3( 0.221771, 0.219238, 0.219993 )
 
 [node name="Main" type="Spatial"]
 transform = Transform( 0.999974, 0.00100224, 0.00716465, -0.00103201, 0.999991, 0.00415113, -0.00716042, -0.00415841, 0.999966, 0, 0, 0 )
+script = ExtResource( 17 )
 
 [node name="Ledge Areas" type="Node" parent="."]
 
@@ -751,18 +753,18 @@ material/0 = ExtResource( 11 )
 [connection signal="body_exited" from="Ledge Areas/Ledge_8" to="Player" method="_on_Starting_ledge_exited"]
 [connection signal="body_entered" from="Lava/Lava" to="Player" method="_on_Lava_body_entered"]
 [connection signal="body_entered" from="Checkpoints/Start Check" to="Checkpoints/Start Check" method="_on_Start_Check_body_entered"]
-[connection signal="body_entered" from="Collectables/Coin" to="Player" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin" to="Collectables/Coin" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coin2" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin" to="Player" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin2" to="Collectables/Coin2" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin2" to="Player" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin3" to="Collectables/Coin3" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin3" to="Player" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin4" to="Collectables/Coin4" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin4" to="Player" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coin5" to="Player" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin5" to="Collectables/Coin5" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coin6" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin5" to="Player" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin6" to="Collectables/Coin6" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin6" to="Player" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin7" to="Player" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin7" to="Collectables/Coin7" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin8" to="Player" method="_on_Coin_body_entered"]
