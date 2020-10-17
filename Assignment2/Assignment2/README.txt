@@ -1,5 +1,5 @@
 README
-TO RUN: Tonberry_A2.exe
+TO RUN: Tonberry_A3.exe
 
 INSTRUCTIONS:
 Move the player (the capsule) towards the end of the map using WASD. You can jump to traverse from platform to platform. 
