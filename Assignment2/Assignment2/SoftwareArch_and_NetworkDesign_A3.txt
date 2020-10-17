@@ -1,0 +1,7 @@
+Overall Design of the Network
+	Host Inputs IP 
+	Other players join of that IP
+
+Software Architecture 
+	Lobby Scene with Server Script attached
+	Once players join loads Main.tscn and Architecture is that of A2
