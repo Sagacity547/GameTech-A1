@@ -3,5 +3,6 @@
 [ext_resource path="res://gdexample.gdnlib" type="GDNativeLibrary" id=1]
 
 [resource]
-class_name = "Checkpoint"
+resource_name = "Gas"
+class_name = "Gas"
 library = ExtResource( 1 )
