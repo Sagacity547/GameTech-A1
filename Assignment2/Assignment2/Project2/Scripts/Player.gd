@@ -14,6 +14,7 @@ var isFlying : bool = false
 var isOnEdge: bool = false
 var canWalk: bool = true
 var hasDashed: bool = false
+var is_connected: bool = false
 #variable for player's current spawn position upon death
 var spawnPoint = Vector3(-80.077, 6.14, -22.868) #coordinates of initial spawn point
 
@@ -73,7 +74,7 @@ func move_player(delta):
 		handle_gravity()
 	
 		velocity.y = fall_velocity
-		if is_network_master(): # Multiplayer additon ---> we don't want the other person controlling you
+		if is_network_master() or !is_connected: # Multiplayer additon ---> we don't want the other person controlling you
 			velocity = move_and_slide(velocity, Vector3.UP)
 	else : # ledge hang edge case, freeze the player on the edge until the pop off with E
 		if Input.is_action_pressed("ledge_hang"):
