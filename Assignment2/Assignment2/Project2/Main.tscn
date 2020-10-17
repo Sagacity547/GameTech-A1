@@ -16,7 +16,7 @@
 [ext_resource path="res://embersParticle.tscn" type="PackedScene" id=14]
 [ext_resource path="res://smokeParticles.tscn" type="PackedScene" id=15]
 [ext_resource path="res://coin.png" type="Texture" id=16]
-[ext_resource path="res://collectables/Collect.gdns" type="Script" id=17]
+[ext_resource path="res://Multiplayer.gd" type="Script" id=17]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.87268, 1, 0.948165 )
@@ -44,6 +44,7 @@ extents = Vector3( 0.221771, 0.219238, 0.219993 )
 
 [node name="Main" type="Spatial"]
 transform = Transform( 0.999974, 0.00100224, 0.00716465, -0.00103201, 0.999991, 0.00415113, -0.00716042, -0.00415841, 0.999966, 0, 0, 0 )
+script = ExtResource( 17 )
 
 [node name="Ledge Areas" type="Node" parent="."]
 
@@ -403,6 +404,7 @@ transform = Transform( 1, -4.65661e-09, 6.00267e-10, 2.03727e-10, 0.00333344, -0
 script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Player"]
+transform = Transform( 1, 0, -3.63798e-11, -9.31323e-10, 1, 0, -1.89175e-10, 0, 1, 0, 0, 0 )
 shape = SubResource( 6 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Player"]
@@ -474,253 +476,249 @@ script = ExtResource( 4 )
 
 [node name="Collectables" type="Node" parent="."]
 
-[node name="Coins" type="Node" parent="Collectables"]
-
-[node name="Coin" type="Area" parent="Collectables/Coins"]
+[node name="Coin" type="Area" parent="Collectables"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -78.5358, -1.2034, 2.01136 )
-script = ExtResource( 17 )
+script = ExtResource( 6 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coins/Coin"]
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
 shape = SubResource( 8 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coins/Coin"]
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
 mesh = SubResource( 9 )
 material/0 = ExtResource( 5 )
 
-[node name="Coin2" type="Area" parent="Collectables/Coins"]
+[node name="Coin2" type="Area" parent="Collectables"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0309, -22.6764, -9.03597 )
 script = ExtResource( 6 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coins/Coin2"]
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
 shape = SubResource( 8 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coins/Coin2"]
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
 mesh = SubResource( 9 )
 material/0 = ExtResource( 5 )
 
-[node name="Coin3" type="Area" parent="Collectables/Coins"]
+[node name="Coin3" type="Area" parent="Collectables"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -54.2371, -16.7963, 58.5926 )
 script = ExtResource( 6 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coins/Coin3"]
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
 shape = SubResource( 8 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coins/Coin3"]
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
 mesh = SubResource( 9 )
 material/0 = ExtResource( 5 )
 
-[node name="Coin4" type="Area" parent="Collectables/Coins"]
+[node name="Coin4" type="Area" parent="Collectables"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.21903, -41.8167, 94.0958 )
 script = ExtResource( 6 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coins/Coin4"]
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
 shape = SubResource( 8 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coins/Coin4"]
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
 mesh = SubResource( 9 )
 material/0 = ExtResource( 5 )
 
-[node name="Coin5" type="Area" parent="Collectables/Coins"]
+[node name="Coin5" type="Area" parent="Collectables"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 94.2974, -59.4703, 50.9429 )
 script = ExtResource( 6 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coins/Coin5"]
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
 shape = SubResource( 8 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coins/Coin5"]
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
 mesh = SubResource( 9 )
 material/0 = ExtResource( 5 )
 
-[node name="Coin6" type="Area" parent="Collectables/Coins"]
+[node name="Coin6" type="Area" parent="Collectables"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 94.2974, -59.4703, 28.9281 )
 script = ExtResource( 6 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coins/Coin6"]
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin6"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
 shape = SubResource( 8 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coins/Coin6"]
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin6"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
 mesh = SubResource( 9 )
 material/0 = ExtResource( 5 )
 
-[node name="Coin7" type="Area" parent="Collectables/Coins"]
+[node name="Coin7" type="Area" parent="Collectables"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 105.889, -59.4703, 28.9281 )
 script = ExtResource( 6 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coins/Coin7"]
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
 shape = SubResource( 8 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coins/Coin7"]
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
 mesh = SubResource( 9 )
 material/0 = ExtResource( 5 )
 
-[node name="Coin8" type="Area" parent="Collectables/Coins"]
+[node name="Coin8" type="Area" parent="Collectables"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 105.889, -59.4703, 50.7707 )
 script = ExtResource( 6 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coins/Coin8"]
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin8"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
 shape = SubResource( 8 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coins/Coin8"]
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin8"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
 mesh = SubResource( 9 )
 material/0 = ExtResource( 5 )
 
-[node name="Coin9" type="Area" parent="Collectables/Coins"]
+[node name="Coin9" type="Area" parent="Collectables"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 198.268, -73.8598, 4.14978 )
 script = ExtResource( 6 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coins/Coin9"]
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin9"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
 shape = SubResource( 8 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coins/Coin9"]
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin9"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
 mesh = SubResource( 9 )
 material/0 = ExtResource( 5 )
 
-[node name="Coin10" type="Area" parent="Collectables/Coins"]
+[node name="Coin10" type="Area" parent="Collectables"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 267.727, -147.46, 115.321 )
 script = ExtResource( 6 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coins/Coin10"]
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin10"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
 shape = SubResource( 8 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coins/Coin10"]
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin10"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
 mesh = SubResource( 9 )
 material/0 = ExtResource( 5 )
 
-[node name="Coin11" type="Area" parent="Collectables/Coins"]
+[node name="Coin11" type="Area" parent="Collectables"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 277.88, -147.46, 115.321 )
 script = ExtResource( 6 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coins/Coin11"]
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin11"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
 shape = SubResource( 8 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coins/Coin11"]
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin11"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
 mesh = SubResource( 9 )
 material/0 = ExtResource( 5 )
 
-[node name="Coin12" type="Area" parent="Collectables/Coins"]
+[node name="Coin12" type="Area" parent="Collectables"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 277.88, -147.46, 94.6846 )
 script = ExtResource( 6 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coins/Coin12"]
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin12"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
 shape = SubResource( 8 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coins/Coin12"]
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin12"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
 mesh = SubResource( 9 )
 material/0 = ExtResource( 5 )
 
-[node name="Coin13" type="Area" parent="Collectables/Coins"]
+[node name="Coin13" type="Area" parent="Collectables"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 266.88, -147.46, 94.6846 )
 script = ExtResource( 6 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coins/Coin13"]
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin13"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
 shape = SubResource( 8 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coins/Coin13"]
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin13"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
 mesh = SubResource( 9 )
 material/0 = ExtResource( 5 )
 
-[node name="Gas Tanks" type="Node" parent="Collectables"]
-
-[node name="Gas" type="Area" parent="Collectables/Gas Tanks"]
+[node name="Gas" type="Area" parent="Collectables"]
 transform = Transform( 0.170143, 0, 0, 0, 1, 0, 0, 0, 1, -59.7622, -4.76122, 5.97384 )
 script = ExtResource( 12 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas Tanks/Gas"]
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.8892, 10.7784, -4.22731 )
 shape = SubResource( 10 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas Tanks/Gas"]
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.5941, 10.7707, -4.26877 )
 mesh = SubResource( 11 )
 material/0 = ExtResource( 11 )
 
-[node name="Gas2" type="Area" parent="Collectables/Gas Tanks"]
+[node name="Gas2" type="Area" parent="Collectables"]
 transform = Transform( 0.170143, 0, 0, 0, 1, 0, 0, 0, 1, 5.67209, -26.6547, -4.42667 )
 script = ExtResource( 12 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas Tanks/Gas2"]
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas2"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.8892, 10.7784, -4.22731 )
 shape = SubResource( 10 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas Tanks/Gas2"]
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas2"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.5941, 10.7707, -4.26877 )
 mesh = SubResource( 11 )
 material/0 = ExtResource( 11 )
 
-[node name="Gas3" type="Area" parent="Collectables/Gas Tanks"]
+[node name="Gas3" type="Area" parent="Collectables"]
 transform = Transform( 0.170143, 0, 0, 0, 1, 0, 0, 0, 1, 12.6957, -46.2848, 94.6646 )
 script = ExtResource( 12 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas Tanks/Gas3"]
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas3"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.8892, 10.7784, -4.22731 )
 shape = SubResource( 10 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas Tanks/Gas3"]
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas3"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.5941, 10.7707, -4.26877 )
 mesh = SubResource( 11 )
 material/0 = ExtResource( 11 )
 
-[node name="Gas4" type="Area" parent="Collectables/Gas Tanks"]
+[node name="Gas4" type="Area" parent="Collectables"]
 transform = Transform( 0.170143, 0, 0, 0, 1, 0, 0, 0, 1, 111.864, -62.407, 44.0364 )
 script = ExtResource( 12 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas Tanks/Gas4"]
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas4"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.8892, 10.7784, -4.22731 )
 shape = SubResource( 10 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas Tanks/Gas4"]
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas4"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.5941, 10.7707, -4.26877 )
 mesh = SubResource( 11 )
 material/0 = ExtResource( 11 )
 
-[node name="Gas5" type="Area" parent="Collectables/Gas Tanks"]
+[node name="Gas5" type="Area" parent="Collectables"]
 transform = Transform( 0.170143, 0, 0, 0, 1, 0, 0, 0, 1, 176.5, -66.0155, 43.6653 )
 script = ExtResource( 12 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas Tanks/Gas5"]
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas5"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.8892, 10.7784, -4.22731 )
 shape = SubResource( 10 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas Tanks/Gas5"]
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas5"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.5941, 10.7707, -4.26877 )
 mesh = SubResource( 11 )
 material/0 = ExtResource( 11 )
 
-[node name="Gas6" type="Area" parent="Collectables/Gas Tanks"]
+[node name="Gas6" type="Area" parent="Collectables"]
 transform = Transform( 0.170143, 0, 0, 0, 1, 0, 0, 0, 1, 241.076, -73.6662, 102.759 )
 script = ExtResource( 12 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas Tanks/Gas6"]
+[node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas6"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.8892, 10.7784, -4.22731 )
 shape = SubResource( 10 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas Tanks/Gas6"]
+[node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas6"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.5941, 10.7707, -4.26877 )
 mesh = SubResource( 11 )
 material/0 = ExtResource( 11 )
@@ -756,41 +754,41 @@ material/0 = ExtResource( 11 )
 [connection signal="body_exited" from="Ledge Areas/Ledge_8" to="Player" method="_on_Starting_ledge_exited"]
 [connection signal="body_entered" from="Lava/Lava" to="Player" method="_on_Lava_body_entered"]
 [connection signal="body_entered" from="Checkpoints/Start Check" to="Checkpoints/Start Check" method="_on_Start_Check_body_entered"]
-[connection signal="body_entered" from="Collectables/Coins/Coin" to="Player" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coins/Coin" to="Collectables/Coins/Coin" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coins/Coin2" to="Player" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coins/Coin2" to="Collectables/Coins/Coin2" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coins/Coin3" to="Player" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coins/Coin3" to="Collectables/Coins/Coin3" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coins/Coin4" to="Player" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coins/Coin4" to="Collectables/Coins/Coin4" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coins/Coin5" to="Player" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coins/Coin5" to="Collectables/Coins/Coin5" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coins/Coin6" to="Player" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coins/Coin6" to="Collectables/Coins/Coin6" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coins/Coin7" to="Collectables/Coins/Coin7" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coins/Coin7" to="Player" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coins/Coin8" to="Collectables/Coins/Coin8" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coins/Coin8" to="Player" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coins/Coin9" to="Collectables/Coins/Coin9" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coins/Coin9" to="Player" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coins/Coin10" to="Collectables/Coins/Coin10" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coins/Coin10" to="Player" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coins/Coin11" to="Collectables/Coins/Coin11" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coins/Coin11" to="Player" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coins/Coin12" to="Collectables/Coins/Coin12" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coins/Coin12" to="Player" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coins/Coin13" to="Collectables/Coins/Coin13" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coins/Coin13" to="Player" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Gas Tanks/Gas" to="Collectables/Gas Tanks/Gas" method="_on_Gas_body_entered"]
-[connection signal="body_entered" from="Collectables/Gas Tanks/Gas" to="Player" method="_on_Gas_body_entered"]
-[connection signal="body_entered" from="Collectables/Gas Tanks/Gas2" to="Collectables/Gas Tanks/Gas2" method="_on_Gas_body_entered"]
-[connection signal="body_entered" from="Collectables/Gas Tanks/Gas2" to="Player" method="_on_Gas_body_entered"]
-[connection signal="body_entered" from="Collectables/Gas Tanks/Gas3" to="Collectables/Gas Tanks/Gas3" method="_on_Gas_body_entered"]
-[connection signal="body_entered" from="Collectables/Gas Tanks/Gas3" to="Player" method="_on_Gas_body_entered"]
-[connection signal="body_entered" from="Collectables/Gas Tanks/Gas4" to="Collectables/Gas Tanks/Gas4" method="_on_Gas_body_entered"]
-[connection signal="body_entered" from="Collectables/Gas Tanks/Gas4" to="Player" method="_on_Gas_body_entered"]
-[connection signal="body_entered" from="Collectables/Gas Tanks/Gas5" to="Collectables/Gas Tanks/Gas5" method="_on_Gas_body_entered"]
-[connection signal="body_entered" from="Collectables/Gas Tanks/Gas5" to="Player" method="_on_Gas_body_entered"]
-[connection signal="body_entered" from="Collectables/Gas Tanks/Gas6" to="Collectables/Gas Tanks/Gas6" method="_on_Gas_body_entered"]
-[connection signal="body_entered" from="Collectables/Gas Tanks/Gas6" to="Player" method="_on_Gas_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin" to="Collectables/Coin" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin2" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin2" to="Collectables/Coin2" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin3" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin3" to="Collectables/Coin3" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin4" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin4" to="Collectables/Coin4" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin5" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin5" to="Collectables/Coin5" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin6" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin6" to="Collectables/Coin6" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin7" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin7" to="Collectables/Coin7" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin8" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin8" to="Collectables/Coin8" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin9" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin9" to="Collectables/Coin9" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin10" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin10" to="Collectables/Coin10" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin11" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin11" to="Collectables/Coin11" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin12" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin12" to="Collectables/Coin12" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin13" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Coin13" to="Collectables/Coin13" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectables/Gas" to="Player" method="_on_Gas_body_entered"]
+[connection signal="body_entered" from="Collectables/Gas" to="Collectables/Gas" method="_on_Gas_body_entered"]
+[connection signal="body_entered" from="Collectables/Gas2" to="Player" method="_on_Gas_body_entered"]
+[connection signal="body_entered" from="Collectables/Gas2" to="Collectables/Gas2" method="_on_Gas_body_entered"]
+[connection signal="body_entered" from="Collectables/Gas3" to="Player" method="_on_Gas_body_entered"]
+[connection signal="body_entered" from="Collectables/Gas3" to="Collectables/Gas3" method="_on_Gas_body_entered"]
+[connection signal="body_entered" from="Collectables/Gas4" to="Player" method="_on_Gas_body_entered"]
+[connection signal="body_entered" from="Collectables/Gas4" to="Collectables/Gas4" method="_on_Gas_body_entered"]
+[connection signal="body_entered" from="Collectables/Gas5" to="Player" method="_on_Gas_body_entered"]
+[connection signal="body_entered" from="Collectables/Gas5" to="Collectables/Gas5" method="_on_Gas_body_entered"]
+[connection signal="body_entered" from="Collectables/Gas6" to="Player" method="_on_Gas_body_entered"]
+[connection signal="body_entered" from="Collectables/Gas6" to="Collectables/Gas6" method="_on_Gas_body_entered"]

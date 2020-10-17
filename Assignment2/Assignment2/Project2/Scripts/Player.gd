@@ -46,7 +46,9 @@ func _process(delta):
 func _physics_process(delta):
 	move_player(delta)
 	
-	
+remote func _set_position(pos):
+	global_transform.origin = pos
+
 #Player movement code
 func move_player(delta):
 	set_can_walk()
@@ -71,11 +73,14 @@ func move_player(delta):
 		handle_gravity()
 	
 		velocity.y = fall_velocity
-		velocity = move_and_slide(velocity, Vector3.UP)
+		if is_network_master(): # Multiplayer additon ---> we don't want the other person controlling you
+			velocity = move_and_slide(velocity, Vector3.UP)
 	else : # ledge hang edge case, freeze the player on the edge until the pop off with E
 		if Input.is_action_pressed("ledge_hang"):
 			isOnEdge = false
 			velocity = Vector3(0,0,0)
+	#Multiplayer addition ---> we need the transformations to show on both sides
+	rpc_unreliable("_set_position", global_transform.origin)
 			
 
 #applies gravity to player and handles flying and jumping
