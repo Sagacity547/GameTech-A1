@@ -2,8 +2,6 @@ extends Node
 
 
 # Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var host = NetworkedMultiplayerENet.new()
 var player_info = {}
 var is_host = false
@@ -13,10 +11,6 @@ var NUM_PLAYERS = 1
 var MAX_PLAYERS = 4
 var spawn_points = [Vector3(-80.077, 6.14, -22.868), Vector3(-80.077, 26.14, -22.868), Vector3(-80.077, 6.14, -22.868), Vector3(-80.077, 6.14, -22.868)]
 var unique_ids = ["1", "2", "3", "4",]
-var player1_spawnPoint = Vector3(-80.077, 6.14, -22.868) #coordinates of initial spawn point
-var player2_spawnPoint = Vector3(-80.077, 26.14, -22.868) #coordinates of initial spawn point
-var player3_spawnPoint = Vector3(-80.077, 6.14, -22.868) #coordinates of initial spawn point
-var player4_spawnPoint = Vector3(-80.077, 6.14, -22.868) #coordinates of initial spawn point
 
 
 # Called when the node enters the scene tree for the first time.
@@ -44,6 +38,7 @@ func _process(delta):
 	if Input.is_action_pressed("join_server") and !is_host:
 		host.create_client(SERVER_IP, SERVER_PORT)
 		get_tree().network_peer = host
+		
 # Info we send to other players
 var my_info = { name = "Johnson Magenta", favorite_color = Color8(255, 0, 255) }
 
