@@ -1,0 +1,13 @@
+Division of Tasks ~ Assignment 3
+
+Task List: 
+Camera Script - Evan
+GDNative Transfer - Julian
+Networking - Gavin
+Player Changes - Gavin
+Menu UI/Lobby - Evan
+Game End Condition - Julian
+
+Meeting Schedule:
+	- Daily Standups in evening (8 - 10) 
+	- Daily Discord check-ins
