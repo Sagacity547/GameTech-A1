@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Textures/lava.tres" type="Material" id=1]
 [ext_resource path="res://Textures/grass.tres" type="Material" id=2]
@@ -68,6 +68,18 @@ size = 40
 font_data = ExtResource( 19 )
 
 [sub_resource type="DynamicFont" id=17]
+size = 40
+font_data = ExtResource( 19 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 40
+font_data = ExtResource( 19 )
+
+[sub_resource type="DynamicFont" id=19]
+size = 40
+font_data = ExtResource( 19 )
+
+[sub_resource type="DynamicFont" id=20]
 size = 40
 font_data = ExtResource( 19 )
 
@@ -718,36 +730,83 @@ position = Vector2( 464.784, 140.282 )
 scale = Vector2( 1.25391, 1.20045 )
 texture = ExtResource( 3 )
 
-[node name="input" type="Control" parent="menu"]
-visible = false
+[node name="newgame" type="Control" parent="menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.78174
+margin_right = -1.78174
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button7" type="Button" parent="menu/newgame"]
+margin_left = 129.6
+margin_top = 210.91
+margin_right = 418.6
+margin_bottom = 372.91
+custom_fonts/font = SubResource( 11 )
+text = "single player"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button8" type="Button" parent="menu/newgame"]
+margin_left = 596.8
+margin_top = 206.219
+margin_right = 857.8
+margin_bottom = 377.219
+custom_fonts/font = SubResource( 12 )
+text = "multiplayer"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="joingame" type="Control" parent="menu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LineEdit" type="LineEdit" parent="menu/input"]
+[node name="LineEdit" type="LineEdit" parent="menu/joingame"]
 margin_left = 135.728
 margin_top = 236.345
 margin_right = 941.728
 margin_bottom = 356.345
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label" type="Label" parent="menu/input"]
+[node name="Label" type="Label" parent="menu/joingame"]
 margin_left = 302.272
 margin_top = 88.7089
 margin_right = 753.272
 margin_bottom = 175.709
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 14 )
 text = "input the IP address"
 
-[node name="Button4" type="Button" parent="menu/input"]
+[node name="Button4" type="Button" parent="menu/joingame"]
 margin_left = 816.954
 margin_top = 471.285
 margin_right = 932.954
 margin_bottom = 527.285
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 15 )
 text = "back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button6" type="Button" parent="menu/joingame"]
+margin_left = 449.013
+margin_top = 389.323
+margin_right = 577.013
+margin_bottom = 445.323
+custom_fonts/font = SubResource( 16 )
+text = "enter"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="instructions" type="Control" parent="menu"]
 visible = false
@@ -767,7 +826,7 @@ margin_left = 816.954
 margin_top = 471.285
 margin_right = 932.954
 margin_bottom = 527.285
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 15 )
 text = "back"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -783,7 +842,7 @@ margin_left = 434.759
 margin_top = 95.3262
 margin_right = 950.759
 margin_bottom = 145.326
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 17 )
 text = "control the ball's moves"
 
 [node name="space" type="Sprite" parent="menu/instructions"]
@@ -796,7 +855,7 @@ margin_left = 617.393
 margin_top = 254.797
 margin_right = 728.393
 margin_bottom = 304.797
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 18 )
 text = "jump"
 
 [node name="shift" type="Sprite" parent="menu/instructions"]
@@ -809,7 +868,7 @@ margin_left = 195.998
 margin_top = 393.777
 margin_right = 235.998
 margin_bottom = 443.777
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 19 )
 text = "+"
 
 [node name="space2" type="Sprite" parent="menu/instructions"]
@@ -822,7 +881,7 @@ margin_left = 531.867
 margin_top = 393.777
 margin_right = 817.867
 margin_bottom = 443.777
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 20 )
 text = "use gas to fly"
 [connection signal="body_entered" from="Checkpoints/Start Check" to="Checkpoints/Start Check" method="_on_Start_Check_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin" to="Collectables/Coin" method="_on_Coin_body_entered"]
@@ -843,5 +902,10 @@ text = "use gas to fly"
 [connection signal="pressed" from="menu/title/Button" to="menu" method="_on_Button_pressed"]
 [connection signal="pressed" from="menu/title/Button2" to="menu" method="_on_Button2_pressed"]
 [connection signal="pressed" from="menu/title/Button3" to="menu" method="_on_Button3_pressed"]
-[connection signal="pressed" from="menu/input/Button4" to="menu" method="_on_Button4_pressed"]
+[connection signal="pressed" from="menu/newgame/Button7" to="menu" method="_on_Button7_pressed"]
+[connection signal="pressed" from="menu/newgame/Button7" to="." method="_on_Button7_pressed"]
+[connection signal="pressed" from="menu/newgame/Button8" to="menu" method="_on_Button8_pressed"]
+[connection signal="pressed" from="menu/joingame/Button4" to="menu" method="_on_Button4_pressed"]
+[connection signal="pressed" from="menu/joingame/Button6" to="menu" method="_on_Button6_pressed"]
+[connection signal="pressed" from="menu/joingame/Button6" to="." method="_on_Button6_pressed"]
 [connection signal="pressed" from="menu/instructions/Button5" to="menu" method="_on_Button5_pressed"]

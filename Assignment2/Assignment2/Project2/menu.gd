@@ -2,16 +2,17 @@ extends Control
 
 func _ready():
 	$title.show()
-	$input.hide()
+	$newgame.hide()
+	$joingame.hide()
 	$instructions.hide()
 
 func _on_Button_pressed():
 	$title.hide()
-	$input.show()
+	$newgame.show()
 
 func _on_Button2_pressed():
 	$title.hide()
-	$input.show()
+	$joingame.show()
 
 func _on_Button3_pressed():
 	$title.hide()
@@ -19,8 +20,18 @@ func _on_Button3_pressed():
 
 func _on_Button4_pressed():
 	$title.show()
-	$input.hide()
+	$joingame.hide()
 
 func _on_Button5_pressed():
 	$instructions.hide()
 	$title.show()
+
+func _on_Button8_pressed():
+	$newgame.hide()
+	$joingame.show()
+
+func _on_Button6_pressed():
+	$joingame.hide()
+
+func _on_Button7_pressed():
+	$newgame.hide()

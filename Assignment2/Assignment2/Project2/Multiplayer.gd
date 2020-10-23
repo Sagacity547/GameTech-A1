@@ -93,3 +93,13 @@ remote func register_player(info):
 	player.get_child(0).get_child(2).current = !is_host
 	add_child(player)
 	# Call function to update lobby UI here
+
+
+func _on_Button6_pressed():
+	pass 
+	#ip = $menu/joingame/LineEdit.text
+	#singleplayer = false (so its either enter game -> multiplayer or join game)
+
+func _on_Button7_pressed():
+	pass
+	#singleplayer = true (single player)
