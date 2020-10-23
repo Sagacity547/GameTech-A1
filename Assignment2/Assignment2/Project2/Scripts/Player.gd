@@ -46,8 +46,8 @@ func _process(delta):
 #code to start physics process for game
 func _physics_process(delta):
 	move_player(delta)
-	time += delta
-	$TimeLabel.text = "Time: " + str(stepify(time, 1.0))
+	#time += delta
+	#$TimeLabel.text = "Time: " + str(stepify(time, 1.0))
 	
 remote func _set_position(pos):
 	global_transform.origin = pos
@@ -76,7 +76,8 @@ func move_player(delta):
 		handle_gravity()
 	
 		velocity.y = fall_velocity
-		if is_network_master() or !is_connected: # Multiplayer additon ---> we don't want the other person controlling you
+		
+		if is_network_master(): # Multiplayer additon ---> we don't want the other person controlling you
 			velocity = move_and_slide(velocity, Vector3.UP)
 	else : # ledge hang edge case, freeze the player on the edge until the pop off with E
 		if Input.is_action_pressed("ledge_hang"):

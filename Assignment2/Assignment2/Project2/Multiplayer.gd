@@ -11,6 +11,10 @@ var NUM_PLAYERS = 1
 var MAX_PLAYERS = 4
 var spawn_points = [Vector3(-80.077, 6.14, -22.868), Vector3(-80.077, 26.14, -22.868), Vector3(-80.077, 6.14, -22.868), Vector3(-80.077, 6.14, -22.868)]
 var unique_ids = ["1", "2", "3", "4",]
+var is_connected = false
+
+var my_id : int 
+var other_id : int
 
 
 # Called when the node enters the scene tree for the first time.
@@ -22,22 +26,42 @@ func _ready():
 	get_tree().connect("server_disconnected", self, "_server_disconnected")
 	
 	#initalize host
-	var id = get_tree().get_rpc_sender_id()
-	var player = preload("res://Player.tscn").instance()
-	player.set_translation(spawn_points[NUM_PLAYERS])
-	player.set_name(unique_ids[0])
-	player.set_network_master(get_tree().get_network_unique_id())
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_pressed("host_server"):
+	if Input.is_action_pressed("host_server") and !is_host:
 		host.create_server(SERVER_PORT, MAX_PLAYERS)
 		get_tree().network_peer = host
 		is_host = true
+		is_connected = true
 		
-	if Input.is_action_pressed("join_server") and !is_host:
+		var id = get_tree().get_rpc_sender_id()
+		var player = preload("res://Player.tscn").instance()
+		player.set_translation(spawn_points[NUM_PLAYERS])
+		player.set_name(str(id))
+		player.set_network_master(get_tree().get_network_unique_id())
+		player.get_child(0).get_child(2).current = true
+		my_id = id
+		print(id)
+		add_child(player)
+		
+	if Input.is_action_pressed("join_server") and !is_host and !is_connected:
 		host.create_client(SERVER_IP, SERVER_PORT)
 		get_tree().network_peer = host
+		
+		var id = get_tree().get_rpc_sender_id()
+		var player = preload("res://Player.tscn").instance()
+		player.set_translation(spawn_points[NUM_PLAYERS])
+		player.set_name(str(id))
+		player.set_network_master(id)
+		player.get_child(0).get_child(2).current = true
+		is_connected = true
+		my_id = id
+		print(id)
+		add_child(player)
+		
+
 		
 # Info we send to other players
 var my_info = { name = "Johnson Magenta", favorite_color = Color8(255, 0, 255) }
@@ -61,10 +85,12 @@ func _connected_fail():
 remote func register_player(info):
 	NUM_PLAYERS += 1
 	var id = get_tree().get_rpc_sender_id()
+	print(id)
 	player_info[id] = info
 	var player = preload("res://Player.tscn").instance()
-	player.set_translation(spawn_points[NUM_PLAYERS])
-	player.set_name(unique_ids[NUM_PLAYERS])
-	player.set_network_master(get_tree().get_network_unique_id())
+	player.set_name(str(id))
+	player.set_translation(spawn_points[NUM_PLAYERS + 1])
+	player.set_network_master(id)
+	player.get_child(0).get_child(2).current = !is_host
 	add_child(player)
 	# Call function to update lobby UI here
