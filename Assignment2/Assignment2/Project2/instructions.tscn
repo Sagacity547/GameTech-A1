@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Montserrat-ExtraBold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://shift.png" type="Texture" id=2]
 [ext_resource path="res://space.png" type="Texture" id=3]
 [ext_resource path="res://wasd.png" type="Texture" id=4]
-[ext_resource path="res://instructions.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -31,7 +30,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1.33472
 margin_right = 1.33472
-script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -107,4 +105,3 @@ text = "back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
