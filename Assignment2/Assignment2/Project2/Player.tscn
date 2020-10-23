@@ -1,10 +1,56 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://GameOver.gd" type="Script" id=2]
+[ext_resource path="res://embersParticle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Audio/liquid.wav" type="AudioStream" id=4]
+[ext_resource path="res://Audio/Lava.wav" type="AudioStream" id=5]
+[ext_resource path="res://Audio/coin.wav" type="AudioStream" id=6]
+[ext_resource path="res://Audio/Cinematic-electronic-track.wav" type="AudioStream" id=7]
+[ext_resource path="res://coin.png" type="Texture" id=8]
+[ext_resource path="res://Audio/Jomp.wav" type="AudioStream" id=9]
 
 [sub_resource type="CapsuleShape" id=1]
 
 [sub_resource type="CapsuleMesh" id=2]
+
+[sub_resource type="Animation" id=8]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Move/CanvasLayer/GameOver:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Move/CanvasLayer2/EndTimeLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Move/CanvasLayer2/EndCoinLabel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Spatial" type="Spatial"]
 
@@ -21,3 +67,140 @@ material/0 = null
 
 [node name="Camera" type="Camera" parent="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, -0.258819, 0.965926, 0, -0.965926, -0.258819, 0, 6.5, -3.5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="KinematicBody"]
+anims/GameOver = SubResource( 8 )
+
+[node name="Background Music" type="AudioStreamPlayer3D" parent="KinematicBody"]
+transform = Transform( 0.999974, -0.001032, -0.00716041, 0.00716795, 0.0074845, 0.999947, -0.000978362, -0.999972, 0.00749173, -0.152634, 0.119289, -0.312123 )
+stream = ExtResource( 7 )
+unit_db = -4.66
+autoplay = true
+
+[node name="Jump" type="AudioStreamPlayer3D" parent="KinematicBody"]
+transform = Transform( 0.999974, -0.001032, -0.00716042, 0.00716795, 0.0074845, 0.999947, -0.000978362, -0.999972, 0.00749172, -0.244476, -0.0134144, 0.721514 )
+stream = ExtResource( 9 )
+unit_db = -12.428
+
+[node name="Coin" type="AudioStreamPlayer3D" parent="KinematicBody"]
+stream = ExtResource( 6 )
+unit_db = 13.893
+
+[node name="Lava" type="AudioStreamPlayer3D" parent="KinematicBody"]
+stream = ExtResource( 5 )
+unit_db = 12.427
+
+[node name="Gas" type="AudioStreamPlayer3D" parent="KinematicBody"]
+stream = ExtResource( 4 )
+unit_db = 10.874
+
+[node name="Spatial" type="Spatial" parent="KinematicBody" instance=ExtResource( 3 )]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="KinematicBody"]
+
+[node name="EndTimeLabel" type="Label" parent="KinematicBody/CanvasLayer2"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 53.0603
+margin_top = 207.156
+margin_right = -804.94
+margin_bottom = -363.844
+rect_scale = Vector2( 4.52, 4.36 )
+text = "Time:"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndCoinLabel" type="Label" parent="KinematicBody/CanvasLayer2"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 36.6699
+margin_top = 307.654
+margin_right = -830.33
+margin_bottom = -266.346
+rect_scale = Vector2( 4.84, 4.28 )
+text = "Coins:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GasLabel" type="Label" parent="KinematicBody"]
+margin_left = 24.9421
+margin_top = 121.435
+margin_right = 165.942
+margin_bottom = 171.435
+rect_scale = Vector2( 4.82353, 4.82353 )
+custom_colors/font_color = Color( 1, 0.921569, 0.266667, 1 )
+text = "Gas: 1000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CoinLabel" type="Label" parent="KinematicBody"]
+margin_left = 101.026
+margin_top = 33.0071
+margin_right = 189.026
+margin_bottom = 76.0071
+rect_scale = Vector2( 4.28981, 6.05098 )
+text = "Coins: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="coin" type="Sprite" parent="KinematicBody/CoinLabel"]
+position = Vector2( -11.0748, 5.09222 )
+scale = Vector2( 0.0863246, 0.0863246 )
+texture = ExtResource( 8 )
+
+[node name="TimeLabel" type="Label" parent="KinematicBody"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 746.0
+margin_top = 532.0
+margin_right = -214.0
+margin_bottom = -36.0
+rect_scale = Vector2( 4.32, 4.44 )
+text = "Time:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="KinematicBody"]
+layer = 0
+
+[node name="GameOver" type="ColorRect" parent="KinematicBody/CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = -0.001
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -17.976
+margin_top = -17.0
+margin_right = 26.0
+margin_bottom = 30.0
+mouse_filter = 2
+color = Color( 0.188235, 0.188235, 0.188235, 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndLabel" type="Label" parent="KinematicBody/CanvasLayer/GameOver"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -25.0
+margin_top = 69.0
+margin_right = -818.0
+margin_bottom = -499.0
+rect_scale = Vector2( 4.04, 4.76 )
+text = "You Finished!
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
