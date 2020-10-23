@@ -69,4 +69,5 @@ walkable_angle_down={
 
 [rendering]
 
+environment/default_clear_color=Color( 0.537255, 0.862745, 0.372549, 1 )
 environment/default_environment="res://default_env.tres"
