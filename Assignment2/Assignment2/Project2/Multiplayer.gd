@@ -95,11 +95,16 @@ remote func register_player(info):
 	# Call function to update lobby UI here
 
 
-func _on_Button6_pressed():
-	pass 
+func _joingame_pressed():
+	pass #delete pass
+	#non-host clicks join game and joins a server
 	#ip = $menu/joingame/LineEdit.text
-	#singleplayer = false (so its either enter game -> multiplayer or join game)
 
-func _on_Button7_pressed():
-	pass
-	#singleplayer = true (single player)
+func _singleplayer_pressed():
+	pass#delete pass
+	#host clicks single player, so no ip is inputted
+
+func _multiplayer_pressed():
+	pass#delete pass
+	#host clicks multiplayer
+	#ip = $menu/joingame/LineEdit2.text

@@ -701,6 +701,7 @@ __meta__ = {
 }
 
 [node name="title" type="Control" parent="menu"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -762,6 +763,7 @@ __meta__ = {
 }
 
 [node name="joingame" type="Control" parent="menu"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -883,6 +885,51 @@ margin_right = 817.867
 margin_bottom = 443.777
 custom_fonts/font = SubResource( 20 )
 text = "use gas to fly"
+
+[node name="multi" type="Control" parent="menu"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="LineEdit2" type="LineEdit" parent="menu/multi"]
+margin_left = 135.728
+margin_top = 236.345
+margin_right = 941.728
+margin_bottom = 356.345
+custom_fonts/font = SubResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="menu/multi"]
+margin_left = 302.272
+margin_top = 88.7089
+margin_right = 753.272
+margin_bottom = 175.709
+custom_fonts/font = SubResource( 14 )
+text = "input the IP address"
+
+[node name="Button9" type="Button" parent="menu/multi"]
+margin_left = 816.954
+margin_top = 471.285
+margin_right = 932.954
+margin_bottom = 527.285
+custom_fonts/font = SubResource( 15 )
+text = "back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button10" type="Button" parent="menu/multi"]
+margin_left = 449.013
+margin_top = 389.323
+margin_right = 577.013
+margin_bottom = 445.323
+custom_fonts/font = SubResource( 16 )
+text = "enter"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="body_entered" from="Checkpoints/Start Check" to="Checkpoints/Start Check" method="_on_Start_Check_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin" to="Collectables/Coin" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin2" to="Collectables/Coin2" method="_on_Coin_body_entered"]
@@ -909,3 +956,5 @@ text = "use gas to fly"
 [connection signal="pressed" from="menu/joingame/Button6" to="menu" method="_on_Button6_pressed"]
 [connection signal="pressed" from="menu/joingame/Button6" to="." method="_on_Button6_pressed"]
 [connection signal="pressed" from="menu/instructions/Button5" to="menu" method="_on_Button5_pressed"]
+[connection signal="pressed" from="menu/multi/Button9" to="menu" method="_on_Button9_pressed"]
+[connection signal="pressed" from="menu/multi/Button10" to="." method="_on_Button10_pressed"]

@@ -5,6 +5,7 @@ func _ready():
 	$newgame.hide()
 	$joingame.hide()
 	$instructions.hide()
+	$multi.hide()
 
 func _on_Button_pressed():
 	$title.hide()
@@ -28,10 +29,14 @@ func _on_Button5_pressed():
 
 func _on_Button8_pressed():
 	$newgame.hide()
-	$joingame.show()
+	$multi.show()
 
 func _on_Button6_pressed():
 	$joingame.hide()
 
 func _on_Button7_pressed():
 	$newgame.hide()
+
+func _on_Button9_pressed():
+	$multi.hide()
+	$title.show()
