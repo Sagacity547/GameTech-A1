@@ -4,9 +4,12 @@
 [ext_resource path="res://logo.png" type="Texture" id=2]
 [ext_resource path="res://controlbutton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://fade_in.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Button.gd" type="Script" id=5]
-[ext_resource path="res://controlbutton.gd" type="Script" id=6]
+[ext_resource path="res://Montserrat-ExtraBold.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://titlescreen.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 5 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -20,16 +23,16 @@ __meta__ = {
 }
 
 [node name="fade_in" parent="." instance=ExtResource( 4 )]
-margin_left = -1.33496
-margin_top = 5.33936
-margin_right = -1.33496
-margin_bottom = 5.33936
+margin_left = -2.6698
+margin_top = 2.66968
+margin_right = -2.6698
+margin_bottom = 2.66968
 
 [node name="logo" type="TextureRect" parent="."]
-margin_left = 110.656
-margin_top = 85.3394
-margin_right = 894.656
-margin_bottom = 285.339
+margin_left = 105.317
+margin_top = 42.6245
+margin_right = 889.317
+margin_bottom = 242.624
 texture = ExtResource( 2 )
 stretch_mode = 6
 __meta__ = {
@@ -37,17 +40,26 @@ __meta__ = {
 }
 
 [node name="Button" parent="." instance=ExtResource( 1 )]
-margin_left = 359.0
-margin_top = 335.0
-margin_right = 719.0
-margin_bottom = 406.0
-script = ExtResource( 5 )
-scene = "res://Main.tscn"
+margin_left = 364.339
+margin_top = 273.597
+margin_right = 724.339
+margin_bottom = 344.597
 
-[node name="controlbutton" parent="." instance=ExtResource( 3 )]
-margin_left = 386.0
-margin_top = 462.0
-margin_right = 746.0
-margin_bottom = 522.0
-script = ExtResource( 6 )
-scene = "res://instructions.tscn"
+[node name="Button2" type="Button" parent="."]
+margin_left = 391.108
+margin_top = 353.732
+margin_right = 629.108
+margin_bottom = 442.732
+custom_fonts/font = SubResource( 1 )
+text = "Join Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button3" parent="." instance=ExtResource( 3 )]
+margin_left = 387.335
+margin_top = 463.335
+margin_right = 747.335
+margin_bottom = 523.335
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="button3" to="." method="_on_controlbutton_pressed"]

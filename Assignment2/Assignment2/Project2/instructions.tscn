@@ -53,7 +53,6 @@ margin_right = 751.47
 margin_bottom = 186.837
 custom_fonts/font = SubResource( 1 )
 text = "control ball's moves"
-percent_visible = 4.7619
 __meta__ = {
 "_edit_use_anchors_": false
 }
