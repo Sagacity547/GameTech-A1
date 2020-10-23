@@ -1,27 +1,17 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Textures/lava.tres" type="Material" id=1]
 [ext_resource path="res://Textures/grass.tres" type="Material" id=2]
-[ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/Start Check.gd" type="Script" id=4]
 [ext_resource path="res://Textures/Coin.tres" type="Material" id=5]
 [ext_resource path="res://Scripts/Collect.gd" type="Script" id=6]
-[ext_resource path="res://Audio/Cinematic-electronic-track.wav" type="AudioStream" id=7]
-[ext_resource path="res://Audio/Jomp.wav" type="AudioStream" id=8]
-[ext_resource path="res://Audio/coin.wav" type="AudioStream" id=9]
-[ext_resource path="res://Audio/Lava.wav" type="AudioStream" id=10]
 [ext_resource path="res://Gas.tres" type="Material" id=11]
 [ext_resource path="res://Gas.gd" type="Script" id=12]
-[ext_resource path="res://Audio/liquid.wav" type="AudioStream" id=13]
-[ext_resource path="res://embersParticle.tscn" type="PackedScene" id=14]
 [ext_resource path="res://smokeParticles.tscn" type="PackedScene" id=15]
-[ext_resource path="res://coin.png" type="Texture" id=16]
 [ext_resource path="res://Multiplayer.gd" type="Script" id=17]
 [ext_resource path="res://Textures/lavaNew.tres" type="Material" id=18]
-[ext_resource path="res://GameOver.gd" type="Script" id=19]
 [ext_resource path="res://instructions.tscn" type="PackedScene" id=20]
 [ext_resource path="res://input.tscn" type="PackedScene" id=21]
-[ext_resource path="res://titlescreen.tscn" type="PackedScene" id=22]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.87268, 1, 0.948165 )
@@ -35,59 +25,16 @@ extents = Vector3( 0.221771, 0.219238, 0.219993 )
 
 [sub_resource type="CubeMesh" id=5]
 
-[sub_resource type="Animation" id=6]
-resource_name = "GameOver"
-tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/GameOver:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.1, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer2/EndTimeLabel:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.1, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("CanvasLayer2/EndCoinLabel:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.1, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-
-[sub_resource type="CapsuleShape" id=7]
-
-[sub_resource type="CapsuleMesh" id=8]
-
-[sub_resource type="BoxShape" id=9]
+[sub_resource type="BoxShape" id=6]
 extents = Vector3( 0.218193, 0.223274, 0.222419 )
 
-[sub_resource type="SphereShape" id=10]
+[sub_resource type="SphereShape" id=7]
 
-[sub_resource type="SphereMesh" id=11]
+[sub_resource type="SphereMesh" id=8]
 
-[sub_resource type="BoxShape" id=12]
+[sub_resource type="BoxShape" id=9]
 
-[sub_resource type="CubeMesh" id=13]
+[sub_resource type="CubeMesh" id=10]
 
 [node name="Main" type="Spatial"]
 transform = Transform( 0.999974, 0.00100224, 0.00716465, -0.00103201, 0.999991, 0.00415113, -0.00716042, -0.00415841, 0.999966, 0, 0, 0 )
@@ -488,159 +435,6 @@ width = 291.84
 depth = 250.142
 material = ExtResource( 18 )
 
-[node name="Player" type="KinematicBody" parent="."]
-transform = Transform( 1, -4.65661e-09, 6.00267e-10, 2.03727e-10, 0.00333344, -0.999994, 0, 0.999993, 0.00333342, -80.0767, 6.13987, -22.8681 )
-script = ExtResource( 3 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
-anims/GameOver = SubResource( 6 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Player"]
-transform = Transform( 1, 0, -3.63798e-11, -9.31323e-10, 1, 0, -1.89175e-10, 0, 1, 0, 0, 0 )
-shape = SubResource( 7 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Player"]
-transform = Transform( 1, 0, -3.63798e-11, -4.65661e-10, 1, 0, -6.18456e-11, 0, 1, 0, 0, 0 )
-mesh = SubResource( 8 )
-material/0 = null
-
-[node name="Camera" type="Camera" parent="Player"]
-transform = Transform( 1, 0, 0, 0, -0.258819, 0.965926, 0, -0.965926, -0.258819, 0, 6.5, -3.5 )
-
-[node name="Background Music" type="AudioStreamPlayer3D" parent="Player"]
-transform = Transform( 0.999974, -0.001032, -0.00716041, 0.00716795, 0.0074845, 0.999947, -0.000978362, -0.999972, 0.00749173, -0.152634, 0.119289, -0.312123 )
-stream = ExtResource( 7 )
-unit_db = -4.66
-autoplay = true
-
-[node name="Jump" type="AudioStreamPlayer3D" parent="Player"]
-transform = Transform( 0.999974, -0.001032, -0.00716042, 0.00716795, 0.0074845, 0.999947, -0.000978362, -0.999972, 0.00749172, -0.244476, -0.0134144, 0.721514 )
-stream = ExtResource( 8 )
-unit_db = -12.428
-
-[node name="Coin" type="AudioStreamPlayer3D" parent="Player"]
-stream = ExtResource( 9 )
-unit_db = 13.893
-
-[node name="Lava" type="AudioStreamPlayer3D" parent="Player"]
-stream = ExtResource( 10 )
-unit_db = 12.427
-
-[node name="Gas" type="AudioStreamPlayer3D" parent="Player"]
-stream = ExtResource( 13 )
-unit_db = 10.874
-
-[node name="Spatial" parent="Player" instance=ExtResource( 14 )]
-
-[node name="CanvasLayer2" type="CanvasLayer" parent="Player"]
-
-[node name="EndTimeLabel" type="Label" parent="Player/CanvasLayer2"]
-modulate = Color( 1, 1, 1, 0 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 53.0603
-margin_top = 207.156
-margin_right = -804.94
-margin_bottom = -363.844
-rect_scale = Vector2( 4.52, 4.36 )
-text = "Time:"
-align = 1
-valign = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EndCoinLabel" type="Label" parent="Player/CanvasLayer2"]
-modulate = Color( 1, 1, 1, 0 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 36.6699
-margin_top = 307.654
-margin_right = -830.33
-margin_bottom = -266.346
-rect_scale = Vector2( 4.84, 4.28 )
-text = "Coins:"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="GasLabel" type="Label" parent="Player"]
-margin_left = 24.9421
-margin_top = 121.435
-margin_right = 165.942
-margin_bottom = 171.435
-rect_scale = Vector2( 4.82353, 4.82353 )
-custom_colors/font_color = Color( 1, 0.921569, 0.266667, 1 )
-text = "Gas: 1000"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CoinLabel" type="Label" parent="Player"]
-margin_left = 101.026
-margin_top = 33.0071
-margin_right = 189.026
-margin_bottom = 76.0071
-rect_scale = Vector2( 4.28981, 6.05098 )
-text = "Coins: 0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="coin" type="Sprite" parent="Player/CoinLabel"]
-position = Vector2( -11.0748, 5.09222 )
-scale = Vector2( 0.0863246, 0.0863246 )
-texture = ExtResource( 16 )
-
-[node name="TimeLabel" type="Label" parent="Player"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 746.0
-margin_top = 532.0
-margin_right = -214.0
-margin_bottom = -36.0
-rect_scale = Vector2( 4.32, 4.44 )
-text = "Time:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Player"]
-layer = 0
-
-[node name="GameOver" type="ColorRect" parent="Player/CanvasLayer"]
-modulate = Color( 1, 1, 1, 0 )
-anchor_left = -0.001
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -17.976
-margin_top = -17.0
-margin_right = 26.0
-margin_bottom = 30.0
-mouse_filter = 2
-color = Color( 0.188235, 0.188235, 0.188235, 1 )
-script = ExtResource( 19 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EndLabel" type="Label" parent="Player/CanvasLayer/GameOver"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -25.0
-margin_top = 69.0
-margin_right = -818.0
-margin_bottom = -499.0
-rect_scale = Vector2( 4.04, 4.76 )
-text = "You Finished!
-"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Checkpoints" type="Node" parent="."]
 
 [node name="Start Check" type="Area" parent="Checkpoints"]
@@ -652,7 +446,7 @@ transform = Transform( 46.7251, 0, 0, 0, 2.36977, 0, 0, 0, 29.8424, 272.447, -14
 
 [node name="CollisionShape" type="CollisionShape" parent="Checkpoints/Game Over"]
 transform = Transform( 1.06833, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 9 )
+shape = SubResource( 6 )
 
 [node name="Collectables" type="Node" parent="."]
 
@@ -662,11 +456,11 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
-shape = SubResource( 10 )
+shape = SubResource( 7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
-mesh = SubResource( 11 )
+mesh = SubResource( 8 )
 material/0 = ExtResource( 5 )
 
 [node name="Coin2" type="Area" parent="Collectables"]
@@ -675,11 +469,11 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
-shape = SubResource( 10 )
+shape = SubResource( 7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
-mesh = SubResource( 11 )
+mesh = SubResource( 8 )
 material/0 = ExtResource( 5 )
 
 [node name="Coin3" type="Area" parent="Collectables"]
@@ -688,11 +482,11 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
-shape = SubResource( 10 )
+shape = SubResource( 7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
-mesh = SubResource( 11 )
+mesh = SubResource( 8 )
 material/0 = ExtResource( 5 )
 
 [node name="Coin4" type="Area" parent="Collectables"]
@@ -701,11 +495,11 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
-shape = SubResource( 10 )
+shape = SubResource( 7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
-mesh = SubResource( 11 )
+mesh = SubResource( 8 )
 material/0 = ExtResource( 5 )
 
 [node name="Coin5" type="Area" parent="Collectables"]
@@ -714,11 +508,11 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
-shape = SubResource( 10 )
+shape = SubResource( 7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
-mesh = SubResource( 11 )
+mesh = SubResource( 8 )
 material/0 = ExtResource( 5 )
 
 [node name="Coin6" type="Area" parent="Collectables"]
@@ -727,11 +521,11 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin6"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
-shape = SubResource( 10 )
+shape = SubResource( 7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin6"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
-mesh = SubResource( 11 )
+mesh = SubResource( 8 )
 material/0 = ExtResource( 5 )
 
 [node name="Coin7" type="Area" parent="Collectables"]
@@ -740,11 +534,11 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
-shape = SubResource( 10 )
+shape = SubResource( 7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
-mesh = SubResource( 11 )
+mesh = SubResource( 8 )
 material/0 = ExtResource( 5 )
 
 [node name="Coin8" type="Area" parent="Collectables"]
@@ -753,11 +547,11 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin8"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
-shape = SubResource( 10 )
+shape = SubResource( 7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin8"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
-mesh = SubResource( 11 )
+mesh = SubResource( 8 )
 material/0 = ExtResource( 5 )
 
 [node name="Coin9" type="Area" parent="Collectables"]
@@ -766,11 +560,11 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin9"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
-shape = SubResource( 10 )
+shape = SubResource( 7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin9"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
-mesh = SubResource( 11 )
+mesh = SubResource( 8 )
 material/0 = ExtResource( 5 )
 
 [node name="Gas" type="Area" parent="Collectables"]
@@ -779,11 +573,11 @@ script = ExtResource( 12 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.8892, 10.7784, -4.22731 )
-shape = SubResource( 12 )
+shape = SubResource( 9 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.5941, 10.7707, -4.26877 )
-mesh = SubResource( 13 )
+mesh = SubResource( 10 )
 material/0 = ExtResource( 11 )
 
 [node name="Gas2" type="Area" parent="Collectables"]
@@ -792,11 +586,11 @@ script = ExtResource( 12 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas2"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.8892, 10.7784, -4.22731 )
-shape = SubResource( 12 )
+shape = SubResource( 9 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas2"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.5941, 10.7707, -4.26877 )
-mesh = SubResource( 13 )
+mesh = SubResource( 10 )
 material/0 = ExtResource( 11 )
 
 [node name="Gas3" type="Area" parent="Collectables"]
@@ -805,11 +599,11 @@ script = ExtResource( 12 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas3"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.8892, 10.7784, -4.22731 )
-shape = SubResource( 12 )
+shape = SubResource( 9 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas3"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.5941, 10.7707, -4.26877 )
-mesh = SubResource( 13 )
+mesh = SubResource( 10 )
 material/0 = ExtResource( 11 )
 
 [node name="Gas4" type="Area" parent="Collectables"]
@@ -818,11 +612,11 @@ script = ExtResource( 12 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas4"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.8892, 10.7784, -4.22731 )
-shape = SubResource( 12 )
+shape = SubResource( 9 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas4"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.5941, 10.7707, -4.26877 )
-mesh = SubResource( 13 )
+mesh = SubResource( 10 )
 material/0 = ExtResource( 11 )
 
 [node name="Gas5" type="Area" parent="Collectables"]
@@ -831,11 +625,11 @@ script = ExtResource( 12 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas5"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.8892, 10.7784, -4.22731 )
-shape = SubResource( 12 )
+shape = SubResource( 9 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas5"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.5941, 10.7707, -4.26877 )
-mesh = SubResource( 13 )
+mesh = SubResource( 10 )
 material/0 = ExtResource( 11 )
 
 [node name="Gas6" type="Area" parent="Collectables"]
@@ -844,83 +638,31 @@ script = ExtResource( 12 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas6"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.8892, 10.7784, -4.22731 )
-shape = SubResource( 12 )
+shape = SubResource( 9 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas6"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.5941, 10.7707, -4.26877 )
-mesh = SubResource( 13 )
+mesh = SubResource( 10 )
 material/0 = ExtResource( 11 )
 
-[node name="instructions" parent="." instance=ExtResource( 20 )]
-script = null
+[node name="Control" parent="." instance=ExtResource( 20 )]
+visible = false
 
 [node name="input" parent="." instance=ExtResource( 21 )]
-script = null
-
-[node name="title" parent="." instance=ExtResource( 22 )]
-margin_left = 2.27881
-margin_right = 2.27881
-script = null
-[connection signal="body_entered" from="Ledge Areas/Ledge_0" to="Player" method="_on_Starting_Ledge_body_entered"]
-[connection signal="body_exited" from="Ledge Areas/Ledge_0" to="Player" method="_on_Starting_ledge_exited"]
-[connection signal="body_entered" from="Ledge Areas/Ledge_1" to="Player" method="_on_Starting_Ledge_body_entered"]
-[connection signal="body_exited" from="Ledge Areas/Ledge_1" to="Player" method="_on_Starting_ledge_exited"]
-[connection signal="body_entered" from="Ledge Areas/Ledge_2" to="Player" method="_on_Starting_Ledge_body_entered"]
-[connection signal="body_exited" from="Ledge Areas/Ledge_2" to="Player" method="_on_Starting_ledge_exited"]
-[connection signal="body_entered" from="Ledge Areas/Ledge_3" to="Player" method="_on_Starting_Ledge_body_entered"]
-[connection signal="body_exited" from="Ledge Areas/Ledge_3" to="Player" method="_on_Starting_ledge_exited"]
-[connection signal="body_entered" from="Ledge Areas/Ledge_4" to="Player" method="_on_Starting_Ledge_body_entered"]
-[connection signal="body_exited" from="Ledge Areas/Ledge_4" to="Player" method="_on_Starting_ledge_exited"]
-[connection signal="body_entered" from="Ledge Areas/Ledge_5" to="Player" method="_on_Starting_Ledge_body_entered"]
-[connection signal="body_exited" from="Ledge Areas/Ledge_5" to="Player" method="_on_Starting_ledge_exited"]
-[connection signal="body_entered" from="Ledge Areas/Ledge_6" to="Player" method="_on_Starting_Ledge_body_entered"]
-[connection signal="body_exited" from="Ledge Areas/Ledge_6" to="Player" method="_on_Starting_ledge_exited"]
-[connection signal="body_entered" from="Ledge Areas/Ledge_9" to="Player" method="_on_Starting_Ledge_body_entered"]
-[connection signal="body_exited" from="Ledge Areas/Ledge_9" to="Player" method="_on_Starting_ledge_exited"]
-[connection signal="body_entered" from="Ledge Areas/Ledge_10" to="Player" method="_on_Starting_Ledge_body_entered"]
-[connection signal="body_exited" from="Ledge Areas/Ledge_10" to="Player" method="_on_Starting_ledge_exited"]
-[connection signal="body_entered" from="Ledge Areas/Ledge_11" to="Player" method="_on_Starting_Ledge_body_entered"]
-[connection signal="body_exited" from="Ledge Areas/Ledge_11" to="Player" method="_on_Starting_ledge_exited"]
-[connection signal="body_entered" from="Ledge Areas/Ledge_12" to="Player" method="_on_Starting_Ledge_body_entered"]
-[connection signal="body_exited" from="Ledge Areas/Ledge_12" to="Player" method="_on_Starting_ledge_exited"]
-[connection signal="body_entered" from="Ledge Areas/Ledge_13" to="Player" method="_on_Starting_Ledge_body_entered"]
-[connection signal="body_exited" from="Ledge Areas/Ledge_13" to="Player" method="_on_Starting_ledge_exited"]
-[connection signal="body_entered" from="Ledge Areas/Ledge_14" to="Player" method="_on_Starting_Ledge_body_entered"]
-[connection signal="body_exited" from="Ledge Areas/Ledge_14" to="Player" method="_on_Starting_ledge_exited"]
-[connection signal="body_entered" from="Ledge Areas/Ledge_7" to="Player" method="_on_Starting_Ledge_body_entered"]
-[connection signal="body_exited" from="Ledge Areas/Ledge_7" to="Player" method="_on_Starting_ledge_exited"]
-[connection signal="body_entered" from="Ledge Areas/Ledge_8" to="Player" method="_on_Starting_Ledge_body_entered"]
-[connection signal="body_exited" from="Ledge Areas/Ledge_8" to="Player" method="_on_Starting_ledge_exited"]
-[connection signal="body_entered" from="Lava/Lava" to="Player" method="_on_Lava_body_entered"]
+visible = false
 [connection signal="body_entered" from="Checkpoints/Start Check" to="Checkpoints/Start Check" method="_on_Start_Check_body_entered"]
-[connection signal="body_entered" from="Checkpoints/Game Over" to="Player" method="_on_Game_Over_body_entered"]
-[connection signal="body_entered" from="Collectables/Coin" to="Player" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin" to="Collectables/Coin" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coin2" to="Player" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin2" to="Collectables/Coin2" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coin3" to="Player" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin3" to="Collectables/Coin3" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coin4" to="Player" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin4" to="Collectables/Coin4" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coin5" to="Player" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin5" to="Collectables/Coin5" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coin6" to="Player" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin6" to="Collectables/Coin6" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coin7" to="Player" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin7" to="Collectables/Coin7" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coin8" to="Player" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin8" to="Collectables/Coin8" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Coin9" to="Player" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Collectables/Coin9" to="Collectables/Coin9" method="_on_Coin_body_entered"]
-[connection signal="body_entered" from="Collectables/Gas" to="Player" method="_on_Gas_body_entered"]
 [connection signal="body_entered" from="Collectables/Gas" to="Collectables/Gas" method="_on_Gas_body_entered"]
-[connection signal="body_entered" from="Collectables/Gas2" to="Player" method="_on_Gas_body_entered"]
 [connection signal="body_entered" from="Collectables/Gas2" to="Collectables/Gas2" method="_on_Gas_body_entered"]
-[connection signal="body_entered" from="Collectables/Gas3" to="Player" method="_on_Gas_body_entered"]
 [connection signal="body_entered" from="Collectables/Gas3" to="Collectables/Gas3" method="_on_Gas_body_entered"]
-[connection signal="body_entered" from="Collectables/Gas4" to="Player" method="_on_Gas_body_entered"]
 [connection signal="body_entered" from="Collectables/Gas4" to="Collectables/Gas4" method="_on_Gas_body_entered"]
-[connection signal="body_entered" from="Collectables/Gas5" to="Player" method="_on_Gas_body_entered"]
 [connection signal="body_entered" from="Collectables/Gas5" to="Collectables/Gas5" method="_on_Gas_body_entered"]
-[connection signal="body_entered" from="Collectables/Gas6" to="Player" method="_on_Gas_body_entered"]
 [connection signal="body_entered" from="Collectables/Gas6" to="Collectables/Gas6" method="_on_Gas_body_entered"]
