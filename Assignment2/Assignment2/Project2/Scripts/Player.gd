@@ -21,6 +21,7 @@ var spawnPoint = Vector3(-80.077, 6.14, -22.868) #coordinates of initial spawn p
 #variables for Player GUI
 var coins = 2
 var gas = 1000
+var time = 0;
 
 #get the camera
 onready var cam = get_node("Camera")
@@ -42,10 +43,11 @@ func _process(delta):
 		musicNode.play()
 		
 		
-		
 #code to start physics process for game
 func _physics_process(delta):
 	move_player(delta)
+	time += delta
+	$TimeLabel.text = "Time: " + str(stepify(time, 1.0))
 	
 remote func _set_position(pos):
 	global_transform.origin = pos
@@ -137,7 +139,6 @@ func set_can_walk():
 		else: 
 			canWalk = true
 
-
 #code for when player interacts with a coin object
 func _on_Coin_body_entered(_body):
 	var musicNode = $"Coin"
@@ -154,6 +155,8 @@ func _on_Lava_body_entered(_body):
 	hasDashed = false
 	isJumping = false
 	isFlying = false
+	if coins != 0:
+		coins -= 1
 	$GasLabel.text = "Gas: " + str(gas)
 	$CoinLabel.text = "Coins: " + str(coins)
 	self.set_translation(spawnPoint)
@@ -176,6 +179,17 @@ func _on_Starting_ledge_exited(body):
 func _on_Gas_body_entered(_body):
 	var musicNode = $"Gas"
 	musicNode.play()
-	gas = 500
+	if gas < 1000:
+		gas += 500
+		if gas > 1000:
+			gas = 1000
 	$GasLabel.text = "Gas: " + str(gas)
 	pass # Replace with function body.
+
+
+func _on_Game_Over_body_entered(_body):
+	set_process(false)
+	set_physics_process(false)
+	$AnimationPlayer.play("GameOver")
+	$CanvasLayer2/EndTimeLabel.text = "Time: " + str(stepify(time, 1))
+	$CanvasLayer2/EndCoinLabel.text = "Coins: " + str(coins)
