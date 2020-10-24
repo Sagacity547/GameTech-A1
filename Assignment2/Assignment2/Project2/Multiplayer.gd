@@ -13,8 +13,7 @@ var spawn_points = [Vector3(-80.077, 6.14, -22.868), Vector3(-80.077, 26.14, -22
 var unique_ids = ["1", "2", "3", "4",]
 var is_connected = false
 
-var my_id : int 
-var other_id : int
+var host_id : int
 
 
 # Called when the node enters the scene tree for the first time.
@@ -43,16 +42,16 @@ func set_host():
 	is_connected = true
 	
 	var id = get_tree().get_rpc_sender_id()
+	host_id = get_tree().get_network_unique_id()
 	var player = preload("res://Player.tscn").instance()
 	player.set_translation(spawn_points[NUM_PLAYERS])
 	player.set_name(str(id))
 	player.set_network_master(get_tree().get_network_unique_id())
 	player.get_child(0).get_child(2).current = true
-	my_id = id
-		#print(id)
 	add_child(player)
 	
 func set_peer():
+	# creates local player 
 	host.create_client(SERVER_IP, SERVER_PORT)
 	get_tree().network_peer = host
 
@@ -63,8 +62,6 @@ func set_peer():
 	player.set_network_master(id)
 	player.get_child(0).get_child(2).current = true
 	is_connected = true
-	my_id = id
-	#print(id)
 	add_child(player)
 
 func _player_connected(id):
@@ -72,10 +69,10 @@ func _player_connected(id):
 	rpc_id(id, "register_player", my_info)
 
 func _player_disconnected(id):
+	if id == host_id:
+		get_tree().quit()
 	player_info.erase(id) # Erase player from info.
-
-func _connected_ok():
-	pass # Only called on clients, not server. Will go unused; not useful here.
+	
 
 func _server_disconnected():
 	pass # Server kicked us; show error and abort.
