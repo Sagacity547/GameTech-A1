@@ -5,6 +5,10 @@ Move the player (the capsule) towards the end of the map using WASD. You can jum
 If the gap is too wide, try out your jetpack! by holding Shift + Space, but be careful, run out of gas and you'll fall
 out of the sky!
 
+Networking: 
+Play Single Player or with a friend. Game now includes Co-op play. It uses player hosting so the host will enter 
+his/her/their IP address to start the server and the second player can join using that. 
+
 Details: 
 Objective: 
 	Get to the final platform without dying in the MOLTEN LAVA below. There are gold coins scattered around IF you're
