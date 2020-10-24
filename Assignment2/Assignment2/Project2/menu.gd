@@ -40,3 +40,6 @@ func _on_Button7_pressed():
 func _on_Button9_pressed():
 	$multi.hide()
 	$title.show()
+ 
+func _on_Button10_pressed():
+	$multi.hide()

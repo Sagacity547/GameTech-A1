@@ -108,5 +108,5 @@ func _on_Button7_pressed():
 
 func _on_Button10_pressed():
 	#host clicks multiplayer
-	SERVER_IP = $menu/joingame/LineEdit2
+	SERVER_IP = $menu/multi/LineEdit2
 	set_host()
