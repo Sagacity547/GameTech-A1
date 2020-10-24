@@ -46,8 +46,8 @@ func _process(delta):
 #code to start physics process for game
 func _physics_process(delta):
 	move_player(delta)
-	#time += delta
-	#$TimeLabel.text = "Time: " + str(stepify(time, 1.0))
+	time += delta
+	$TimeLabel.text = "Time: " + str(stepify(time, 1.0))
 	
 remote func _set_position(pos):
 	global_transform.origin = pos

@@ -30,41 +30,42 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_pressed("host_server") and !is_host:
-		host.create_server(SERVER_PORT, MAX_PLAYERS)
-		get_tree().network_peer = host
-		is_host = true
-		is_connected = true
-		
-		var id = get_tree().get_rpc_sender_id()
-		var player = preload("res://Player.tscn").instance()
-		player.set_translation(spawn_points[NUM_PLAYERS])
-		player.set_name(str(id))
-		player.set_network_master(get_tree().get_network_unique_id())
-		player.get_child(0).get_child(2).current = true
-		my_id = id
-		#print(id)
-		add_child(player)
-		
-	if Input.is_action_pressed("join_server") and !is_host and !is_connected:
-		host.create_client(SERVER_IP, SERVER_PORT)
-		get_tree().network_peer = host
-		
-		var id = get_tree().get_rpc_sender_id()
-		var player = preload("res://Player.tscn").instance()
-		player.set_translation(spawn_points[NUM_PLAYERS])
-		player.set_name(str(id))
-		player.set_network_master(id)
-		player.get_child(0).get_child(2).current = true
-		is_connected = true
-		my_id = id
-		print(id)
-		add_child(player)
-		
+	pass
 
 		
 # Info we send to other players
 var my_info = { name = "Johnson Magenta", favorite_color = Color8(255, 0, 255) }
+
+func set_host():
+	host.create_server(SERVER_PORT, MAX_PLAYERS)
+	get_tree().network_peer = host
+	is_host = true
+	is_connected = true
+	
+	var id = get_tree().get_rpc_sender_id()
+	var player = preload("res://Player.tscn").instance()
+	player.set_translation(spawn_points[NUM_PLAYERS])
+	player.set_name(str(id))
+	player.set_network_master(get_tree().get_network_unique_id())
+	player.get_child(0).get_child(2).current = true
+	my_id = id
+		#print(id)
+	add_child(player)
+	
+func set_peer():
+	host.create_client(SERVER_IP, SERVER_PORT)
+	get_tree().network_peer = host
+
+	var id = get_tree().get_rpc_sender_id()
+	var player = preload("res://Player.tscn").instance()
+	player.set_translation(spawn_points[NUM_PLAYERS])
+	player.set_name(str(id))
+	player.set_network_master(id)
+	player.get_child(0).get_child(2).current = true
+	is_connected = true
+	my_id = id
+	#print(id)
+	add_child(player)
 
 func _player_connected(id):
 	# Called on both clients and server when a peer connects. Send my info to it.
@@ -95,16 +96,17 @@ remote func register_player(info):
 	# Call function to update lobby UI here
 
 
-func _joingame_pressed():
-	pass #delete pass
+func _on_Button6_pressed():
 	#non-host clicks join game and joins a server
-	#ip = $menu/joingame/LineEdit.text
+	SERVER_IP = $menu/joingame/LineEdit.text
+	set_peer()
 
-func _singleplayer_pressed():
-	pass#delete pass
+func _on_Button7_pressed():
 	#host clicks single player, so no ip is inputted
+	SERVER_IP = "SINGLE"
+	set_host()
 
-func _multiplayer_pressed():
-	pass#delete pass
+func _on_Button10_pressed():
 	#host clicks multiplayer
-	#ip = $menu/joingame/LineEdit2.text
+	SERVER_IP = $menu/joingame/LineEdit2.text
+	set_host()
