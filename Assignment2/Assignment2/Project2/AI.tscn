@@ -1,0 +1,98 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://lava/Lava004_2K_Roughness.jpg" type="Texture" id=1]
+[ext_resource path="res://Gas.tres" type="Material" id=2]
+[ext_resource path="res://AI.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape" id=1]
+
+[sub_resource type="CapsuleMesh" id=2]
+
+[sub_resource type="BoxShape" id=3]
+
+[sub_resource type="CubeMesh" id=4]
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_texture = ExtResource( 1 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="AI" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.14904, 0 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="AI"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="AI"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+material_override = ExtResource( 2 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Area" type="Node" parent="."]
+
+[node name="Floor" type="KinematicBody" parent="Area"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area/Floor"]
+transform = Transform( 40, 0, 0, 0, 1, 0, 0, 0, 40, 0, 0, 0 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="MeshInstance" type="MeshInstance" parent="Area/Floor"]
+transform = Transform( 40, 0, 0, 0, 1, 0, 0, 0, 40, 0, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="Wall1" type="KinematicBody" parent="Area"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.148224, -32.7736, -40.3638 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area/Wall1"]
+transform = Transform( 40, 0, 0, 0, 1, 0, 0, 0, 40, 0, 0, 0 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="MeshInstance" type="MeshInstance" parent="Area/Wall1"]
+transform = Transform( 40, 0, 0, 0, 1, 0, 0, 0, 40, 0, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="Wall2" type="KinematicBody" parent="Area"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.148224, -32.7736, 39.0819 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area/Wall2"]
+transform = Transform( 40, 0, 0, 0, 1, 0, 0, 0, 40, 0, 0, 0 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="MeshInstance" type="MeshInstance" parent="Area/Wall2"]
+transform = Transform( 40, 0, 0, 0, 1, 0, 0, 0, 40, 0, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="Wall3" type="KinematicBody" parent="Area"]
+transform = Transform( -1.62921e-07, 1, -1.62921e-07, 0, -1.62921e-07, -1, -1, -1.62921e-07, 2.65431e-14, 39.3676, -32.7736, -1.18946 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area/Wall3"]
+transform = Transform( 40, 0, 0, 0, 1, 0, 0, 0, 40, 0, 0, 0 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="MeshInstance" type="MeshInstance" parent="Area/Wall3"]
+transform = Transform( 40, 0, 0, 0, 1, 0, 0, 0, 40, 0, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="Wall4" type="KinematicBody" parent="Area"]
+transform = Transform( -1.62921e-07, 1, -1.62921e-07, 0, -1.62921e-07, -1, -1, -1.62921e-07, 2.65431e-14, -39.2073, -32.7736, -1.18946 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area/Wall4"]
+transform = Transform( 40, 0, 0, 0, 1, 0, 0, 0, 40, 0, 0, 0 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="MeshInstance" type="MeshInstance" parent="Area/Wall4"]
+transform = Transform( 40, 0, 0, 0, 1, 0, 0, 0, 40, 0, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
