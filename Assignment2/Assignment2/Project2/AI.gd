@@ -64,11 +64,3 @@ func set_can_walk():
 		else: 
 			canWalk = true
 
-#code for when player interacts with a coin object
-func _on_Coin_body_entered(_body):
-	var musicNode = $"Coin"
-	musicNode.play()
-	coins += 1
-	$CoinLabel.text = "Coins: " + str(coins)
-	print(coins)
-	

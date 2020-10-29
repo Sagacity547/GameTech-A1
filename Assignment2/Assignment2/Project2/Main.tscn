@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://Textures/lava.tres" type="Material" id=1]
 [ext_resource path="res://Textures/grass.tres" type="Material" id=2]
@@ -19,41 +19,80 @@
 [ext_resource path="res://Multiplayer.gd" type="Script" id=17]
 [ext_resource path="res://Textures/lavaNew.tres" type="Material" id=18]
 [ext_resource path="res://Montserrat-ExtraBold.ttf" type="DynamicFontData" id=19]
+[ext_resource path="res://Audio/Lava.wav" type="AudioStream" id=20]
+[ext_resource path="res://Audio/Cinematic-electronic-track.wav" type="AudioStream" id=21]
+[ext_resource path="res://Audio/Jomp.wav" type="AudioStream" id=22]
+[ext_resource path="res://Audio/liquid.wav" type="AudioStream" id=23]
+[ext_resource path="res://Audio/coin.wav" type="AudioStream" id=24]
+[ext_resource path="res://coin.png" type="Texture" id=25]
+[ext_resource path="res://embersParticle.tscn" type="PackedScene" id=26]
+[ext_resource path="res://GameOver.gd" type="Script" id=27]
+[ext_resource path="res://player/Player.gdns" type="Script" id=28]
 
-[sub_resource type="BoxShape" id=1]
-extents = Vector3( 0.87268, 1, 0.948165 )
+[sub_resource type="CapsuleShape" id=1]
 
-[sub_resource type="BoxShape" id=2]
+[sub_resource type="CapsuleMesh" id=2]
 
-[sub_resource type="CubeMesh" id=3]
+[sub_resource type="Animation" id=3]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Move/CanvasLayer/GameOver:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Move/CanvasLayer2/EndTimeLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Move/CanvasLayer2/EndCoinLabel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.87268, 1, 0.948165 )
+
+[sub_resource type="BoxShape" id=5]
+
+[sub_resource type="CubeMesh" id=6]
+
+[sub_resource type="BoxShape" id=7]
 extents = Vector3( 0.221771, 0.219238, 0.219993 )
 
-[sub_resource type="CubeMesh" id=5]
-
-[sub_resource type="BoxShape" id=6]
-extents = Vector3( 0.218193, 0.223274, 0.222419 )
-
-[sub_resource type="SphereShape" id=7]
-
-[sub_resource type="SphereMesh" id=8]
+[sub_resource type="CubeMesh" id=8]
 
 [sub_resource type="BoxShape" id=9]
+extents = Vector3( 0.218193, 0.223274, 0.222419 )
 
-[sub_resource type="CubeMesh" id=10]
+[sub_resource type="SphereShape" id=10]
 
-[sub_resource type="DynamicFont" id=11]
-size = 40
-font_data = ExtResource( 19 )
+[sub_resource type="SphereMesh" id=11]
 
-[sub_resource type="DynamicFont" id=12]
-size = 40
-font_data = ExtResource( 19 )
+[sub_resource type="BoxShape" id=12]
 
-[sub_resource type="DynamicFont" id=13]
-size = 40
-font_data = ExtResource( 19 )
+[sub_resource type="CubeMesh" id=13]
 
 [sub_resource type="DynamicFont" id=14]
 size = 40
@@ -83,9 +122,172 @@ font_data = ExtResource( 19 )
 size = 40
 font_data = ExtResource( 19 )
 
+[sub_resource type="DynamicFont" id=21]
+size = 40
+font_data = ExtResource( 19 )
+
+[sub_resource type="DynamicFont" id=22]
+size = 40
+font_data = ExtResource( 19 )
+
+[sub_resource type="DynamicFont" id=23]
+size = 40
+font_data = ExtResource( 19 )
+
 [node name="Main" type="Spatial"]
 transform = Transform( 0.999974, 0.00100224, 0.00716465, -0.00103201, 0.999991, 0.00415113, -0.00716042, -0.00415841, 0.999966, 0, 0, 0 )
 script = ExtResource( 17 )
+
+[node name="Player" type="KinematicBody" parent="."]
+transform = Transform( 0.999999, 6.0536e-09, 1.58252e-09, 6.4756e-10, 0.00333344, -0.999993, 4.65661e-10, 0.999992, 0.00333342, -83.4286, 8.26663, -24.6974 )
+script = ExtResource( 28 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Player"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Player"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Camera" type="Camera" parent="Player"]
+transform = Transform( 1, 0, 0, 0, -0.258819, 0.965926, 0, -0.965926, -0.258819, 0, 6.5, -3.5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+anims/GameOver = SubResource( 3 )
+
+[node name="Background Music" type="AudioStreamPlayer3D" parent="Player"]
+transform = Transform( 0.999974, -0.001032, -0.00716041, 0.00716795, 0.0074845, 0.999947, -0.000978362, -0.999972, 0.00749173, -0.152634, 0.119289, -0.312123 )
+stream = ExtResource( 21 )
+unit_db = -4.66
+autoplay = true
+
+[node name="Jump" type="AudioStreamPlayer3D" parent="Player"]
+transform = Transform( 0.999974, -0.001032, -0.00716042, 0.00716795, 0.0074845, 0.999947, -0.000978362, -0.999972, 0.00749172, -0.244476, -0.0134144, 0.721514 )
+stream = ExtResource( 22 )
+unit_db = -12.428
+
+[node name="Coin" type="AudioStreamPlayer3D" parent="Player"]
+stream = ExtResource( 24 )
+unit_db = 13.893
+
+[node name="Lava" type="AudioStreamPlayer3D" parent="Player"]
+stream = ExtResource( 20 )
+unit_db = 12.427
+
+[node name="Gas" type="AudioStreamPlayer3D" parent="Player"]
+stream = ExtResource( 23 )
+unit_db = 10.874
+
+[node name="Spatial" parent="Player" instance=ExtResource( 26 )]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="Player"]
+
+[node name="EndTimeLabel" type="Label" parent="Player/CanvasLayer2"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 53.0603
+margin_top = 207.156
+margin_right = -804.94
+margin_bottom = -363.844
+rect_scale = Vector2( 4.52, 4.36 )
+text = "Time:"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndCoinLabel" type="Label" parent="Player/CanvasLayer2"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 36.6699
+margin_top = 307.654
+margin_right = -830.33
+margin_bottom = -266.346
+rect_scale = Vector2( 4.84, 4.28 )
+text = "Coins:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GasLabel" type="Label" parent="Player"]
+margin_left = 24.9421
+margin_top = 121.435
+margin_right = 165.942
+margin_bottom = 171.435
+rect_scale = Vector2( 4.82353, 4.82353 )
+custom_colors/font_color = Color( 1, 0.921569, 0.266667, 1 )
+text = "Gas: 1000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CoinLabel" type="Label" parent="Player"]
+margin_left = 101.026
+margin_top = 33.0071
+margin_right = 189.026
+margin_bottom = 76.0071
+rect_scale = Vector2( 4.28981, 6.05098 )
+text = "Coins: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="coin" type="Sprite" parent="Player/CoinLabel"]
+position = Vector2( -11.0748, 5.09222 )
+scale = Vector2( 0.0863246, 0.0863246 )
+texture = ExtResource( 25 )
+
+[node name="TimeLabel" type="Label" parent="Player"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 746.0
+margin_top = 532.0
+margin_right = -214.0
+margin_bottom = -36.0
+rect_scale = Vector2( 4.32, 4.44 )
+text = "Time:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player"]
+layer = 0
+
+[node name="GameOver" type="ColorRect" parent="Player/CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = -0.001
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -17.976
+margin_top = -17.0
+margin_right = 26.0
+margin_bottom = 30.0
+mouse_filter = 2
+color = Color( 0.188235, 0.188235, 0.188235, 1 )
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndLabel" type="Label" parent="Player/CanvasLayer/GameOver"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -25.0
+margin_top = 69.0
+margin_right = -818.0
+margin_bottom = -499.0
+rect_scale = Vector2( 4.04, 4.76 )
+text = "You Finished!
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Ledge Areas" type="Node" parent="."]
 
@@ -94,105 +296,105 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -76.962, 2.78173, -10.3446 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_0"]
 transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="Ledge_1" type="Area" parent="Ledge Areas"]
 transform = Transform( 0.444257, 0, 0, 0, 1, 0, 0, 0, 0.74047, -55.3157, -1.58562, 1.94057 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_1"]
 transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="Ledge_2" type="Area" parent="Ledge Areas"]
 transform = Transform( 0.363233, 0, 0, 0, 1, 0, 0, 0, 0.74047, -45.971, -4.86852, 30.6222 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_2"]
 transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="Ledge_3" type="Area" parent="Ledge Areas"]
 transform = Transform( 0.326489, 0, 0, 0, 1, 0, 0, 0, 0.690089, -54.7044, -11.9632, 59.4926 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_3"]
 transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="Ledge_4" type="Area" parent="Ledge Areas"]
 transform = Transform( 0.768987, 0, 0, 0, 1, 0, 0, 0, 0.542502, -36.1258, -22.6804, 82.4375 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_4"]
 transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="Ledge_5" type="Area" parent="Ledge Areas"]
 transform = Transform( 0.768987, 0, 0, 0, 1, 0, 0, 0, 0.542502, -6.07849, -38.1471, 90.7085 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_5"]
 transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="Ledge_6" type="Area" parent="Ledge Areas"]
 transform = Transform( 0.768987, 0, 0, 0, 1, 0, 0, 0, 0.542502, 25.5335, -47.6025, 78.7943 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_6"]
 transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="Ledge_9" type="Area" parent="Ledge Areas"]
 transform = Transform( 0.768987, 0, 0, 0, 1, 0, 0, 0, 0.769097, 96.1742, -54.1776, 40.2364 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_9"]
 transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="Ledge_10" type="Area" parent="Ledge Areas"]
 transform = Transform( 0.768987, 0, 0, 0, 1, 0, 0, 0, 0.769097, 162.676, -56.3005, 40.0205 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_10"]
 transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="Ledge_11" type="Area" parent="Ledge Areas"]
 transform = Transform( 0.768987, 0, 0, 0, 1, 0, 0, 0, 0.769097, 193.701, -70.5428, 3.62367 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_11"]
 transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="Ledge_12" type="Area" parent="Ledge Areas"]
 transform = Transform( 0.768987, 0, 0, 0, 1, 0, 0, 0, 0.769097, 234.948, -96.3426, -5.69609 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_12"]
 transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="Ledge_13" type="Area" parent="Ledge Areas"]
 transform = Transform( 0.768987, 0, 0, 0, 1, 0, 0, 0, 0.704384, 275.64, -124.596, 44.6582 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_13"]
 transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="Ledge_14" type="Area" parent="Ledge Areas"]
 transform = Transform( 0.768987, 0, 0, 0, 1, 0, 0, 0, 0.793453, 271.327, -142.505, 105.03 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_14"]
 transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="Ledge_7" type="Area" parent="Ledge Areas"]
 transform = Transform( 0.830514, 0, 0, 0, 1, 0, 0, 0, 0.678903, 35.1239, -35.0761, -12.3607 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_7"]
 transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="Ledge_8" type="Area" parent="Ledge Areas"]
 transform = Transform( 0.38875, 0, 0, 0, 1, 0, 0, 0, 0.195342, -9.38465, -17.341, -9.81353 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Ledge Areas/Ledge_8"]
 transform = Transform( 16.986, 0, 0, 0, 1, 0, 0, 0, 23.8529, 1.47676, -1.29581, -0.914659 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="Short Platforms" type="Node" parent="."]
 
@@ -200,10 +402,10 @@ shape = SubResource( 1 )
 transform = Transform( 4.89802, 0, 0, 0, 0.90726, 0, 0, 0, 3.74674, -8.74276, -17.9618, -9.4487 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Short Platforms/Challenge Platform"]
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Short Platforms/Challenge Platform"]
-mesh = SubResource( 3 )
+mesh = SubResource( 6 )
 material/0 = ExtResource( 2 )
 
 [node name="Spatial" parent="Short Platforms/Challenge Platform" instance=ExtResource( 15 )]
@@ -213,10 +415,10 @@ transform = Transform( 0.81089, 0, 0, 0, 0.81089, 0, 0, 0, 0.81089, 0, 0, 0 )
 transform = Transform( 9.93815, 0, 0, 0, 0.90726, 0, 0, 0, 14.9264, 36.8707, -35.2359, -12.5546 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Short Platforms/Challenge Platform2"]
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Short Platforms/Challenge Platform2"]
-mesh = SubResource( 3 )
+mesh = SubResource( 6 )
 material/0 = ExtResource( 2 )
 
 [node name="Spatial" parent="Short Platforms/Challenge Platform2" instance=ExtResource( 15 )]
@@ -226,11 +428,11 @@ transform = Transform( 13.3094, 0, 0, 0, 1.04466, 0, 0, 0, 21.5742, -75.2225, 2.
 
 [node name="CollisionShape" type="CollisionShape" parent="Short Platforms/Starting Platform"]
 transform = Transform( 1.04325, 0, 0, 0, 1, 0, 0, 0, 1, -1.43051e-06, 0, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Short Platforms/Starting Platform"]
 transform = Transform( 1.04325, 0, 0, 0, 1, 0, 0, 0, 1, -5.53131e-05, 0, 0 )
-mesh = SubResource( 3 )
+mesh = SubResource( 6 )
 material/0 = ExtResource( 2 )
 
 [node name="Spatial" parent="Short Platforms/Starting Platform" instance=ExtResource( 15 )]
@@ -239,11 +441,11 @@ material/0 = ExtResource( 2 )
 transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -10.4613, -34.9749, -23.3472, 81.9637 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Short Platforms/Normal Platform"]
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Short Platforms/Normal Platform"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
-mesh = SubResource( 3 )
+mesh = SubResource( 6 )
 material/0 = ExtResource( 2 )
 
 [node name="Spatial" parent="Short Platforms/Normal Platform" instance=ExtResource( 15 )]
@@ -252,11 +454,11 @@ material/0 = ExtResource( 2 )
 transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -10.4613, -4.61409, -38.6326, 90.8728 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Short Platforms/Normal Platform2"]
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Short Platforms/Normal Platform2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
-mesh = SubResource( 3 )
+mesh = SubResource( 6 )
 material/0 = ExtResource( 2 )
 
 [node name="Spatial" parent="Short Platforms/Normal Platform2" instance=ExtResource( 15 )]
@@ -265,11 +467,11 @@ material/0 = ExtResource( 2 )
 transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -10.4613, 26.9649, -48.0209, 78.7366 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Short Platforms/Normal Platform3"]
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Short Platforms/Normal Platform3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
-mesh = SubResource( 3 )
+mesh = SubResource( 6 )
 material/0 = ExtResource( 2 )
 
 [node name="Spatial" parent="Short Platforms/Normal Platform3" instance=ExtResource( 15 )]
@@ -278,11 +480,11 @@ material/0 = ExtResource( 2 )
 transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -15.7103, 97.4325, -55.0906, 39.0599 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Short Platforms/Normal2 Platform"]
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Short Platforms/Normal2 Platform"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
-mesh = SubResource( 3 )
+mesh = SubResource( 6 )
 material/0 = ExtResource( 2 )
 
 [node name="Spatial" parent="Short Platforms/Normal2 Platform" instance=ExtResource( 15 )]
@@ -291,11 +493,11 @@ material/0 = ExtResource( 2 )
 transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -15.7103, 163.723, -57.3745, 39.0599 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Short Platforms/Normal2 Platform2"]
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Short Platforms/Normal2 Platform2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
-mesh = SubResource( 3 )
+mesh = SubResource( 6 )
 material/0 = ExtResource( 2 )
 
 [node name="Spatial" parent="Short Platforms/Normal2 Platform2" instance=ExtResource( 15 )]
@@ -304,11 +506,11 @@ material/0 = ExtResource( 2 )
 transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -15.7103, 194.804, -71.3735, 3.44301 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Short Platforms/Normal2 Platform3"]
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Short Platforms/Normal2 Platform3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
-mesh = SubResource( 3 )
+mesh = SubResource( 6 )
 material/0 = ExtResource( 2 )
 
 [node name="Spatial" parent="Short Platforms/Normal2 Platform3" instance=ExtResource( 15 )]
@@ -317,11 +519,11 @@ material/0 = ExtResource( 2 )
 transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -15.7103, 236.673, -96.9843, -5.99475 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Short Platforms/Normal2 Platform4"]
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Short Platforms/Normal2 Platform4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
-mesh = SubResource( 3 )
+mesh = SubResource( 6 )
 material/0 = ExtResource( 2 )
 
 [node name="Spatial" parent="Short Platforms/Normal2 Platform4" instance=ExtResource( 15 )]
@@ -332,11 +534,11 @@ material/0 = ExtResource( 2 )
 transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -15.7103, 275.447, -125.303, 44.0669 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Short Platforms/Normal2 Platform5"]
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Short Platforms/Normal2 Platform5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
-mesh = SubResource( 3 )
+mesh = SubResource( 6 )
 material/0 = ExtResource( 2 )
 
 [node name="Spatial" parent="Short Platforms/Normal2 Platform5" instance=ExtResource( 15 )]
@@ -345,11 +547,11 @@ material/0 = ExtResource( 2 )
 transform = Transform( -10.4755, 0, 0, 0, 1.04466, 0, 0, 0, -15.7103, 272.486, -143.506, 104.255 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Short Platforms/Normal2 Platform6"]
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Short Platforms/Normal2 Platform6"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38826e-05, 0, 0 )
-mesh = SubResource( 3 )
+mesh = SubResource( 6 )
 material/0 = ExtResource( 2 )
 
 [node name="Spatial" parent="Short Platforms/Normal2 Platform6" instance=ExtResource( 15 )]
@@ -361,11 +563,11 @@ transform = Transform( 24.9465, 0, 0, 0, 2.18908, 0, 0, 0, 66.9689, -55.1949, -2
 
 [node name="CollisionShape" type="CollisionShape" parent="Long Platforms/Long Starter1"]
 transform = Transform( 1.03553, 0, 0, 0, 1.0087, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Long Platforms/Long Starter1"]
 transform = Transform( 0.229484, 0, 0, 0, 0.219957, 0, 0, 0, 0.219982, 0, 0, 0 )
-mesh = SubResource( 5 )
+mesh = SubResource( 8 )
 material/0 = ExtResource( 2 )
 
 [node name="Spatial" parent="Long Platforms/Long Starter1/MeshInstance" instance=ExtResource( 15 )]
@@ -375,11 +577,11 @@ transform = Transform( 18.8641, 0, 0, 0, 2.4344, 0, 0, 0, 66.9689, -45.536, -5.4
 
 [node name="CollisionShape" type="CollisionShape" parent="Long Platforms/Long Starter2"]
 transform = Transform( 1.03553, 0, 0, 0, 1.0087, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Long Platforms/Long Starter2"]
 transform = Transform( 0.229484, 0, 0, 0, 0.219957, 0, 0, 0, 0.219982, 0, 0, 0 )
-mesh = SubResource( 5 )
+mesh = SubResource( 8 )
 material/0 = ExtResource( 2 )
 
 [node name="Spatial" parent="Long Platforms/Long Starter2/MeshInstance" instance=ExtResource( 15 )]
@@ -389,11 +591,11 @@ transform = Transform( 17.6314, 0, 0, 0, 3.12083, 0, 0, 0, 66.9689, -54.2938, -1
 
 [node name="CollisionShape" type="CollisionShape" parent="Long Platforms/Long Starter3"]
 transform = Transform( 1.03553, 0, 0, 0, 1.0087, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Long Platforms/Long Starter3"]
 transform = Transform( 0.229484, 0, 0, 0, 0.219957, 0, 0, 0, 0.219982, 0, 0, 0 )
-mesh = SubResource( 5 )
+mesh = SubResource( 8 )
 material/0 = ExtResource( 2 )
 
 [node name="Spatial" parent="Long Platforms/Long Starter3/MeshInstance" instance=ExtResource( 15 )]
@@ -403,11 +605,11 @@ transform = Transform( -0.189018, -0.550871, -81.6144, -0.0557308, 1.59286, -24.
 
 [node name="CollisionShape" type="CollisionShape" parent="Long Platforms/Middle Angled"]
 transform = Transform( 1.03553, 0, 0, 0, 1.0087, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Long Platforms/Middle Angled"]
 transform = Transform( 0.229484, 0, 0, 0, 0.219957, 0, 0, 0, 0.219982, 0, 0, 0 )
-mesh = SubResource( 5 )
+mesh = SubResource( 8 )
 material/0 = ExtResource( 2 )
 
 [node name="Spatial" parent="Long Platforms/Middle Angled/MeshInstance" instance=ExtResource( 15 )]
@@ -417,11 +619,11 @@ transform = Transform( 17.588, -0.502645, 70.5723, 0.34348, 1.59232, 31.5605, -3
 
 [node name="CollisionShape" type="CollisionShape" parent="Long Platforms/Middle Angled2"]
 transform = Transform( 1.03553, 0, 0, 0, 1.0087, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Long Platforms/Middle Angled2"]
 transform = Transform( 0.229484, -1.74623e-10, 1.49012e-08, 0, 0.219957, 4.76837e-07, -3.72529e-09, -1.16415e-10, 0.219982, 0, 0, 0 )
-mesh = SubResource( 5 )
+mesh = SubResource( 8 )
 material/0 = ExtResource( 2 )
 
 [node name="Spatial" parent="Long Platforms/Middle Angled2/MeshInstance" instance=ExtResource( 15 )]
@@ -433,11 +635,11 @@ transform = Transform( 514.837, 0, 0, 0, 42.8972, 0, 0, 0, 537.885, 121.316, -21
 
 [node name="CollisionShape" type="CollisionShape" parent="Lava/Lava"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.557364, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Lava/Lava"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0385714, -0.00393629, -0.000303239 )
-mesh = SubResource( 3 )
+mesh = SubResource( 6 )
 material/0 = ExtResource( 1 )
 
 [node name="CSGBox" type="CSGBox" parent="Lava"]
@@ -493,7 +695,7 @@ transform = Transform( 46.7251, 0, 0, 0, 2.36977, 0, 0, 0, 29.8424, 272.447, -14
 
 [node name="CollisionShape" type="CollisionShape" parent="Checkpoints/Game Over"]
 transform = Transform( 1.06833, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="Collectables" type="Node" parent="."]
 
@@ -503,11 +705,11 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
-shape = SubResource( 7 )
+shape = SubResource( 10 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
-mesh = SubResource( 8 )
+mesh = SubResource( 11 )
 material/0 = ExtResource( 5 )
 
 [node name="Coin2" type="Area" parent="Collectables"]
@@ -516,11 +718,11 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
-shape = SubResource( 7 )
+shape = SubResource( 10 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
-mesh = SubResource( 8 )
+mesh = SubResource( 11 )
 material/0 = ExtResource( 5 )
 
 [node name="Coin3" type="Area" parent="Collectables"]
@@ -529,11 +731,11 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
-shape = SubResource( 7 )
+shape = SubResource( 10 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
-mesh = SubResource( 8 )
+mesh = SubResource( 11 )
 material/0 = ExtResource( 5 )
 
 [node name="Coin4" type="Area" parent="Collectables"]
@@ -542,11 +744,11 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
-shape = SubResource( 7 )
+shape = SubResource( 10 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
-mesh = SubResource( 8 )
+mesh = SubResource( 11 )
 material/0 = ExtResource( 5 )
 
 [node name="Coin5" type="Area" parent="Collectables"]
@@ -555,11 +757,11 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
-shape = SubResource( 7 )
+shape = SubResource( 10 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
-mesh = SubResource( 8 )
+mesh = SubResource( 11 )
 material/0 = ExtResource( 5 )
 
 [node name="Coin6" type="Area" parent="Collectables"]
@@ -568,11 +770,11 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin6"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
-shape = SubResource( 7 )
+shape = SubResource( 10 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin6"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
-mesh = SubResource( 8 )
+mesh = SubResource( 11 )
 material/0 = ExtResource( 5 )
 
 [node name="Coin7" type="Area" parent="Collectables"]
@@ -581,11 +783,11 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
-shape = SubResource( 7 )
+shape = SubResource( 10 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
-mesh = SubResource( 8 )
+mesh = SubResource( 11 )
 material/0 = ExtResource( 5 )
 
 [node name="Coin8" type="Area" parent="Collectables"]
@@ -594,11 +796,11 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin8"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
-shape = SubResource( 7 )
+shape = SubResource( 10 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin8"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
-mesh = SubResource( 8 )
+mesh = SubResource( 11 )
 material/0 = ExtResource( 5 )
 
 [node name="Coin9" type="Area" parent="Collectables"]
@@ -607,11 +809,11 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Coin9"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.35008, 0 )
-shape = SubResource( 7 )
+shape = SubResource( 10 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Coin9"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.37753, 0 )
-mesh = SubResource( 8 )
+mesh = SubResource( 11 )
 material/0 = ExtResource( 5 )
 
 [node name="Gas" type="Area" parent="Collectables"]
@@ -620,11 +822,11 @@ script = ExtResource( 12 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.8892, 10.7784, -4.22731 )
-shape = SubResource( 9 )
+shape = SubResource( 12 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.5941, 10.7707, -4.26877 )
-mesh = SubResource( 10 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 11 )
 
 [node name="Gas2" type="Area" parent="Collectables"]
@@ -633,11 +835,11 @@ script = ExtResource( 12 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas2"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.8892, 10.7784, -4.22731 )
-shape = SubResource( 9 )
+shape = SubResource( 12 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas2"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.5941, 10.7707, -4.26877 )
-mesh = SubResource( 10 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 11 )
 
 [node name="Gas3" type="Area" parent="Collectables"]
@@ -646,11 +848,11 @@ script = ExtResource( 12 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas3"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.8892, 10.7784, -4.22731 )
-shape = SubResource( 9 )
+shape = SubResource( 12 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas3"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.5941, 10.7707, -4.26877 )
-mesh = SubResource( 10 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 11 )
 
 [node name="Gas4" type="Area" parent="Collectables"]
@@ -659,11 +861,11 @@ script = ExtResource( 12 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas4"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.8892, 10.7784, -4.22731 )
-shape = SubResource( 9 )
+shape = SubResource( 12 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas4"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.5941, 10.7707, -4.26877 )
-mesh = SubResource( 10 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 11 )
 
 [node name="Gas5" type="Area" parent="Collectables"]
@@ -672,11 +874,11 @@ script = ExtResource( 12 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas5"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.8892, 10.7784, -4.22731 )
-shape = SubResource( 9 )
+shape = SubResource( 12 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas5"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.5941, 10.7707, -4.26877 )
-mesh = SubResource( 10 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 11 )
 
 [node name="Gas6" type="Area" parent="Collectables"]
@@ -685,14 +887,15 @@ script = ExtResource( 12 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Collectables/Gas6"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.8892, 10.7784, -4.22731 )
-shape = SubResource( 9 )
+shape = SubResource( 12 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Collectables/Gas6"]
 transform = Transform( 6.16106, 0, 0, 0, 1, 0, 0, 0, 1, -71.5941, 10.7707, -4.26877 )
-mesh = SubResource( 10 )
+mesh = SubResource( 13 )
 material/0 = ExtResource( 11 )
 
 [node name="menu" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 7 )
@@ -745,7 +948,7 @@ margin_left = 129.6
 margin_top = 210.91
 margin_right = 418.6
 margin_bottom = 372.91
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 14 )
 text = "single player"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -756,7 +959,7 @@ margin_left = 596.8
 margin_top = 206.219
 margin_right = 857.8
 margin_bottom = 377.219
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 15 )
 text = "multiplayer"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -775,7 +978,7 @@ margin_left = 135.728
 margin_top = 236.345
 margin_right = 941.728
 margin_bottom = 356.345
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -785,7 +988,7 @@ margin_left = 302.272
 margin_top = 88.7089
 margin_right = 753.272
 margin_bottom = 175.709
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 17 )
 text = "input the IP address"
 
 [node name="Button4" type="Button" parent="menu/joingame"]
@@ -793,7 +996,7 @@ margin_left = 816.954
 margin_top = 471.285
 margin_right = 932.954
 margin_bottom = 527.285
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 18 )
 text = "back"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -804,7 +1007,7 @@ margin_left = 449.013
 margin_top = 389.323
 margin_right = 577.013
 margin_bottom = 445.323
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 19 )
 text = "enter"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -828,7 +1031,7 @@ margin_left = 816.954
 margin_top = 471.285
 margin_right = 932.954
 margin_bottom = 527.285
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 18 )
 text = "back"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -844,7 +1047,7 @@ margin_left = 434.759
 margin_top = 95.3262
 margin_right = 950.759
 margin_bottom = 145.326
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 20 )
 text = "control the ball's moves"
 
 [node name="space" type="Sprite" parent="menu/instructions"]
@@ -857,7 +1060,7 @@ margin_left = 617.393
 margin_top = 254.797
 margin_right = 728.393
 margin_bottom = 304.797
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 21 )
 text = "jump"
 
 [node name="shift" type="Sprite" parent="menu/instructions"]
@@ -870,7 +1073,7 @@ margin_left = 195.998
 margin_top = 393.777
 margin_right = 235.998
 margin_bottom = 443.777
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 22 )
 text = "+"
 
 [node name="space2" type="Sprite" parent="menu/instructions"]
@@ -883,7 +1086,7 @@ margin_left = 531.867
 margin_top = 393.777
 margin_right = 817.867
 margin_bottom = 443.777
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 23 )
 text = "use gas to fly"
 
 [node name="multi" type="Control" parent="menu"]
@@ -895,7 +1098,7 @@ margin_left = 135.728
 margin_top = 236.345
 margin_right = 941.728
 margin_bottom = 356.345
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -905,7 +1108,7 @@ margin_left = 302.272
 margin_top = 88.7089
 margin_right = 753.272
 margin_bottom = 175.709
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 17 )
 text = "input the IP address"
 
 [node name="Button9" type="Button" parent="menu/multi"]
@@ -913,7 +1116,7 @@ margin_left = 816.954
 margin_top = 471.285
 margin_right = 932.954
 margin_bottom = 527.285
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 18 )
 text = "back"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -924,7 +1127,7 @@ margin_left = 449.013
 margin_top = 389.323
 margin_right = 577.013
 margin_bottom = 445.323
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 19 )
 text = "enter"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -948,13 +1151,13 @@ __meta__ = {
 [connection signal="pressed" from="menu/title/Button" to="menu" method="_on_Button_pressed"]
 [connection signal="pressed" from="menu/title/Button2" to="menu" method="_on_Button2_pressed"]
 [connection signal="pressed" from="menu/title/Button3" to="menu" method="_on_Button3_pressed"]
-[connection signal="pressed" from="menu/newgame/Button7" to="." method="_on_Button7_pressed"]
 [connection signal="pressed" from="menu/newgame/Button7" to="menu" method="_on_Button7_pressed"]
+[connection signal="pressed" from="menu/newgame/Button7" to="." method="_on_Button7_pressed"]
 [connection signal="pressed" from="menu/newgame/Button8" to="menu" method="_on_Button8_pressed"]
 [connection signal="pressed" from="menu/joingame/Button4" to="menu" method="_on_Button4_pressed"]
-[connection signal="pressed" from="menu/joingame/Button6" to="." method="_on_Button6_pressed"]
 [connection signal="pressed" from="menu/joingame/Button6" to="menu" method="_on_Button6_pressed"]
+[connection signal="pressed" from="menu/joingame/Button6" to="." method="_on_Button6_pressed"]
 [connection signal="pressed" from="menu/instructions/Button5" to="menu" method="_on_Button5_pressed"]
 [connection signal="pressed" from="menu/multi/Button9" to="menu" method="_on_Button9_pressed"]
-[connection signal="pressed" from="menu/multi/Button10" to="." method="_on_Button10_pressed"]
 [connection signal="pressed" from="menu/multi/Button10" to="menu" method="_on_Button10_pressed"]
+[connection signal="pressed" from="menu/multi/Button10" to="." method="_on_Button10_pressed"]
