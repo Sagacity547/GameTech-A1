@@ -1,0 +1,14 @@
+Division of Tasks ~ Assignment 4
+
+Task List: 
+Navigation - Julian
+AI System - Gavin
+AI Behaviors - Gavin
+Multiple Agents - Gavin
+Fight System (UI, Code) - Julian
+
+Meeting Schedule:
+	- Daily Standups in evening (8 - 10) 
+	- Daily Discord check-ins
+
+Evan has not been assigned tasks as of the milestone

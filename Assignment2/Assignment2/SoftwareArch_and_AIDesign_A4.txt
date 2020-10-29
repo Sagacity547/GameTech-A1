@@ -1,0 +1,5 @@
+Overall Design of the AI:
+
+Behaviors Tree; AI will update itself mostly based on interaction with the Player through signals or is just autonomous walking through the game area.
+Event driven AI. It will not react to any other agents within the area. The Behavior Tree will take 65% of our work effort, multiple agents will take about 15%
+and Navigation will take about 20%. We assume with our plan we will not need to scale back, however we will pull back on characteristics/branches on the behavior tree.

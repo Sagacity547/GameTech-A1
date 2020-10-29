@@ -1,0 +1,11 @@
+System: 
+
+Behavior Tree System; AI will have a few different behaviors based on characteristics (personality types)
+(eg. Based on body build, mood, personality). 
+
+Specific behaviors will be found by going through binary tree (through)
+implemented behavior tree). 
+
+Print statements and testing through AI scenes will be used to debug AI behaviors.
+
+
