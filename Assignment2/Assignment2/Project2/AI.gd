@@ -10,33 +10,30 @@ var velocity : Vector3
 var walkableAngle: float = .30
 var fall_velocity : float
 var canWalk: bool = true
-var is_connected: bool = false
 #variable for player's current spawn position upon death
-var spawnPoint = Vector3(-80.077, 6.14, -22.868) #coordinates of initial spawn point
+var position : Vector3
+var direction : Vector3
 
 var time = 0;
 
-#get the camera
-onready var cam = get_node("Camera")
-#sensitivity variable that controls rotation in line 19
-var sens = 0.7
 
-#code to start non physics process for game
-func _process(delta):
-	pass
+#AI specific code
+var AI_STATE : float = 1.0
+const AI_IDLE : float = 1.0
+const AI_ATTACK : float = 2.0
+var canMove_AI : bool = true
 
 #code to start physics process for game
 func _physics_process(delta):
-	move_ai(delta)
-	
-remote func _set_position(pos):
-	global_transform.origin = pos
+	move_AI(delta)
 
-#Player movement code
-func move_ai(delta):
-	set_can_walk()
-	var direction = Vector3(0,0,0)
-	
+func ai_get_direction():
+	return target.position - self.position
+
+func move_AI(delta):
+	var direction = ai_get_direction()
+	var motion = direction.normalized() * speed
+	move_and_slide(motion)
 
 #applies gravity to player and handles flying and jumping
 func handle_gravity():

@@ -17,6 +17,7 @@ var hasDashed: bool = false
 var is_connected: bool = false
 #variable for player's current spawn position upon death
 var spawnPoint = Vector3(-80.077, 6.14, -22.868) #coordinates of initial spawn point
+var position : Vector3
 
 var network_id : int
 #variables for Player GUI
@@ -77,7 +78,6 @@ func move_player(delta):
 		handle_gravity()
 	
 		velocity.y = fall_velocity
-		
 		if get_network_master() == network_id:
 			print("AHHHHHHHH")
 		
