@@ -11,7 +11,7 @@ var walkableAngle: float = .30
 var fall_velocity : float
 var canWalk: bool = true
 #variable for player's current spawn position upon death
-var position : Vector3
+var position : Vector3 = Vector3(translation.x, translation.y, translation.z)
 var direction : Vector3
 
 var time = 0;
@@ -22,13 +22,18 @@ var AI_STATE : float = 1.0
 const AI_IDLE : float = 1.0
 const AI_ATTACK : float = 2.0
 var canMove_AI : bool = true
+var target : Node
+var targetPosition : Vector3
 
 #code to start physics process for game
 func _physics_process(delta):
+	target = $"../../Pillar"
+	position = Vector3(translation.x, translation.y, translation.z)
 	move_AI(delta)
+	
 
 func ai_get_direction():
-	return target.position - self.position
+	return target.position
 
 func move_AI(delta):
 	var direction = ai_get_direction()

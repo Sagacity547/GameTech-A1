@@ -17,7 +17,7 @@ var hasDashed: bool = false
 var is_connected: bool = false
 #variable for player's current spawn position upon death
 var spawnPoint = Vector3(-80.077, 6.14, -22.868) #coordinates of initial spawn point
-var position : Vector3
+var position : Vector3 = Vector3(translation.x, translation.y, translation.z)
 
 var network_id : int
 #variables for Player GUI
@@ -40,6 +40,7 @@ func _input(event):
 
 #code to start non physics process for game
 func _process(delta):
+	position = Vector3(translation.x, translation.y, translation.z)
 	if Input.is_action_just_pressed("jump") and !isFlying:
 		var musicNode = $"Jump"
 		musicNode.play()
