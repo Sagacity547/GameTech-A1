@@ -36,9 +36,14 @@ func ai_get_direction():
 	return target.position
 
 func move_AI(delta):
-	var direction = ai_get_direction()
+	var direction = random()
 	var motion = direction.normalized() * speed
 	move_and_slide(motion)
+	
+
+func random():
+	randomize()
+	return randi()
 
 #applies gravity to player and handles flying and jumping
 func handle_gravity():
