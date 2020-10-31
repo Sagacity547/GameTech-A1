@@ -1,8 +1,8 @@
 extends KinematicBody
 
 #code for player basic movement speeds
-export var speed : float = 20
-export var acceleration : float = 5
+export var speed : float = 50
+export var acceleration : float = 10
 export var gravity : float = 0.98
 
 #variables for player custom movement and jumping
@@ -24,10 +24,11 @@ const AI_ATTACK : float = 2.0
 var canMove_AI : bool = true
 var target : Node
 var targetPosition : Vector3
+var timer : float = 3.0
 
 #code to start physics process for game
 func _physics_process(delta):
-	target = $"../../Pillar"
+	#target = $"../../Pillar"
 	position = Vector3(translation.x, translation.y, translation.z)
 	move_AI(delta)
 	
@@ -35,16 +36,22 @@ func _physics_process(delta):
 func ai_get_direction():
 	return target.position
 
+#main code that moves AI in an idle state
 func move_AI(delta):
-	direction = Vector3(random(), 0, random())
-	direction = direction.normalized()
-	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
+	timer += delta
+	set_can_walk()
+	if timer >= 2.0: #change directions every 2 seconds
+		timer = 0.0
+		direction = Vector3(random(), 0, random())
+		direction = direction.normalized()
+		velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
+		handle_gravity()
 	move_and_slide(velocity, Vector3.UP)
 	
 
 func random():
 	randomize()
-	return randi()%361-180
+	return randi()%361-180 #selects a value between 180 through -180 which is all directions for xy axis
 
 #applies gravity to player and handles flying and jumping
 func handle_gravity():
