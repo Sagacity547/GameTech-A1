@@ -1,13 +1,13 @@
 extends KinematicBody
 
 #code for player basic movement speeds
-export var speed : float = 50
-export var acceleration : float = 10
-export var gravity : float = 0.98
+export var speed : float = 50.0
+export var acceleration : float = 10.0
+export var gravity : float = 1.0
 
 #variables for player custom movement and jumping
 var velocity : Vector3
-var walkableAngle: float = .30
+var walkableAngle: float = 0.30
 var fall_velocity : float
 var canWalk: bool = true
 #variable for player's current spawn position upon death
@@ -45,7 +45,8 @@ func move_AI(delta):
 		direction = Vector3(random(), 0, random())
 		direction = direction.normalized()
 		velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
-		handle_gravity()
+	handle_gravity()
+	velocity.y = fall_velocity
 	move_and_slide(velocity, Vector3.UP)
 	
 
