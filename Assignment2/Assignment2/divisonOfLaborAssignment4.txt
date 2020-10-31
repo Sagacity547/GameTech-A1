@@ -6,6 +6,7 @@ AI System - Gavin
 AI Behaviors - Gavin
 Multiple Agents - Gavin
 Fight System (UI, Code) - Julian
+Level Layout - Evan
 
 Meeting Schedule:
 	- Daily Standups in evening (8 - 10) 
