@@ -1,7 +1,7 @@
 extends KinematicBody
 
 #code for player basic movement speeds
-export var speed : float = 50.0
+export var speed : float = 30.0
 export var acceleration : float = 10.0
 export var gravity : float = 1.0
 
@@ -11,7 +11,6 @@ var walkableAngle: float = 0.30
 var fall_velocity : float
 var canWalk: bool = true
 #variable for player's current spawn position upon death
-var position : Vector3 = Vector3(translation.x, translation.y, translation.z)
 var direction : Vector3
 
 var time = 0;
@@ -22,19 +21,16 @@ var AI_STATE : float = 1.0
 const AI_IDLE : float = 1.0
 const AI_ATTACK : float = 2.0
 var canMove_AI : bool = true
-var target : Node
-var targetPosition : Vector3
+onready var playerpos = get_node("../Player")
 var timer : float = 3.0
 
 #code to start physics process for game
 func _physics_process(delta):
 	#target = $"../../Pillar"
-	position = Vector3(translation.x, translation.y, translation.z)
-	move_AI(delta)
-	
-
-func ai_get_direction():
-	return target.position
+	if(AI_STATE == AI_IDLE):
+		move_AI(delta)
+	elif(AI_STATE == AI_ATTACK):
+		fightPlayer(delta)
 
 #main code that moves AI in an idle state
 func move_AI(delta):
@@ -43,6 +39,8 @@ func move_AI(delta):
 	if timer >= 2.0: #change directions every 2 seconds
 		timer = 0.0
 		direction = Vector3(random(), 0, random())
+		while(test_move(self.transform, direction)): #make AI run into walls less frequently
+			direction = Vector3(random(), 0, random())
 		direction = direction.normalized()
 		velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
 	handle_gravity()
@@ -53,6 +51,17 @@ func move_AI(delta):
 func random():
 	randomize()
 	return randi()%361-180 #selects a value between 180 through -180 which is all directions for xy axis
+
+func goForPlayer():
+	return playerpos.transform.origin - self.transform.origin
+
+func fightPlayer(delta):
+	direction = goForPlayer()
+	direction = direction.normalized()
+	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
+	handle_gravity()
+	velocity.y = fall_velocity
+	move_and_slide(velocity, Vector3.UP)
 
 #applies gravity to player and handles flying and jumping
 func handle_gravity():
