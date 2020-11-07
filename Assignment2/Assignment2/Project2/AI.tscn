@@ -23,6 +23,10 @@ albedo_texture = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.9222, 0 )
 script = ExtResource( 3 )
 
+[node name="Area" type="Area" parent="AI"]
+transform = Transform( 30, 0, 0, 0, 1, 0, 0, 0, 30, 0, 0, 0 )
+space_override = 1
+
 [node name="Camera" type="Camera" parent="AI"]
 transform = Transform( -1.62921e-07, -0.573576, 0.819152, 0, 0.819152, 0.573576, -1, 9.34474e-08, -1.33457e-07, 10.192, 8.004, -0.232 )
 
@@ -39,10 +43,6 @@ material/0 = null
 [node name="Player" type="KinematicBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4392, 22.6368, -21.9084 )
 script = ExtResource( 5 )
-
-[node name="Camera" type="Camera" parent="Player"]
-transform = Transform( -1.50874e-07, -0.1362, 0.990681, 6.14845e-08, 0.990681, 0.1362, -1, 8.14605e-08, -1.41094e-07, 10.192, 0.755, -0.232 )
-visible = false
 
 [node name="CollisionShape" type="CollisionShape" parent="Player"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )

@@ -15,14 +15,18 @@ var direction : Vector3
 
 var time = 0;
 
+#Combat code
+var damage : float = 20.0
+var health : float = 100.0
+
 
 #AI specific code
-var AI_STATE : float = 3.0
+var AI_STATE : float = 1.0
 const AI_IDLE : float = 1.0
 const AI_ATTACK : float = 2.0
 const AI_RUN : float = 3.0
 var canMove_AI : bool = true
-onready var playerpos = get_node("../Player")
+onready var player = get_node("../Player")
 var timer : float = 3.0
 
 #code to start physics process for game
@@ -57,7 +61,7 @@ func random():
 
 
 func fightPlayer(delta):
-	direction = playerpos.transform.origin - self.transform.origin
+	direction = player.transform.origin - self.transform.origin
 	direction = direction.normalized()
 	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
 	handle_gravity()
@@ -65,12 +69,19 @@ func fightPlayer(delta):
 	move_and_slide(velocity, Vector3.UP)
 
 func runAway(delta):
-	direction = self.transform.origin - playerpos.transform.origin
+	direction = self.transform.origin - player.transform.origin
 	direction = direction.normalized()
 	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
 	handle_gravity()
 	velocity.y = fall_velocity
 	move_and_slide(velocity, Vector3.UP)
+
+func attack():
+	player.health -= damage
+	pass
+
+func aiTask(delta):
+	pass
 
 #applies gravity to player and handles flying and jumping
 func handle_gravity():

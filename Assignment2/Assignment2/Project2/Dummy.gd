@@ -79,3 +79,4 @@ func set_can_walk():
 			canWalk = false
 		else: 
 			canWalk = true
+

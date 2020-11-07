@@ -21,9 +21,9 @@ var position : Vector3 = Vector3(translation.x, translation.y, translation.z)
 
 var network_id : int
 #variables for Player GUI
-var coins = 2
-var gas = 1000
 var time = 0;
+var damage = 20.0
+var health = 100.0
 
 #get the camera
 onready var cam = get_node("Camera")
@@ -106,13 +106,6 @@ func handle_gravity():
 		isOnEdge = false
 		isJumping = true
 		
-	# Flying
-	if Input.is_action_pressed("Fly") && Input.is_action_pressed("jump") && gas > 0:
-		fall_velocity = 15
-		gas -= 5
-		$GasLabel.text = "Gas: " + str(gas)
-		isOnEdge = false
-		isFlying = true
 	
 	# Saving Dash
 	if Input.is_action_pressed("saving_dash") && !hasDashed:
@@ -149,22 +142,14 @@ func set_can_walk():
 func _on_Coin_body_entered(_body):
 	var musicNode = $"Coin"
 	musicNode.play()
-	coins += 1
-	$CoinLabel.text = "Coins: " + str(coins)
-	print(coins)
 
 #code for when player enters Lava
 func _on_Lava_body_entered(_body):
 	var musicNode = $"Lava"
 	musicNode.play()
-	gas = 1000
 	hasDashed = false
 	isJumping = false
 	isFlying = false
-	if coins != 0:
-		coins -= 1
-	$GasLabel.text = "Gas: " + str(gas)
-	$CoinLabel.text = "Coins: " + str(coins)
 	self.set_translation(spawnPoint)
 	
 func handle_ledge_hang():
@@ -185,11 +170,6 @@ func _on_Starting_ledge_exited(body):
 func _on_Gas_body_entered(_body):
 	var musicNode = $"Gas"
 	musicNode.play()
-	if gas < 1000:
-		gas += 500
-		if gas > 1000:
-			gas = 1000
-	$GasLabel.text = "Gas: " + str(gas)
 	pass # Replace with function body.
 
 
@@ -198,4 +178,3 @@ func _on_Game_Over_body_entered(_body):
 	set_physics_process(false)
 	$AnimationPlayer.play("GameOver")
 	$CanvasLayer2/EndTimeLabel.text = "Time: " + str(stepify(time, 1))
-	$CanvasLayer2/EndCoinLabel.text = "Coins: " + str(coins)
