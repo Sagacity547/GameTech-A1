@@ -27,7 +27,19 @@ const AI_ATTACK : float = 2.0
 const AI_RUN : float = 3.0
 var canMove_AI : bool = true
 onready var player = get_node("../Player")
-var timer : float = 3.0
+var timer : float = 3.0     #time till AI changes directions during idle
+var taskTimer : float       #time before doing a task
+var tasking : float = 25.0  #time spend doing a task
+
+#Task nodes
+var taskArray
+onready var task1 = get_node("../Area/Pillar")
+onready var task2 = get_node("../Area/Pillar2")
+
+func _ready():
+	taskArray = [task1.transform.origin, task2.transform.origin]
+	taskRandom()
+	selectTask()
 
 #code to start physics process for game
 func _physics_process(delta):
@@ -42,8 +54,18 @@ func _physics_process(delta):
 #main code that moves AI in an idle state
 func move_AI(delta):
 	timer += delta
+	taskTimer -= delta
+	print(taskTimer, " TaskTimer")
+	print(tasking, "Tasking")
 	set_can_walk()
-	if timer >= 2.0: #change directions every 2 seconds
+	if taskTimer <= 0.0 && tasking > 0.0:
+		tasking -= delta
+		task(delta)
+		if tasking <= 0.0:
+			taskRandom()
+			tasking = 25.0
+			selectTask()
+	elif timer >= 2.0: #change directions every 2 seconds
 		timer = 0.0
 		direction = Vector3(random(), 0, random())
 		while(test_move(self.transform, direction)): #make AI run into walls less frequently
@@ -54,6 +76,21 @@ func move_AI(delta):
 	velocity.y = fall_velocity
 	move_and_slide(velocity, Vector3.UP)
 	
+
+#set a random interval of time between 15 and 180 seconds before going off to complete task
+func taskRandom():
+	randomize()
+	taskTimer = randi()%165 + 15
+
+#select a task to go to when tasking
+func selectTask():
+	taskArray.shuffle()
+
+#have AI go to task position
+func task(delta):
+	direction = taskArray.front() - self.transform.origin
+	direction = direction.normalized()
+	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
 
 func random():
 	randomize()
@@ -80,8 +117,6 @@ func attack():
 	player.health -= damage
 	pass
 
-func aiTask(delta):
-	pass
 
 #applies gravity to player and handles flying and jumping
 func handle_gravity():
