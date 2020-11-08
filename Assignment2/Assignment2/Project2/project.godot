@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Object",
+"class": "ZNode",
+"language": "GDScript",
+"path": "res://Scripts/ZNode.gd"
+} ]
 _global_script_class_icons={
-
+"ZNode": ""
 }
 
 [application]
