@@ -1,7 +1,7 @@
 extends KinematicBody
 
 #code for player basic movement speeds
-export var speed : float = 30.0
+export var speed : float = 20.0
 export var acceleration : float = 10.0
 export var gravity : float = 1.0
 
@@ -16,7 +16,7 @@ var direction : Vector3
 var time = 0;
 
 #Combat code
-var damage : float = 20.0
+var damage : float = 15.0
 var health : float = 100.0
 
 
@@ -41,6 +41,9 @@ func _ready():
 	taskRandom()
 	selectTask()
 
+func _process(_delta):
+	print(health)
+
 #code to start physics process for game
 func _physics_process(delta):
 	#target = $"../../Pillar"
@@ -55,9 +58,8 @@ func _physics_process(delta):
 func move_AI(delta):
 	timer += delta
 	taskTimer -= delta
-	print(taskTimer, " TaskTimer")
-	print(tasking, "Tasking")
 	set_can_walk()
+	#task
 	if taskTimer <= 0.0 && tasking > 0.0:
 		tasking -= delta
 		task(delta)
@@ -80,7 +82,7 @@ func move_AI(delta):
 #set a random interval of time between 15 and 180 seconds before going off to complete task
 func taskRandom():
 	randomize()
-	taskTimer = randi()%165 + 15
+	taskTimer = randi()%75 + 15
 
 #select a task to go to when tasking
 func selectTask():
@@ -95,7 +97,6 @@ func task(delta):
 func random():
 	randomize()
 	return randi()%361-180 #selects a value between 180 through -180 which is all directions for xy axis
-
 
 func fightPlayer(delta):
 	direction = player.transform.origin - self.transform.origin

@@ -24,6 +24,9 @@ var timer : float = 3.0
 # var b = "text"
 onready var aipos= get_node("../AI")
 
+func _ready():
+	self.set_safe_margin(1.0)
+
 func _physics_process(delta):
 	fightPlayer(delta)
 
@@ -42,13 +45,22 @@ func move_AI(delta):
 #func _process(delta):
 #	pass
 
+var attackTimer : float = 0.0
 func fightPlayer(delta):
+	attackTimer -= delta
+	if(attackTimer <= 0.0 && self.is_on_wall()):
+		attackTimer = 5.0
+		attack()
 	direction = aipos.transform.origin - self.transform.origin
 	direction = direction.normalized()
 	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
 	handle_gravity()
 	velocity.y = fall_velocity
 	move_and_slide(velocity, Vector3.UP)
+
+func attack():
+	aipos.health -= 20.0
+	pass
 
 func random():
 	randomize()
