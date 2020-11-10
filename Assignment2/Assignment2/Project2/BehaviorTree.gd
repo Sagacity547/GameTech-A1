@@ -10,7 +10,7 @@ const actions = ["Fight", "Run"]
 var attributes = ["Disposition","Day Type","Body Type"]
 var current_action = ""
 var behavior_tree
-
+var fight_or_not
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,8 +18,20 @@ func _ready():
 	attributes[1] = day_types[get_rand_index()]
 	attributes[2] = body_types[get_rand_index()]
 	set_tree()
+	fight_or_not = set_reaction()
 	
-	
+#called at initialization and after attributes changes
+func set_reaction(): 
+	#start from root and loop all attributes
+	var node = behavior_tree
+	var i = 0
+	while node != null && i < attributes.size:
+		node = node.get_child(attributes[i])
+	#check if it's fight
+	if node != null && node.get_child(actions[0]) != null:
+		return true
+	else:
+		return false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
