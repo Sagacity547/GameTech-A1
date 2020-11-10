@@ -32,8 +32,7 @@ func get_child(txt):
 		if child_right.text == txt :
 			return child_right
 		else : 
-			return ZNode.new("Not Found")
-	
+			return null
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 # func _process(delta):
 #	 pass
