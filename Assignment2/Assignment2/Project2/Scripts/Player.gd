@@ -36,6 +36,8 @@ func _input(event):
 
 #code to start non physics process for game
 func _process(delta):
+	if(health <= 0):
+		gameOver()
 	pass
 
 #code to start physics process for game
@@ -80,6 +82,9 @@ func handle_gravity():
 		fall_velocity = fall_velocity - gravity
 
 
+func attack():
+	pass
+
 #Handles checking the walkable angle 
 func set_can_walk():
 	if Input.is_action_pressed("walkable_angle_up") && walkableAngle < .9:
@@ -97,9 +102,9 @@ func set_can_walk():
 		else: 
 			canWalk = true
 
-
-func _on_Game_Over_body_entered(_body):
+func gameOver():
 	set_process(false)
 	set_physics_process(false)
 	$AnimationPlayer.play("GameOver")
-	$CanvasLayer2/EndTimeLabel.text = "Time: " + str(stepify(time, 1))
+	pass
+

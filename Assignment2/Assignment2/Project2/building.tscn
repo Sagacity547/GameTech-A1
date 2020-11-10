@@ -18,36 +18,12 @@
 
 [sub_resource type="Animation" id=5]
 tracks/0/type = "value"
-tracks/0/path = NodePath("Move/CanvasLayer/GameOver:modulate")
+tracks/0/path = NodePath("CanvasLayer/GameOver:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.1, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Move/CanvasLayer2/EndTimeLabel:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.1, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Move/CanvasLayer2/EndCoinLabel:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0.1, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
@@ -205,12 +181,14 @@ __meta__ = {
 [node name="EndLabel" type="Label" parent="Player/CanvasLayer/GameOver"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -25.0
-margin_top = 69.0
-margin_right = -818.0
-margin_bottom = -499.0
+margin_left = -23.3182
+margin_top = 191.771
+margin_right = -816.318
+margin_bottom = -376.229
 rect_scale = Vector2( 4.04, 4.76 )
-text = "You Finished!
+text = "You got beat up!
+
+GAME OVER
 "
 align = 1
 __meta__ = {
@@ -452,3 +430,4 @@ material/0 = ExtResource( 2 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.13476, 37.6673 )
+[connection signal="input_event" from="AI" to="AI" method="_on_AI_input_event"]
