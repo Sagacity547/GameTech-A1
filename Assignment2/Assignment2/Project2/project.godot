@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="CS354R A2 "
-run/main_scene="res://Main.tscn"
+run/main_scene="res://building.tscn"
 config/icon="res://icon.png"
 
 [input]

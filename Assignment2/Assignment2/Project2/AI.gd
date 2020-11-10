@@ -1,7 +1,7 @@
 extends KinematicBody
 
 #code for player basic movement speeds
-export var speed : float = 20.0
+export var speed : float = 10.0
 export var acceleration : float = 10.0
 export var gravity : float = 1.0
 
@@ -26,23 +26,25 @@ const AI_IDLE : float = 1.0
 const AI_ATTACK : float = 2.0
 const AI_RUN : float = 3.0
 var canMove_AI : bool = true
-onready var player = get_node("../Player")
+onready var player = get_node("../../Player")
 var timer : float = 3.0     #time till AI changes directions during idle
 var taskTimer : float       #time before doing a task
 var tasking : float = 25.0  #time spend doing a task
 
 #Task nodes
 var taskArray
-onready var task1 = get_node("../Area/Pillar")
-onready var task2 = get_node("../Area/Pillar2")
+onready var task1 = get_node("../../Area/Pillar")
+onready var task2 = get_node("../../Area/Pillar2")
+onready var task3 = get_node("../../Area/Pillar3")
+onready var task4 = get_node("../../Area/Pillar4")
 
 func _ready():
-	taskArray = [task1.transform.origin, task2.transform.origin]
+	taskArray = [task1.transform.origin, task2.transform.origin, task3.transform.origin, task4.transform.origin]
 	taskRandom()
 	selectTask()
 
 func _process(_delta):
-	print(health)
+	pass
 
 #code to start physics process for game
 func _physics_process(delta):
@@ -98,7 +100,12 @@ func random():
 	randomize()
 	return randi()%361-180 #selects a value between 180 through -180 which is all directions for xy axis
 
+var attackTimer : float = 0.0
 func fightPlayer(delta):
+	attackTimer -= delta
+	if(attackTimer <= 0.0 && self.is_on_wall()):
+		attackTimer = 5.0
+		attack()
 	direction = player.transform.origin - self.transform.origin
 	direction = direction.normalized()
 	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)

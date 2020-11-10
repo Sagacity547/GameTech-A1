@@ -1,7 +1,54 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://AI.gd" type="Script" id=1]
 [ext_resource path="res://Gas.tres" type="Material" id=2]
+[ext_resource path="res://Textures/grass.tres" type="Material" id=3]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=4]
+[ext_resource path="res://GameOver.gd" type="Script" id=5]
+[ext_resource path="res://Audio/coin.wav" type="AudioStream" id=6]
+[ext_resource path="res://embersParticle.tscn" type="PackedScene" id=7]
+
+[sub_resource type="CapsuleShape" id=29]
+
+[sub_resource type="CapsuleMesh" id=30]
+
+[sub_resource type="Animation" id=31]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Move/CanvasLayer/GameOver:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Move/CanvasLayer2/EndTimeLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Move/CanvasLayer2/EndCoinLabel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -79,28 +126,98 @@ extents = Vector3( 0.5, 0.5, 15 )
 [sub_resource type="CubeMesh" id=26]
 size = Vector3( 1, 1, 30 )
 
+[sub_resource type="BoxShape" id=27]
+
+[sub_resource type="CubeMesh" id=28]
+
 [node name="Spatial" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00352317, 0, 0 )
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.512839, -0.20329, 0.834068, 0.0129398, 0.973278, 0.229264, -0.858387, -0.106783, 0.501766, 13.9711, 8.94696, 7.93038 )
+[node name="Player" type="KinematicBody" parent="."]
+transform = Transform( 0.35, 0, 0, 0, -1.5299e-08, -0.35, 0, 0.35, -1.5299e-08, -3.09707, 4.89841, -4.56496 )
+input_capture_on_drag = true
+script = ExtResource( 4 )
 
-[node name="AI" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.60108, 0 )
+[node name="CollisionShape" type="CollisionShape" parent="Player"]
+shape = SubResource( 29 )
 
-[node name="AI" type="KinematicBody" parent="AI"]
-transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, -0.930094, 0 )
+[node name="MeshInstance" type="MeshInstance" parent="Player"]
+mesh = SubResource( 30 )
+material/0 = null
+
+[node name="Camera" type="Camera" parent="Player"]
+transform = Transform( 1, 0, 0, 0, -0.258819, 0.965926, 0, -0.965926, -0.258819, 0, 6.5, -3.5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+anims/GameOver = SubResource( 31 )
+
+[node name="Coin" type="AudioStreamPlayer3D" parent="Player"]
+stream = ExtResource( 6 )
+unit_db = 13.893
+
+[node name="Spatial" parent="Player" instance=ExtResource( 7 )]
+
+[node name="HealthLabel" type="Label" parent="Player"]
+margin_left = 18.9421
+margin_top = 23.435
+margin_right = 159.942
+margin_bottom = 73.435
+rect_scale = Vector2( 4.82353, 4.82353 )
+custom_colors/font_color = Color( 1, 0.921569, 0.266667, 1 )
+text = "Health: 100"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player"]
+layer = 0
+
+[node name="GameOver" type="ColorRect" parent="Player/CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = -0.001
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -17.976
+margin_top = -17.0
+margin_right = 26.0
+margin_bottom = 30.0
+mouse_filter = 2
+color = Color( 0.188235, 0.188235, 0.188235, 1 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndLabel" type="Label" parent="Player/CanvasLayer/GameOver"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -25.0
+margin_top = 69.0
+margin_right = -818.0
+margin_bottom = -499.0
+rect_scale = Vector2( 4.04, 4.76 )
+text = "You Finished!
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AI\'s" type="Node" parent="."]
+
+[node name="AI" type="KinematicBody" parent="AI\'s"]
+transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0.00352317, 3.67099, 0 )
 script = ExtResource( 1 )
 
-[node name="CollisionShape" type="CollisionShape" parent="AI/AI"]
+[node name="CollisionShape" type="CollisionShape" parent="AI\'s/AI"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
 shape = SubResource( 1 )
 
-[node name="MeshInstance" type="MeshInstance" parent="AI/AI"]
+[node name="MeshInstance" type="MeshInstance" parent="AI\'s/AI"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
 material_override = ExtResource( 2 )
 mesh = SubResource( 2 )
-material/0 = null
+material/0 = ExtResource( 3 )
 
 [node name="building" type="Spatial" parent="."]
 
@@ -282,3 +399,53 @@ shape = SubResource( 25 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 mesh = SubResource( 26 )
 material/0 = null
+
+[node name="Area" type="Node" parent="."]
+
+[node name="Pillar" type="KinematicBody" parent="Area"]
+transform = Transform( 0.347218, 0, 0, 0, 4.44121, 0, 0, 0, 0.419361, 0, -25.4174, 22.435 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area/Pillar"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.81405, 0 )
+shape = SubResource( 27 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Area/Pillar"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.80288, 0 )
+mesh = SubResource( 28 )
+material/0 = ExtResource( 2 )
+
+[node name="Pillar2" type="KinematicBody" parent="Area"]
+transform = Transform( 0.347218, 0, 0, 0, 4.44121, 0, 0, 0, 0.419361, 0, -25.4174, 31.8826 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area/Pillar2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.81405, 0 )
+shape = SubResource( 27 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Area/Pillar2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.80288, 0 )
+mesh = SubResource( 28 )
+material/0 = ExtResource( 2 )
+
+[node name="Pillar3" type="KinematicBody" parent="Area"]
+transform = Transform( 0.347218, 0, 0, 0, 4.44121, 0, 0, 0, 0.419361, 4.40559, -25.4174, -0.0513749 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area/Pillar3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.81405, 0 )
+shape = SubResource( 27 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Area/Pillar3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.80288, 0 )
+mesh = SubResource( 28 )
+material/0 = ExtResource( 2 )
+
+[node name="Pillar4" type="KinematicBody" parent="Area"]
+transform = Transform( 0.347218, 0, 0, 0, 4.44121, 0, 0, 0, 0.419361, -8.20896, -25.4174, -0.0513749 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area/Pillar4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.81405, 0 )
+shape = SubResource( 27 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Area/Pillar4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.80288, 0 )
+mesh = SubResource( 28 )
+material/0 = ExtResource( 2 )
