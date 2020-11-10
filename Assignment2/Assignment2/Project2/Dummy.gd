@@ -25,10 +25,11 @@ var timer : float = 3.0
 onready var aipos= get_node("../AI")
 
 func _ready():
-	self.set_safe_margin(1.0)
+	pass
 
 func _physics_process(delta):
-	fightPlayer(delta)
+	#fightPlayer(delta)
+	pass
 
 func move_AI(delta):
 	timer += delta
@@ -60,7 +61,6 @@ func fightPlayer(delta):
 
 func attack():
 	aipos.health -= 20.0
-	pass
 
 func random():
 	randomize()

@@ -51,7 +51,6 @@ func move_player(delta):
 	var direction = Vector3(0,0,0)
 	if canWalk : 
 		if Input.is_action_pressed("move_right"):
-			print("moving right")
 			direction += transform.basis.x
 	
 		if Input.is_action_pressed("move_left"):
