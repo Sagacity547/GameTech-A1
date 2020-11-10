@@ -131,10 +131,10 @@ size = Vector3( 1, 1, 30 )
 [sub_resource type="CubeMesh" id=28]
 
 [node name="Spatial" type="Spatial"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00352317, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00352317, 0, -26.7381 )
 
 [node name="Player" type="KinematicBody" parent="."]
-transform = Transform( 0.35, 0, 0, 0, -1.5299e-08, -0.35, 0, 0.35, -1.5299e-08, -3.09707, 4.89841, -4.56496 )
+transform = Transform( 0.35, 0, 0, 0, -5.70222e-08, -0.35, 0, 0.35, -5.70222e-08, -3.09707, 4.89841, -4.56496 )
 input_capture_on_drag = true
 script = ExtResource( 4 )
 
@@ -309,7 +309,7 @@ mesh = SubResource( 18 )
 material/0 = null
 
 [node name="fence" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 40 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01979, 40 )
 
 [node name="fence1" type="StaticBody" parent="fence"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -15 )
@@ -403,7 +403,7 @@ material/0 = null
 [node name="Area" type="Node" parent="."]
 
 [node name="Pillar" type="KinematicBody" parent="Area"]
-transform = Transform( 0.347218, 0, 0, 0, 4.44121, 0, 0, 0, 0.419361, 0, -25.4174, 22.435 )
+transform = Transform( -0.347105, 0, 0.0106631, 0, 4.44121, 0, -0.00882867, 0, -0.419226, -1.74859, -25.4174, -23.484 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area/Pillar"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.81405, 0 )
@@ -415,7 +415,7 @@ mesh = SubResource( 28 )
 material/0 = ExtResource( 2 )
 
 [node name="Pillar2" type="KinematicBody" parent="Area"]
-transform = Transform( 0.347218, 0, 0, 0, 4.44121, 0, 0, 0, 0.419361, 0, -25.4174, 31.8826 )
+transform = Transform( -0.347105, 0, 0.0106631, 0, 4.44121, 0, -0.00882867, 0, -0.419226, -1.50837, -25.4174, -32.9286 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area/Pillar2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.81405, 0 )
@@ -427,7 +427,7 @@ mesh = SubResource( 28 )
 material/0 = ExtResource( 2 )
 
 [node name="Pillar3" type="KinematicBody" parent="Area"]
-transform = Transform( 0.347218, 0, 0, 0, 4.44121, 0, 0, 0, 0.419361, 4.40559, -25.4174, -0.0513749 )
+transform = Transform( -0.347105, 0, 0.0106631, 0, 4.44121, 0, -0.00882867, 0, -0.419226, -6.72452, -25.4174, -1.11698 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area/Pillar3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.81405, 0 )
@@ -439,7 +439,7 @@ mesh = SubResource( 28 )
 material/0 = ExtResource( 2 )
 
 [node name="Pillar4" type="KinematicBody" parent="Area"]
-transform = Transform( 0.347218, 0, 0, 0, 4.44121, 0, 0, 0, 0.419361, -8.20896, -25.4174, -0.0513749 )
+transform = Transform( -0.347105, 0, 0.0106631, 0, 4.44121, 0, -0.00882867, 0, -0.419226, 5.88596, -25.4174, -0.796228 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area/Pillar4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.81405, 0 )

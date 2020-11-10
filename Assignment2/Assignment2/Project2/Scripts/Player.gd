@@ -1,7 +1,7 @@
 extends KinematicBody
 
 #code for player basic movement speeds
-export var speed : float = 20
+export var speed : float = 10
 export var acceleration : float = 5
 export var gravity : float = 0.98
 
@@ -69,6 +69,8 @@ func move_player(delta):
 	handle_gravity()
 	
 	velocity.y = fall_velocity
+	
+	move_and_slide(velocity, Vector3.UP)
 
 #applies gravity to player and handles flying and jumping
 func handle_gravity():
