@@ -1,9 +1,7 @@
-README
-TO RUN: Tonberry_A3.exe
-
 INSTRUCTIONS:
 Move the player (the capsule) towards the end of the map using WASD. You can attack NPC's using the left mouse button. NPC's that turn yellow will cowar in fear
-and run away from the player while AI's that turn red after you hit them will attack the player dealing damage over time
+and run away from the player while AI's that turn red after you hit them will attack the player dealing damage over time. The player doesn't really have a goal
+in this game outside of defeat all the NPC's if they wish to or avoiding getting beat up by the NPC's
 
 Button Assignments:
 W               	Forward

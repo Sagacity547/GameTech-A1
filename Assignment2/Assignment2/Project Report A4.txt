@@ -1,0 +1,4 @@
+Julian - I feel I've gotten a good handle on basic AI method coding (most of which involves conditionals and a lot of time/area tracking on the part of the
+AI). However I feel we were held up on getting some parts of the AI done in order to demonstrate a workable area and I was a little held back by putting in the
+combat system (figuring out how to put in a new combat system for the AI and Player) that I didn't focus as much on other aspects of the AI that may have needed
+more work on my end to look better

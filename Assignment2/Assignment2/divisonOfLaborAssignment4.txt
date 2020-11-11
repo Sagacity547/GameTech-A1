@@ -3,7 +3,7 @@ Division of Tasks ~ Assignment 4
 Task List: 
 Navigation - Julian
 AI System - Gavin
-AI Behaviors - Gavin
+AI Behaviors - Julian
 Multiple Agents - Gavin
 Fight System (UI, Code) - Julian
 Level Layout - Evan
@@ -13,3 +13,4 @@ Meeting Schedule:
 	- Daily Discord check-ins
 
 Evan has not been assigned tasks as of the milestone
+*Update: Evan picked up work with Gavin building decision tree for AI
