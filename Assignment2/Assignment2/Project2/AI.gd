@@ -50,6 +50,7 @@ func _ready():
 	attributes[2] = body_types[get_rand_index()]
 	set_tree()
 	fight_or_not = set_reaction()
+	print(fight_or_not)
 
 func _process(delta):
 	if(health <= 0):
@@ -196,13 +197,21 @@ func set_reaction():
 	#start from root and loop all attributes
 	var node = behavior_tree
 	var i = 0
+	print(attributes)
 	while node != null && i < attributes.size():
-		node = node.get_child(attributes[i])
+		var child_node = node.get_child(attributes[i])
 	#check if it's fight
-	if node != null && node.get_child(actions[0]) != null:
-		return true
-	else:
-		return false
+		if child_node == null:
+			print(node.child_left.text)
+			print("FLAG")
+			child_node = node.child_left
+			if child_node.text == actions[0]:
+				return true
+			if child_node.text == actions[1]: 
+				return false
+		
+		node = child_node
+		i = i+1
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
