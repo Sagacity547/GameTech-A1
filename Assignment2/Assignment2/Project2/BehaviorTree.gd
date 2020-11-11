@@ -26,7 +26,10 @@ func set_reaction():
 	var node = behavior_tree
 	var i = 0
 	while node != null && i < attributes.size:
+		if node.get_child(actions[0]) != null:
+			return true
 		node = node.get_child(attributes[i])
+		i = i+1
 	#check if it's fight
 	if node != null && node.get_child(actions[0]) != null:
 		return true
