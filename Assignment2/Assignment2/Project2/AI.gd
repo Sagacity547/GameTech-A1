@@ -30,13 +30,14 @@ onready var player = get_node("../Player")
 var timer : float = 3.0     #time till AI changes directions during idle
 var taskTimer : float       #time before doing a task
 var tasking : float = 25.0  #time spend doing a task
+var keepMood : float
 
 #Task nodes
 var taskArray
-onready var task1 = get_node("../Area/Pillar")
-onready var task2 = get_node("../Area/Pillar2")
-onready var task3 = get_node("../Area/Pillar3")
-onready var task4 = get_node("../Area/Pillar4")
+onready var task1 = get_node("../Pillar")
+onready var task2 = get_node("../Pillar2")
+onready var task3 = get_node("../Pillar3")
+onready var task4 = get_node("../Pillar4")
 
 func _ready():
 	#idle AI
@@ -92,10 +93,10 @@ func move_AI(delta):
 	move_and_slide(velocity, Vector3.UP)
 	
 
-#set a random interval of time between 15 and 180 seconds before going off to complete task
+#set a random interval of time between 5 and 50 seconds before going off to complete task
 func taskRandom():
 	randomize()
-	taskTimer = randi()%75 + 15
+	taskTimer = randi()%45 + 5
 
 #select a task to go to when tasking
 func selectTask():
@@ -111,26 +112,38 @@ func random():
 	randomize()
 	return randi()%361-180 #selects a value between 180 through -180 which is all directions for xy axis
 
-var attackTimer : float = 2.0
+var attackTimer : float = 4.0
 func fightPlayer(delta):
-	attackTimer -= delta
-	if(attackTimer <= 0.0 && self.is_on_wall()):
-		attackTimer = 5.0
-		attack()
-	direction = player.transform.origin - self.transform.origin
-	direction = direction.normalized()
-	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
-	handle_gravity()
-	velocity.y = fall_velocity
-	move_and_slide(velocity, Vector3.UP)
+	if keepMood >= 0:
+		keepMood -= delta
+		attackTimer -= delta
+		if(attackTimer <= 0.0 && self.is_on_wall()):
+			attackTimer = 6.0
+			attack()
+		direction = player.transform.origin - self.transform.origin
+		direction = direction.normalized()
+		velocity = velocity.linear_interpolate(direction * speed * 0.75, acceleration * delta)
+		handle_gravity()
+		velocity.y = fall_velocity
+		move_and_slide(velocity, Vector3.UP)
+	else:
+		self.get_child(1).material_override = null
+		AI_STATE = 1.0
+		keepMood = 30.0
 
 func runAway(delta):
-	direction = self.transform.origin - player.transform.origin
-	direction = direction.normalized()
-	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
-	handle_gravity()
-	velocity.y = fall_velocity
-	move_and_slide(velocity, Vector3.UP)
+	if keepMood >= 0:
+		keepMood -= delta
+		direction = self.transform.origin - player.transform.origin
+		direction = direction.normalized()
+		velocity = velocity.linear_interpolate(direction * speed * 0.75, acceleration * delta)
+		handle_gravity()
+		velocity.y = fall_velocity
+		move_and_slide(velocity, Vector3.UP)
+	else:
+		self.get_child(1).material_override = null
+		AI_STATE = 1.0
+		keepMood = 30.0
 
 func attack():
 	player.health -= damage
@@ -171,11 +184,13 @@ func _on_AI_input_event(camera, event, click_position, click_normal, shape_idx):
 			newMaterial.albedo_color = Color(0.92, 0.19, 0.13, 1.0)
 			self.get_child(1).material_override = newMaterial
 			AI_STATE = 2.0
+			keepMood = 30.0
 		else:
 			var newMaterial = SpatialMaterial.new()
 			newMaterial.albedo_color = Color(0.92, 0.92, 0.01, 1.0)
 			self.get_child(1).material_override = newMaterial
 			AI_STATE = 3.0
+			keepMood = 30.0
 	pass # Replace with function body.
 
 

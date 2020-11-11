@@ -18,7 +18,7 @@ var position : Vector3
 var network_id : int
 #variables for Player GUI
 var time = 0;
-var damage = 20.0
+var damage = 10.0
 var health = 100.0
 
 #get the camera
